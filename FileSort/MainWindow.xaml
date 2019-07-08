@@ -8,20 +8,23 @@
         Title="MainWindow" Height="600" Width="400">
     <StackPanel>
         <!-- Headline -->
-        <TextBox Text="FileSort" FontSize="16" IsReadOnly="True" TextAlignment="Center" BorderThickness="0"></TextBox>
+        <TextBox Text="FileSort" Margin="10" FontWeight="DemiBold" FontSize="16" IsReadOnly="True" TextAlignment="Center" BorderThickness="0"></TextBox>
         
         <!-- Content text -->
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="8*" />
-                <ColumnDefinition Width="1*" />
-            </Grid.ColumnDefinitions>    
-        
-            <TextBox Grid.Column="1" Text="text text text text" FontSize="11" IsReadOnly="True" BorderThickness="0"></TextBox>
+                <ColumnDefinition Width=".5*" />
+                <ColumnDefinition Width="9*" />
+                <ColumnDefinition Width=".5*" />
+            </Grid.ColumnDefinitions>
+
+            <TextBox Grid.Column="1" TextWrapping="Wrap" FontSize="11" IsReadOnly="True" BorderThickness="0" Text="PhotoSort is a small program that can help you organize your photos. |How it works: |   • Select a folder where all your images are located.|   • Select a folder that PhotoSort should place the organized images. |   • There are two ways you can search. |       ○ You can search in a folder of your choosing. |       ○ or in a folder and in all its subfolders. |   • Click the START button. ||PhotoSort will organize All your photos by (Year, Month, Day)"></TextBox>
         </Grid>
         
         <!-- Error Messagees box -->
+        <StackPanel>
+            
+        </StackPanel>
         
     </StackPanel>
 </Window>
