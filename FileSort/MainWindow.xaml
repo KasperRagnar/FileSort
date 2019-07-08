@@ -6,7 +6,22 @@
         xmlns:local="clr-namespace:FileSort"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="400">
-    <Grid>
+    <StackPanel>
+        <!-- Headline -->
+        <TextBox Text="FileSort" FontSize="16" IsReadOnly="True" TextAlignment="Center" BorderThickness="0"></TextBox>
         
-    </Grid>
+        <!-- Content text -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="8*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>    
+        
+            <TextBox Grid.Column="1" Text="text text text text" FontSize="11" IsReadOnly="True" BorderThickness="0"></TextBox>
+        </Grid>
+        
+        <!-- Error Messagees box -->
+        
+    </StackPanel>
 </Window>
