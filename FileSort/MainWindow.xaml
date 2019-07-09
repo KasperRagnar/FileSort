@@ -5,11 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FileSort"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="400">
+        Title="MainWindow" 
+        Height="640" Width="410" 
+        MaxHeight="640" MaxWidth="410" 
+        MinHeight="640" MinWidth="410">
     <StackPanel>
         <!-- Headline -->
-        <TextBox Text="FileSort" Margin="10" FontWeight="DemiBold" FontSize="16" IsReadOnly="True" TextAlignment="Center" BorderThickness="0"></TextBox>
-        
+        <TextBox Text="FileSort" Margin="10" FontWeight="DemiBold" FontSize="16" IsReadOnly="True" TextAlignment="Center" BorderThickness="0"/>
+
         <!-- Content text -->
         <Grid>
             <Grid.ColumnDefinitions>
@@ -18,13 +21,26 @@
                 <ColumnDefinition Width=".5*" />
             </Grid.ColumnDefinitions>
 
-            <TextBox Grid.Column="1" TextWrapping="Wrap" FontSize="11" IsReadOnly="True" BorderThickness="0" Text="PhotoSort is a small program that can help you organize your photos. |How it works: |   • Select a folder where all your images are located.|   • Select a folder that PhotoSort should place the organized images. |   • There are two ways you can search. |       ○ You can search in a folder of your choosing. |       ○ or in a folder and in all its subfolders. |   • Click the START button. ||PhotoSort will organize All your photos by (Year, Month, Day)"></TextBox>
+            <TextBox Grid.Column="1" TextWrapping="Wrap" FontSize="11" IsReadOnly="True" BorderThickness="0" 
+                     Text="FileSort is a small program that helps you organiz your files.
+                     &#x0a;
+                     &#x0a;How it works: 
+                     &#x0a;   • [Language]: Select a language of your choice.
+                     &#x0a;   • [File Type]: Select What file types you want to sort. 
+                     &#x0a;   • [Sorting Method]: Select how you want to sort your files.
+                     &#x0a;   • [Source folder]: Select witch folder FileSort should look for files.
+                     &#x0a;   • [Destination folder]: Select where FileSort should put the sorted files.
+                     &#x0a;   • Remember to choose how thoroughly FileSerch can search for files.
+                     &#x0a;       ○ search in the selected folder only! 
+                     &#x0a;       ○ search in the selected folder and all of its sub-folders!
+                     &#x0a;   • Click the START button when everything is selected. 
+            "/>
         </Grid>
-        
+
         <!-- Error Messagees box -->
         <StackPanel>
-            
+
         </StackPanel>
-        
+
     </StackPanel>
 </Window>
