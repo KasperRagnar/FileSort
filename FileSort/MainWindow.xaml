@@ -6,65 +6,65 @@
         xmlns:local="clr-namespace:FileSort"
         mc:Ignorable="d"
         Title="MainWindow" 
-        Height="640" Width="410" 
-        MaxHeight="640" MaxWidth="410" 
-        MinHeight="640" MinWidth="410">
-    <StackPanel>
-        <!-- Headline -->
-        <TextBox Text="FileSort" Margin="10" FontWeight="DemiBold" FontSize="16" IsReadOnly="True" TextAlignment="Center" BorderThickness="0"/>
+        Height="640" Width="400" 
+        MaxHeight="640" MaxWidth="400" 
+        MinHeight="640" MinWidth="400">
+    <Border Padding="10">
+        <StackPanel>
+            <!-- Headline -->
 
-        <!-- Content text -->
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width=".5*" />
-                <ColumnDefinition Width="9*" />
-                <ColumnDefinition Width=".5*" />
-            </Grid.ColumnDefinitions>
+            <!-- Content text -->
+            <!-- Headline -->
+            <TextBox Text="FileSort" FontWeight="DemiBold" FontSize="16" IsReadOnly="True" TextAlignment="Center" BorderThickness="0"/>
 
-            <TextBox Grid.Column="1" TextWrapping="Wrap" FontSize="11" IsReadOnly="True" BorderThickness="0" 
-                     Text="FileSort is a small program that helps you organiz your files.
-                     &#x0a;
-                     &#x0a;How it works: 
-                     &#x0a;   • [Language]: Select a language of your choice.
-                     &#x0a;   • [File Type]: Select What file types you want to sort. 
-                     &#x0a;   • [Sorting Method]: Select how you want to sort your files.
-                     &#x0a;   • [Source folder]: Select witch folder FileSort should look for files.
-                     &#x0a;   • [Destination folder]: Select where FileSort should put the sorted files.
-                     &#x0a;   • Remember to choose how thoroughly FileSerch can search for files.
-                     &#x0a;       ○ search in the selected folder only! 
-                     &#x0a;       ○ search in the selected folder and all of its sub-folders!
-                     &#x0a;   • Click the START button when everything is selected. 
-                     &#x0a;
-            "/>
-        </Grid>
+            <!-- Content text -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-        <!-- Error Messagees box -->
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width=".5*" />
-                <ColumnDefinition Width="9*" />
-                <ColumnDefinition Width=".5*" />
-            </Grid.ColumnDefinitions>
+                <TextBox Grid.Column="0" TextWrapping="Wrap" FontSize="11" IsReadOnly="True" BorderThickness="0" 
+                         Text="
+                         &#xA;FileSort is a small program that helps you organiz your files.
+                         &#xA;
+                         &#xA;How it works:
+                         &#xA;   • [Language]: Select a language of your choice.
+                         &#xA;   • [File Type]: Select What file types you want to sort.
+                         &#xA;   • [Sorting Method]: Select how you want to sort your files.
+                         &#xA;   • [Source folder]: Select witch folder FileSort should look for files. 
+                         &#xA;   • [Destination folder]: Select where FileSort should put the sorted files. 
+                         &#xA;   • Remember to choose how thoroughly FileSerch can search for files. 
+                         &#xA;       ○ search in the selected folder only! 
+                         &#xA;       ○ search in the selected folder and all of its sub-folders! 
+                         &#xA;   • Click the START button when everything is selected. 
+                         &#xA;
+                         "/>
+            </Grid>
 
-            <TextBox Grid.Column="1" IsReadOnly="True" BorderThickness="0" FontStyle="Italic" FontSize="11" Foreground="Red" Text="• Error message placeholder"/>
-        </Grid>
+            <!-- Error Messagees box -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <TextBox Grid.Column="0" IsReadOnly="True" BorderThickness="0" FontStyle="Italic" FontSize="11" Foreground="Red" Text="• Error message placeholder"/>
+            </Grid>
 
 
-        <!-- Functionality -->
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width=".5*" />
-                <ColumnDefinition Width="3*"/>
-                <ColumnDefinition Width="3*"/>
-                <ColumnDefinition Width="3*"/>
-                <ColumnDefinition Width=".5*" />
-            </Grid.ColumnDefinitions>
+            <!-- Functionality -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-            <Label Content="hello" Grid.Column="1"></Label>
-            <Label Content="hello" Grid.Column="2"></Label>
-            <Label Content="hello" Grid.Column="3"></Label>
-            
-            
-        </Grid>
-    </StackPanel>
+                <Label Content="hello" Grid.Column="0"/>
+                <Label Content="hello" Grid.Column="1"/>
+                <Label Content="hello" Grid.Column="2"/>
+
+
+            </Grid>
+        </StackPanel>
+    </Border>
 </Window>
