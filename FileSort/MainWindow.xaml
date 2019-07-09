@@ -34,13 +34,37 @@
                      &#x0a;       ○ search in the selected folder only! 
                      &#x0a;       ○ search in the selected folder and all of its sub-folders!
                      &#x0a;   • Click the START button when everything is selected. 
+                     &#x0a;
             "/>
         </Grid>
 
         <!-- Error Messagees box -->
-        <StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".5*" />
+                <ColumnDefinition Width="9*" />
+                <ColumnDefinition Width=".5*" />
+            </Grid.ColumnDefinitions>
 
-        </StackPanel>
+            <TextBox Grid.Column="1" IsReadOnly="True" BorderThickness="0" FontStyle="Italic" FontSize="11" Foreground="Red" Text="• Error message placeholder"/>
+        </Grid>
 
+
+        <!-- Functionality -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".5*" />
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width=".5*" />
+            </Grid.ColumnDefinitions>
+
+            <Label Content="hello" Grid.Column="1"></Label>
+            <Label Content="hello" Grid.Column="2"></Label>
+            <Label Content="hello" Grid.Column="3"></Label>
+            
+            
+        </Grid>
     </StackPanel>
 </Window>
