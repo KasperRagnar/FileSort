@@ -6,64 +6,98 @@
         xmlns:local="clr-namespace:FileSort"
         mc:Ignorable="d"
         Title="MainWindow" 
-        Height="640" Width="400" 
-        MaxHeight="640" MaxWidth="400" 
-        MinHeight="640" MinWidth="400">
+        Height="640" Width="410" 
+        MaxHeight="640" MaxWidth="410" 
+        MinHeight="640" MinWidth="410">
     <Border Padding="10">
         <StackPanel>
+            <!--#region Content text-->   
             <!-- Headline -->
+            <TextBox Text="FileSort" Margin="0 0 0 5" FontWeight="DemiBold" FontSize="16" IsReadOnly="True" TextAlignment="Center" BorderThickness="0"/>
 
-            <!-- Content text -->
-            <!-- Headline -->
-            <TextBox Text="FileSort" FontWeight="DemiBold" FontSize="16" IsReadOnly="True" TextAlignment="Center" BorderThickness="0"/>
+            <!--what is this program-->
+            <Border BorderThickness="1" BorderBrush="Gray" Padding="5 5 5 5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
 
-            <!-- Content text -->
+                    <TextBox Grid.Column="0" TextWrapping="Wrap" FontSize="11" IsReadOnly="True" BorderThickness="0" 
+                             Text="FileSort is a small program that helps you organiz your files.
+                             &#xA;
+                             &#xA;How it works:
+                             &#xA;   • [Language]: Select a language of your choice.
+                             &#xA;   • [File Type]: Select What file types you want to sort.
+                             &#xA;   • [Sorting Method]: Select how you want to sort your files.
+                             &#xA;   • [Source folder]: Select witch folder FileSort should look for files. 
+                             &#xA;   • [Destination folder]: Select where FileSort should put the sorted files. 
+                             &#xA;   • Remember to choose how thoroughly FileSerch can search for files. 
+                             &#xA;       ○ search in the selected folder only! 
+                             &#xA;       ○ search in the selected folder and all of its sub-folders! 
+                             &#xA;   • Click the START button when everything is selected. 
+                             "/>
+                </Grid>
+            </Border>
+            <!--#endregion-->
+
+            <!--#region Error Messagees box-->
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <TextBox Grid.Column="0" TextWrapping="Wrap" FontSize="11" IsReadOnly="True" BorderThickness="0" 
-                         Text="
-                         &#xA;FileSort is a small program that helps you organiz your files.
-                         &#xA;
-                         &#xA;How it works:
-                         &#xA;   • [Language]: Select a language of your choice.
-                         &#xA;   • [File Type]: Select What file types you want to sort.
-                         &#xA;   • [Sorting Method]: Select how you want to sort your files.
-                         &#xA;   • [Source folder]: Select witch folder FileSort should look for files. 
-                         &#xA;   • [Destination folder]: Select where FileSort should put the sorted files. 
-                         &#xA;   • Remember to choose how thoroughly FileSerch can search for files. 
-                         &#xA;       ○ search in the selected folder only! 
-                         &#xA;       ○ search in the selected folder and all of its sub-folders! 
-                         &#xA;   • Click the START button when everything is selected. 
-                         &#xA;
-                         "/>
+                <TextBox Grid.Column="0" Margin="0 10 0 0" IsReadOnly="True" BorderThickness="0" FontStyle="Italic" FontSize="11" Foreground="Red" Text="• Error message placeholder"/>
             </Grid>
+            <!--#endregion-->
 
-            <!-- Error Messagees box -->
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-
-                <TextBox Grid.Column="0" IsReadOnly="True" BorderThickness="0" FontStyle="Italic" FontSize="11" Foreground="Red" Text="• Error message placeholder"/>
-            </Grid>
-
-
-            <!-- Functionality -->
+            <!--#region Sorting Method, File Types, Language-->
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
 
-                <Label Content="hello" Grid.Column="0"/>
-                <Label Content="hello" Grid.Column="1"/>
-                <Label Content="hello" Grid.Column="2"/>
+                <Label Content="Sorting Method" Grid.Column="0" Grid.Row="0"/>
+                <Label Content="File Types" Grid.Column="1" Grid.Row="0"/>
+                <Label Content="Language" Grid.Column="2" Grid.Row="0"/>
 
+                <ComboBox Grid.Column="0" Grid.Row="1" Margin="0 0 0 0"></ComboBox>
+                <ComboBox Grid.Column="1" Grid.Row="1" Margin="5 0 0 0"></ComboBox>
+                <ComboBox Grid.Column="2" Grid.Row="1" Margin="5 0 0 0"></ComboBox>
+            </Grid>
+            <!--#endregion-->
 
+            <!--#region Source folder browse, Destination folder browse-->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="7*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Column="0" Grid.Row="0" Content="Source Path"></Label>
+                <Label Grid.Column="0" Grid.Row="2" Content="Destination Path"></Label>
+
+                <Button Grid.Column="1" Grid.Row="1" Content="Browse" Margin="5 0 5 0"></Button>
+                <Button Grid.Column="1" Grid.Row="3" Content="Browse" Margin="5 0 5 0"></Button>
+
+                <TextBox Grid.Column="0" Grid.Row="1" IsEnabled="False" IsReadOnly="True" BorderBrush="Black"></TextBox>
+                <TextBox Grid.Column="0" Grid.Row="3" IsEnabled="False" IsReadOnly="True" BorderBrush="Black"></TextBox>
+            </Grid>
+            <!--#endregion-->
+
+            <Grid>
+                
             </Grid>
         </StackPanel>
     </Border>
