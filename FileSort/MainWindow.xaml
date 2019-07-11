@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FileSort"
         mc:Ignorable="d"
-        Title="MainWindow" 
+        Title="FileSort" 
         Height="563" Width="410" 
         MaxHeight="563" MaxWidth="410" 
         MinHeight="563" MinWidth="410">
     <Border Padding="10">
         <StackPanel>
+            
             <!--#region Content text-->   
             <!-- Headline -->
             <TextBox Text="FileSort" Name="ProgramHeader" Margin="0 0 0 5" FontWeight="DemiBold" FontSize="16" IsReadOnly="True" TextAlignment="Center" BorderThickness="0"/>
@@ -68,7 +69,10 @@
 
                 <ComboBox Name="ComboBox_SortingMethods" Grid.Column="0" Grid.Row="1" Margin="0 0 0 0"></ComboBox>
                 <ComboBox Name="ComboBox_FileTypes" Grid.Column="1" Grid.Row="1" Margin="5 0 0 0"></ComboBox>
-                <ComboBox Name="ComboBox_Languages" Grid.Column="2" Grid.Row="1" Margin="5 0 0 0" Height="22" VerticalAlignment="Bottom"></ComboBox>
+                <ComboBox Name="ComboBox_Languages" Grid.Column="2" Grid.Row="1" Margin="5 0 0 0" Height="22" VerticalAlignment="Bottom" SelectionChanged="ComboBox_Languages_SelectionChanged">
+                    <ComboBoxItem Content="Dansk"/>
+                    <ComboBoxItem Content="English"/>
+                </ComboBox>
             </Grid>
             <!--#endregion-->
 

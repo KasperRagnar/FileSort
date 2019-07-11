@@ -35,7 +35,10 @@ namespace FileSort
         }
 
         #region Language
-        
+        private void ComboBox_Languages_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
         #endregion
 
         #region Select Paths
@@ -74,8 +77,8 @@ namespace FileSort
             }
             allOrOneFolderBool = true;
         }
+
         #endregion
 
-        
     }
 }

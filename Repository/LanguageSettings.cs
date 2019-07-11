@@ -6,5 +6,9 @@ namespace Repository
 {
     public class LanguageSettings
     {
+        public void LanguageList(int indexNumber)
+        {
+            
+        }
     }
 }
