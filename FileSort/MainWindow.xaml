@@ -35,7 +35,7 @@
                              &#xA;   • Remember to choose how thoroughly FileSerch can search for files. 
                              &#xA;       ○ search in the selected folder only! 
                              &#xA;       ○ search in the selected folder and all of its sub-folders! 
-                             &#xA;   • Click the START button when everything is selected. 
+                             &#xA;   • Click the START button when everything is filed out. 
                              "/>
                 </Grid>
             </Border>
@@ -63,9 +63,9 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <Label Content="Sorting Method" Grid.Column="0" Grid.Row="0"/>
-                <Label Content="File Types" Grid.Column="1" Grid.Row="0"/>
-                <Label Content="Language" Grid.Column="2" Grid.Row="0"/>
+                <TextBox Name="SortingMethodsTextBox" Text="Sorting Method" Grid.Column="0" Grid.Row="0"/>
+                <TextBox Name="FileTypesTextBox" Text="File Types" Grid.Column="1" Grid.Row="0"/>
+                <TextBox Name="LanguageesTextBox" Text="Language" Grid.Column="2" Grid.Row="0"/>
 
                 <ComboBox Name="ComboBox_SortingMethods" Grid.Column="0" Grid.Row="1" Margin="0 0 0 0"></ComboBox>
                 <ComboBox Name="ComboBox_FileTypes" Grid.Column="1" Grid.Row="1" Margin="5 0 0 0"></ComboBox>

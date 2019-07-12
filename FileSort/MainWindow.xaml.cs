@@ -41,8 +41,31 @@ namespace FileSort
         #region Language
         private void ComboBox_Languages_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var LanguageList = LS.LanguageList(ComboBox_Languages.SelectedIndex);
+            int indexedSelection = ComboBox_Languages.SelectedIndex;
 
+            var LanguageList = LS.LanguageList(indexedSelection);
+            
+            if (LanguageList[indexedSelection] != null)
+            {
+                LanguageList[indexedSelection].TextBox_ProgramHeader = ProgramHeader.Text;
+                LanguageList[indexedSelection].TextBox_ContentTextBox = ContentTextBox.Text;
+                LanguageList[indexedSelection].TextBox_ErrorMsgBox = ErrorMsgBox.Text;
+
+                LanguageList[indexedSelection].TextBox_SortingMethod = SortingMethodsTextBox.Text;
+                LanguageList[indexedSelection].TextBox_FileTypes = FileTypesTextBox.Text;
+                LanguageList[indexedSelection].TextBox_Language = LanguageesTextBox.Text;
+
+                //TODO 
+                // First clear the existing 'ConboboxItem' list and then insert the new list from the 'Languagelist'
+
+                //ComboBox_Languages.
+                foreach (var IndexedItem in LanguageList[indexedSelection].ComboBox_SortingMethods)
+                {
+                    //ComboBox_SortingMethods.inde
+                }
+                
+            }
+            
             //TODO 
             // Set LanguageModel = MainView element name ".text/content"
 
