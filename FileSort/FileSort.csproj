@@ -96,6 +96,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{fe124967-863d-4511-81df-34b88852e2c9}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Repository\Repository.csproj">
       <Project>{71fdede4-0953-4c1e-a8ac-5721990f82b4}</Project>
       <Name>Repository</Name>

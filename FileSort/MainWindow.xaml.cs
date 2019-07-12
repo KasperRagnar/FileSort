@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Repository;
 
 namespace FileSort
 {
@@ -25,6 +26,7 @@ namespace FileSort
         bool allOrOneFolderBool;
 
         FolderBrowserDialog fbd = new FolderBrowserDialog();
+        LanguageSettings LS = new LanguageSettings();
 
         #endregion
 
@@ -32,11 +34,17 @@ namespace FileSort
         {
             InitializeComponent();
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            ComboBox_Languages.SelectedIndex = 1; // Default language is English 
+
         }
 
         #region Language
         private void ComboBox_Languages_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            var LanguageList = LS.LanguageList(ComboBox_Languages.SelectedIndex);
+
+            //TODO 
+            // Set LanguageModel = MainView element name ".text/content"
 
         }
         #endregion
