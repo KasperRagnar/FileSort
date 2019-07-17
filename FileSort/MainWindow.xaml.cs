@@ -53,6 +53,11 @@ namespace FileSort
                 ErrorMsgBox.Text = LanguageList.TextBox_ErrorMsgBox[0];
 
                 SortingMethodsTextBox.Text = LanguageList.TextBox_SortingMethod;
+                foreach (var ComboItem in LanguageList.ComboBox_SortingMethods)
+                {
+                    
+                }
+
                 FileTypesTextBox.Text = LanguageList.TextBox_FileTypes;
                 LanguageesTextBox.Text = LanguageList.TextBox_Language;
 

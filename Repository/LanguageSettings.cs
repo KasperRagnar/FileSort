@@ -10,7 +10,7 @@ namespace Repository
         #region GLOBAL
         LanguageModel LM = new LanguageModel();
 
-        string[] FileTypesArr = new String[] { "jpg", "jpeg", "png", "tif", "tiff", "gif", "3fr", "raw", "dcr", "cr3", "cr2", "erf", "mef", "mos", "nef", "orf", "pef", "rw2", "arw", "crw", "srf", "sr2", ".doc", ".docx", ".pdf", ".rtf", ".tex", ".txt", ".wks", ".wps", ".wpd", ".dll", ".exe", "", "", "", "", "", "", "", "", "", "", "", "", };
+        string[] FileTypesArr = new String[] { "jpg", "jpeg", "png", "tif", "tiff", "gif", "3fr", "raw", "dcr", "cr3", "cr2", "erf", "mef", "mos", "nef", "orf", "pef", "rw2", "arw", "crw", "srf", "sr2", ".doc", ".docx", ".pdf", ".rtf", ".tex", ".txt", ".wks", ".wps", ".wpd", ".dll", ".exe" };
         string[] LanguagesArr = new String[] { "Dansk", "English" };
         #endregion
 
@@ -22,7 +22,7 @@ namespace Repository
             {
                 TextBox_ProgramHeader = "FileSort", 
                 TextBox_ContentTextBox = $"FileSort er et lille program der hjælper dig med at organisere dine filer. {Environment.NewLine}{Environment.NewLine}Sådan virker der:{Environment.NewLine}   • [Sprog]: Vægl et sprog.{Environment.NewLine}   • [Fil Typer]: Vælg hvad for fil typer du vil sortere.{Environment.NewLine}   • [Sorterings Metoder]: Vælg hvordan du vil sortere dine filer.{Environment.NewLine}   • [Hvor Fra ?]: Vælg hvor FileSort skal kigge efter filer. {Environment.NewLine}   • [Hvor til ?]: Vælg hvor FileSort skal lægge de sorterede filer. {Environment.NewLine}   • Husk at vælge hvor grundigt FileSort skal søger efter filer. {Environment.NewLine}       ○ Søg kun i den valgte folder! {Environment.NewLine}       ○ Søg i den valgte folder og alle dens undermapper. {Environment.NewLine}   • Klik på START knappen når alt er udfyldt. ",
-                TextBox_ErrorMsgBox = new String[] { "", "• Fejl: Ikke alle felter er udfyldt!", "• Fejl: Ingen billed filer blev fundet!", "• Fejl: Prøv en anden sti" },
+                TextBox_ErrorMsgBox = new String[] { "", "• Fejl: Ikke alle felter er udfyldt!", "• Fejl: Ingen billeder filer blev fundet!", "• Fejl: Prøv en anden sti" },
 
                 TextBox_SortingMethod = "Sorterings Metoder",
                 ComboBox_SortingMethods = new String[] { "Sidste redigeret dato", "Skaber Dato", "Alfabetisk (abc)" },
