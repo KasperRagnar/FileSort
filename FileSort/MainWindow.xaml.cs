@@ -50,7 +50,7 @@ namespace FileSort
                 ProgramHeader.Text = LanguageList.TextBox_ProgramHeader;
                 ContentTextBox.Text = LanguageList.TextBox_ContentTextBox;
 
-                ErrorMsgBox.Text = LanguageList.TextBox_ErrorMsgBox;
+                ErrorMsgBox.Text = LanguageList.TextBox_ErrorMsgBox[0];
 
                 SortingMethodsTextBox.Text = LanguageList.TextBox_SortingMethod;
                 FileTypesTextBox.Text = LanguageList.TextBox_FileTypes;

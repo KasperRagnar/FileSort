@@ -10,7 +10,7 @@ namespace Models
 
         public string TextBox_ContentTextBox { get; set; }
 
-        public string TextBox_ErrorMsgBox { get; set; }
+        public string[] TextBox_ErrorMsgBox { get; set; }
 
         public string TextBox_SortingMethod { get; set; }
         public string TextBox_FileTypes { get; set; }
