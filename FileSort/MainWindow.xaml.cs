@@ -45,12 +45,27 @@ namespace FileSort
 
             var LanguageList = LS.LanguageList(indexedSelection);
             
-            if (LanguageList[indexedSelection] != null)
+            if (LanguageList != null)
             {
-                LanguageList[indexedSelection].TextBox_Language = LanguageesTextBox.Text;
+                ProgramHeader.Text = LanguageList.TextBox_ProgramHeader;
+                ContentTextBox.Text = LanguageList.TextBox_ContentTextBox;
 
-               
-                
+                ErrorMsgBox.Text = LanguageList.TextBox_ErrorMsgBox;
+
+                SortingMethodsTextBox.Text = LanguageList.TextBox_SortingMethod;
+                FileTypesTextBox.Text = LanguageList.TextBox_FileTypes;
+                LanguageesTextBox.Text = LanguageList.TextBox_Language;
+
+                SourchPathLabel.Content = LanguageList.TextBox_SourchPathLabel;
+                SourchPathButton.Content = LanguageList.btn_SourchPathButton;
+
+                DestinationPathLabel.Content = LanguageList.TextBox_DestinationPathLabel;
+                DestinationPathButton.Content = LanguageList.btn_DestinationPathButton;
+
+                SearchFolderOption.Content = LanguageList.radio_SearchFolderOption;
+                SearchAllSubFoldersOption.Content = LanguageList.radio_SearchAllSubFoldersOption;
+
+                StartButton.Content = LanguageList.btn_StartButton;
             }
             
             //TODO 
