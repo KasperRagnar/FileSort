@@ -27,55 +27,57 @@ namespace FileSort
 
         FolderBrowserDialog fbd = new FolderBrowserDialog();
         LanguageSettings LS = new LanguageSettings();
-
         #endregion
 
         public MainWindow()
         {
             InitializeComponent();
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            ComboBox_Languages.SelectedIndex = 1; // Default language is English 
-
+            ComboBox_FileTypes.ItemsSource = LS.FileTypesArr; // Add's a 'File Type'list to the UI.
+            ComboBox_Languages.ItemsSource = LS.LanguagesArr; // Add's a 'language' list to the UI.
+            ComboBox_Languages.SelectedIndex = 1; // Sets the default language in the UI to: English 
         }
 
         #region Language
         private void ComboBox_Languages_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int indexedSelection = ComboBox_Languages.SelectedIndex;
-
-            var LanguageList = LS.LanguageList(indexedSelection);
-            
-            if (LanguageList != null)
+            try
             {
-                ProgramHeader.Text = LanguageList.TextBox_ProgramHeader;
-                ContentTextBox.Text = LanguageList.TextBox_ContentTextBox;
+                int indexedSelection = ComboBox_Languages.SelectedIndex;
 
-                ErrorMsgBox.Text = LanguageList.TextBox_ErrorMsgBox[0];
+                var LanguageList = LS.LanguageList(indexedSelection);
 
-                SortingMethodsTextBox.Text = LanguageList.TextBox_SortingMethod;
-                foreach (var ComboItem in LanguageList.ComboBox_SortingMethods)
+                if (LanguageList != null)
                 {
-                    
+                    ProgramHeader.Text = LanguageList.TextBox_ProgramHeader;
+                    ContentTextBox.Text = LanguageList.TextBox_ContentTextBox;
+
+                    ErrorMsgBox.Text = LanguageList.TextBox_ErrorMsgBox[0];
+
+                    SortingMethodsTextBox.Text = LanguageList.TextBox_SortingMethod;
+                    ComboBox_SortingMethods.ItemsSource = LanguageList.ComboBox_SortingMethods;
+
+                    FileTypesTextBox.Text = LanguageList.TextBox_FileTypes;
+
+                    LanguageesTextBox.Text = LanguageList.TextBox_Language;
+
+                    SourchPathLabel.Content = LanguageList.TextBox_SourchPathLabel;
+                    SourchPathButton.Content = LanguageList.btn_SourchPathButton;
+
+                    DestinationPathLabel.Content = LanguageList.TextBox_DestinationPathLabel;
+                    DestinationPathButton.Content = LanguageList.btn_DestinationPathButton;
+
+                    SearchFolderOption.Content = LanguageList.radio_SearchFolderOption;
+                    SearchAllSubFoldersOption.Content = LanguageList.radio_SearchAllSubFoldersOption;
+
+                    StartButton.Content = LanguageList.btn_StartButton;
                 }
-
-                FileTypesTextBox.Text = LanguageList.TextBox_FileTypes;
-                LanguageesTextBox.Text = LanguageList.TextBox_Language;
-
-                SourchPathLabel.Content = LanguageList.TextBox_SourchPathLabel;
-                SourchPathButton.Content = LanguageList.btn_SourchPathButton;
-
-                DestinationPathLabel.Content = LanguageList.TextBox_DestinationPathLabel;
-                DestinationPathButton.Content = LanguageList.btn_DestinationPathButton;
-
-                SearchFolderOption.Content = LanguageList.radio_SearchFolderOption;
-                SearchAllSubFoldersOption.Content = LanguageList.radio_SearchAllSubFoldersOption;
-
-                StartButton.Content = LanguageList.btn_StartButton;
             }
-            
-            //TODO 
-            // Set LanguageModel = MainView element name ".text/content"
+            catch (Exception)
+            {
 
+                throw;
+            }
         }
         #endregion
 
