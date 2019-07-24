@@ -6,10 +6,11 @@
         xmlns:local="clr-namespace:FileSort"
         mc:Ignorable="d"
         Title="FileSort" 
-        Height="563" Width="410" 
-        MaxHeight="563" MaxWidth="410" 
-        MinHeight="563" MinWidth="410" Icon="Billeder\FS_Icon2.jpg">
-    <Border Padding="10">
+        Icon="Billeder\FS_Icon2.jpg"
+        Height="547" Width="410"         
+        MaxHeight="547" MaxWidth="410" 
+        MinHeight="547" MinWidth="410">
+    <Border Padding="10 0 10 0">
         <StackPanel>
             
             <!--#region Content text-->   
