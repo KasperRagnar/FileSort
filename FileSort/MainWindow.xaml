@@ -69,8 +69,17 @@
 
                 <!--Sorting Methods-->
                 <ComboBox Name="ComboBox_SortingMethods" Grid.Column="0" Grid.Row="1" Margin="0 0 0 0"></ComboBox>
+                
                 <!--File Types-->
                 <ComboBox Name="ComboBox_FileTypes" Grid.Column="1" Grid.Row="1" Margin="5 0 0 0"></ComboBox>
+                <!--<ListBox Grid.Column="1" Grid.Row="1">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <ComboBox Name="ComboBox_FileTypes" Margin="5 0 0 0"></ComboBox>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>-->
+                
                 <!--Language-->
                 <ComboBox Name="ComboBox_Languages" Grid.Column="2" Grid.Row="1" Margin="5 0 0 0" Height="22" VerticalAlignment="Bottom" SelectionChanged="ComboBox_Languages_SelectionChanged"></ComboBox>
             </Grid>
