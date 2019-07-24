@@ -8,7 +8,7 @@
         Title="FileSort" 
         Height="563" Width="410" 
         MaxHeight="563" MaxWidth="410" 
-        MinHeight="563" MinWidth="410">
+        MinHeight="563" MinWidth="410" Icon="Billeder\FS_Icon2.jpg">
     <Border Padding="10">
         <StackPanel>
             
