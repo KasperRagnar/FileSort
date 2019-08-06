@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="FileSort" 
         Icon="Billeder\FS_Icon2.jpg"
-        Height="547" Width="410"         
-        MaxHeight="547" MaxWidth="410" 
-        MinHeight="547" MinWidth="410">
+        Height="635" Width="410"         
+        MaxHeight="635" MaxWidth="410" 
+        MinHeight="635" MinWidth="410">
     <Border Padding="10 0 10 0">
         <StackPanel>
             
@@ -62,27 +62,34 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <TextBox Name="SortingMethodsTextBox" Text="Sorting Method" IsReadOnly="True" BorderThickness="0" Margin="0 0 0 5" Grid.Column="0" Grid.Row="0"/>
-                <TextBox Name="FileTypesTextBox" Text="File Types" IsReadOnly="True" BorderThickness="0" Margin="0 0 0 5" Grid.Column="1" Grid.Row="0"/>
-                <TextBox Name="LanguageesTextBox" Text="Language" IsReadOnly="True" BorderThickness="0" Margin="0 0 0 5" Grid.Column="2" Grid.Row="0"/>
-
-                <!--Sorting Methods-->
-                <ComboBox Name="ComboBox_SortingMethods" Grid.Column="0" Grid.Row="1" Margin="0 0 0 0"></ComboBox>
                 
-                <!--File Types-->
-                <ComboBox Name="ComboBox_FileTypes" Grid.Column="1" Grid.Row="1" Margin="5 0 0 0"></ComboBox>
-                <!--<ListBox Grid.Column="1" Grid.Row="1">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <ComboBox Name="ComboBox_FileTypes" Margin="5 0 0 0"></ComboBox>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>-->
+                <!--Sorting Methods-->
+                <TextBox Name="SortingMethodsTextBox" Text="Sorting Method" IsReadOnly="True" BorderThickness="0" Margin="0 0 0 5" Grid.Column="0" Grid.Row="0"/>
+                <ComboBox Name="ComboBox_SortingMethods" Grid.Column="0" Grid.Row="1"></ComboBox>
                 
                 <!--Language-->
-                <ComboBox Name="ComboBox_Languages" Grid.Column="2" Grid.Row="1" Margin="5 0 0 0" Height="22" VerticalAlignment="Bottom" SelectionChanged="ComboBox_Languages_SelectionChanged"></ComboBox>
+                <TextBox Name="LanguageesTextBox" Text="Language" IsReadOnly="True" BorderThickness="0" Margin="0 0 0 5" Grid.Column="0" Grid.Row="4"/>
+                <ComboBox Name="ComboBox_Languages" Grid.Column="0" Grid.Row="5" Height="22" VerticalAlignment="Bottom" SelectionChanged="ComboBox_Languages_SelectionChanged"></ComboBox>
+
+                <!--File Types-->
+                <TextBox Name="FileTypesTextBox" Text="File Types" IsReadOnly="True" BorderThickness="0" Margin="0 0 0 5" Grid.Column="2" Grid.Row="0"/>
+                <ComboBox Name="ComboBox_FileTypes" Grid.Column="2" Grid.Row="1"></ComboBox>
+
+                <!--Add a File Type to the list-->
+                <Button Name="AddFileTypeToList" Content="Add to list" Grid.Column="2" Grid.Row="3" Margin="0 23 0 0"></Button>
+
+                <!--Remove a File Type to the list-->
+                <Button Name="RemoveFileTypeToList" Content="Remove from list" Grid.Column="2" Grid.Row="6"></Button>
+
+                <!--File Listbox-->
+                <ListBox Name="ListBob_FileTypes" Grid.Column="1" Grid.Row="1" Grid.RowSpan="6" BorderThickness="1" BorderBrush="Gray" Margin="5 0 5 0"></ListBox>
+
             </Grid>
             <!--#endregion-->
 

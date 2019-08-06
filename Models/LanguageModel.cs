@@ -24,6 +24,8 @@ namespace Models
         public string TextBox_DestinationPathLabel { get; set; }
         public string btn_SourchPathButton { get; set; }
         public string btn_DestinationPathButton { get; set; }
+        public string btn_RemoveFileTypeToList { get; set; }
+        public string btn_AddFileTypeToList { get; set; }
 
         public string radio_SearchFolderOption { get; set; }
         public string radio_SearchAllSubFoldersOption { get; set; }

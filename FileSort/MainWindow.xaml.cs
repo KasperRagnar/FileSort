@@ -34,10 +34,10 @@ namespace FileSort
             InitializeComponent();
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
-            foreach (var FileType in LS.FileTypesArr)
-            {
+            //foreach (var FileType in LS.FileTypesArr)
+            //{
 
-            }
+            //}
 
             ComboBox_FileTypes.ItemsSource = LS.FileTypesArr; // Add's a 'File Type'list to the UI.
 
@@ -65,6 +65,8 @@ namespace FileSort
                     ComboBox_SortingMethods.ItemsSource = LanguageList.ComboBox_SortingMethods;
 
                     FileTypesTextBox.Text = LanguageList.TextBox_FileTypes;
+                    AddFileTypeToList.Content = LanguageList.btn_AddFileTypeToList;
+                    RemoveFileTypeToList.Content = LanguageList.btn_RemoveFileTypeToList;
 
                     LanguageesTextBox.Text = LanguageList.TextBox_Language;
 
