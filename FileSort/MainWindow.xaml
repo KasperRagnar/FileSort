@@ -17,8 +17,8 @@
             <!-- Headline -->
             <TextBox Text="FileSort" Name="ProgramHeader" Margin="0 0 0 5" FontWeight="DemiBold" FontSize="16" IsReadOnly="True" TextAlignment="Center" BorderThickness="0"/>
 
-            <!--what is this program-->
-            <Border BorderThickness="1" BorderBrush="Gray" Padding="5 5 5 5">
+            <!--#region Info text - what is this program-->
+            <!--<Border BorderThickness="1" BorderBrush="Gray" Padding="5 5 5 5">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -39,7 +39,16 @@
                              &#xA;   • Click the START button when everything is filed out. 
                              "/>
                 </Grid>
-            </Border>
+            </Border>-->
+            <!--#endregion-->
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Image Source="Billeder\FileSort Image2.png"></Image>
+            </Grid>
             <!--#endregion-->
 
             <!--#region Error Messagees box-->
