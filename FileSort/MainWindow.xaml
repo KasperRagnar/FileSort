@@ -52,7 +52,7 @@
             </Grid>
             <!--#endregion-->
 
-            <!--#region Sorting Method, File Types, Language-->
+            <!--#region Sorting Method, File Types, File Listbox, Add, Remove, Language-->
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -88,7 +88,7 @@
                 <Button Name="RemoveFileTypeToList" Content="Remove from list" Grid.Column="2" Grid.Row="5" Height="22" VerticalAlignment="Top" Click="RemoveFileTypeToList_Click"></Button>
 
                 <!--File Listbox-->
-                <ListBox Name="ListBox_FileTypes" Grid.Column="1" Grid.Row="1" Grid.RowSpan="6" BorderThickness="1" BorderBrush="Gray" Margin="5 0 5 0"></ListBox>
+                <ListBox Name="ListBox_FileTypes" Grid.Column="1" Grid.Row="1" Grid.RowSpan="6" BorderThickness="1" BorderBrush="Gray" Margin="5 0 5 0" MaxHeight="108"></ListBox>
 
             </Grid>
             <!--#endregion-->
@@ -135,7 +135,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <Button Content="START" Name="StartButton" Padding="0 10 0 10" FontSize="14"/>
+                <Button Content="START" Name="StartButton" Padding="0 10 0 10" FontSize="14" Click="StartButton_Click"/>
             </Grid>
             <!--#endregion-->
             

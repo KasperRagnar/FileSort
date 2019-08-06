@@ -23,7 +23,9 @@ namespace FileSort
     public partial class MainWindow : Window
     {
         #region GLOBAL 
-        bool allOrOneFolderBool;
+        bool allOrOneFolderBool; // Used for walidation under Radio buttons
+
+        List<string> ListBoxFileTypes = new List<string>(); // A list of alle the selected items in the "ListBox_FileTypes"
 
         FolderBrowserDialog fbd = new FolderBrowserDialog();
         LanguageSettings LS = new LanguageSettings();
@@ -45,7 +47,7 @@ namespace FileSort
             ComboBox_Languages.SelectedIndex = 1; // Sets the default language in the UI to: English 
         }
 
-        #region Add / Remove filetypes
+        #region Add / Remove filetypes fron Listbox
         private void AddFileTypeToList_Click(object sender, RoutedEventArgs e)
         {
             ListBox_FileTypes.Items.Add(ComboBox_FileTypes.SelectedItem);
@@ -138,9 +140,16 @@ namespace FileSort
             }
             allOrOneFolderBool = true;
         }
+
+
         #endregion
 
-        
+        #region START and run the program
+        private void StartButton_Click(object sender, RoutedEventArgs e)
+        {
+            ListBox_FileTypes.Items.Add(ListBoxFileTypes); // Adds all the items in the listbox to a new global list called "ListBoxFileTypes"
+        }
+        #endregion
 
     }
 }
