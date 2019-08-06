@@ -82,13 +82,13 @@
                 <ComboBox Name="ComboBox_FileTypes" Grid.Column="2" Grid.Row="1"></ComboBox>
 
                 <!--Add a File Type to the list-->
-                <Button Name="AddFileTypeToList" Content="Add to list" Grid.Column="2" Grid.Row="3" Margin="0 23 0 0"></Button>
+                <Button Name="AddFileTypeToList" Content="Add to list" Grid.Column="2" Grid.Row="3" Margin="0 23 0 0" Click="AddFileTypeToList_Click"></Button>
 
                 <!--Remove a File Type to the list-->
-                <Button Name="RemoveFileTypeToList" Content="Remove from list" Grid.Column="2" Grid.Row="6"></Button>
+                <Button Name="RemoveFileTypeToList" Content="Remove from list" Grid.Column="2" Grid.Row="5" Height="22" VerticalAlignment="Top" Click="RemoveFileTypeToList_Click"></Button>
 
                 <!--File Listbox-->
-                <ListBox Name="ListBob_FileTypes" Grid.Column="1" Grid.Row="1" Grid.RowSpan="6" BorderThickness="1" BorderBrush="Gray" Margin="5 0 5 0"></ListBox>
+                <ListBox Name="ListBox_FileTypes" Grid.Column="1" Grid.Row="1" Grid.RowSpan="6" BorderThickness="1" BorderBrush="Gray" Margin="5 0 5 0"></ListBox>
 
             </Grid>
             <!--#endregion-->

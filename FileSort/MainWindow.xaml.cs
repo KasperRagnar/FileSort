@@ -45,6 +45,18 @@ namespace FileSort
             ComboBox_Languages.SelectedIndex = 1; // Sets the default language in the UI to: English 
         }
 
+        #region Add / Remove filetypes
+        private void AddFileTypeToList_Click(object sender, RoutedEventArgs e)
+        {
+            ListBox_FileTypes.Items.Add(ComboBox_FileTypes.SelectedItem);
+        }
+
+        private void RemoveFileTypeToList_Click(object sender, RoutedEventArgs e)
+        {
+            ListBox_FileTypes.Items.Remove(ListBox_FileTypes.SelectedItem);
+        }
+        #endregion
+
         #region Language
         private void ComboBox_Languages_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -127,5 +139,8 @@ namespace FileSort
             allOrOneFolderBool = true;
         }
         #endregion
+
+        
+
     }
 }
