@@ -50,7 +50,10 @@ namespace FileSort
         #region Add / Remove filetypes fron Listbox
         private void AddFileTypeToList_Click(object sender, RoutedEventArgs e)
         {
-            ListBox_FileTypes.Items.Add(ComboBox_FileTypes.SelectedItem);
+            if (!ListBox_FileTypes.Items.Contains(ComboBox_FileTypes.SelectedItem))
+            {
+                ListBox_FileTypes.Items.Add(ComboBox_FileTypes.SelectedItem);
+            }
         }
 
         private void RemoveFileTypeToList_Click(object sender, RoutedEventArgs e)
