@@ -6,8 +6,6 @@ namespace Models
 {
     public class LanguageModel
     {
-        public string TextBox_ProgramHeader { get; set; }
-
         public string TextBox_ContentTextBox { get; set; }
 
         public string[] TextBox_ErrorMsgBox { get; set; }

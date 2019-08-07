@@ -24,6 +24,7 @@ namespace FileSort
     {
         #region GLOBAL 
         bool allOrOneFolderBool; // Used for walidation under Radio buttons
+        string appInfoMessageBox;
 
         List<string> ListBoxFileTypes = new List<string>(); // A list of alle the selected items in the "ListBox_FileTypes"
 
@@ -41,6 +42,13 @@ namespace FileSort
             ComboBox_Languages.ItemsSource = LS.LanguagesArr; // Add's a 'language' list to the UI.
             ComboBox_Languages.SelectedIndex = 1; // Sets the default language in the UI to: English 
         }
+
+        #region Message box
+        private void InfoBox_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Forms.MessageBox.Show(appInfoMessageBox);
+        }
+        #endregion
 
         #region Add / Remove filetypes fron Listbox
         private void AddFileTypeToList_Click(object sender, RoutedEventArgs e)
@@ -68,8 +76,7 @@ namespace FileSort
 
                 if (LanguageList != null)
                 {
-                    //ProgramHeader.Text = LanguageList.TextBox_ProgramHeader;
-                    //ContentTextBox.Text = LanguageList.TextBox_ContentTextBox;
+                    appInfoMessageBox = LanguageList.TextBox_ContentTextBox; //for the application info messagebox
 
                     ErrorMsgBox.Text = LanguageList.TextBox_ErrorMsgBox[0];
 
@@ -154,6 +161,7 @@ namespace FileSort
 
         }
         #endregion
+
 
     }
 }

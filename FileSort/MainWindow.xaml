@@ -24,7 +24,7 @@
                 <Image Source="Billeder\FileSort Image2.png" MaxHeight="150" Grid.Column="1"></Image>
 
                 <StackPanel Grid.Column="0">
-                    <Button Content="Info" Background="{x:Null}" BorderBrush="{x:Null}" Cursor="Hand" />
+                    <Button Name="InfoBox" Content="Info" Background="{x:Null}" BorderBrush="{x:Null}" Cursor="Hand" Click="InfoBox_Click"  />
                 </StackPanel>
             </Grid>
             <!--#endregion-->
