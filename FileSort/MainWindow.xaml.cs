@@ -68,8 +68,8 @@ namespace FileSort
 
                 if (LanguageList != null)
                 {
-                    ProgramHeader.Text = LanguageList.TextBox_ProgramHeader;
-                    ContentTextBox.Text = LanguageList.TextBox_ContentTextBox;
+                    //ProgramHeader.Text = LanguageList.TextBox_ProgramHeader;
+                    //ContentTextBox.Text = LanguageList.TextBox_ContentTextBox;
 
                     ErrorMsgBox.Text = LanguageList.TextBox_ErrorMsgBox[0];
 
@@ -145,7 +145,13 @@ namespace FileSort
         #region START and run the program
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
-            ListBox_FileTypes.Items.Add(ListBoxFileTypes); // Adds all the items in the listbox to a new global list called "ListBoxFileTypes"
+            foreach (var item in ListBox_FileTypes.Items) // Adds all the items in the listbox to a new global list called "ListBoxFileTypes"
+            {
+                ListBoxFileTypes.Add(Convert.ToString(item)); 
+            }
+            
+
+
         }
         #endregion
 
