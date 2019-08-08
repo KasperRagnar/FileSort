@@ -14,7 +14,7 @@ namespace Repository
         /// <param name="filters">type/format of images you want to find</param>
         /// <param name="isRecursive">search terms</param>
         /// <returns>A Array af strings</returns>
-        public String[] GetFilesFrom(String searchFolder, String[] filters, bool isRecursive)
+        public String[] GetFilesFrom(String searchFolder, List<string> filters, bool isRecursive)
         {
             List<String> filesFound = new List<String>();
 

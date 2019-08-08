@@ -29,10 +29,12 @@ namespace FileSort
         LanguageModel ChousenLanguageList; // A model/list of the current selectet language varibels
         string appInfoMessageBox;
 
-        List<string> ListBoxFileTypes = new List<string>(); // A list of alle the selected items in the "ListBox_FileTypes"
+        List<string> ListBoxFileTypesFilter = new List<string>(); // A list of alle the selected items in the "ListBox_FileTypes"
 
         FolderBrowserDialog fbd = new FolderBrowserDialog();
         LanguageSettings LS = new LanguageSettings();
+        DoFileExistCheck DFEC = new DoFileExistCheck();
+        SearchAndFindFiles SAFF = new SearchAndFindFiles();
         #endregion
 
         public MainWindow()
@@ -46,10 +48,15 @@ namespace FileSort
             ComboBox_Languages.SelectedIndex = 1; // Sets the default language in the UI to: English 
         }
 
-        #region Message box
+        #region Message box & Error Messages clean-up
         private void InfoBox_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Forms.MessageBox.Show(appInfoMessageBox, "Info");
+        }
+
+        public void ErrorMessagesCleanUp() 
+        {
+            ErrorMsgBox.Text = ChousenLanguageList.TextBox_ErrorMsgBox[0]; // sets the error messagebox to "";
         }
         #endregion
 
@@ -156,43 +163,87 @@ namespace FileSort
         #region START and run the program
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
-            #region Check for errors
-            if (ComboBox_SortingMethods.SelectedItem == null || ComboBox_Languages.SelectedItem == null || ListBox_FileTypes.Items.IsEmpty || SourchPathBox.Text == "" || DestinationPathBox.Text == "" || (SearchFolderOption.IsChecked == false && SearchAllSubFoldersOption.IsChecked == false))
+            try
             {
-                runConditions = false;
-
-                #region Error Messages 
-                ErrorMsgBox.Text = ChousenLanguageList.TextBox_ErrorMsgBox[1]; // A error message taken from an 'array' from the ChousenLanguageList
-                #endregion
-            }
-            else
-            {
-                runConditions = true;
-            }
-            #endregion
-
-            if (runConditions == true)
-            {
-                string selectedPath = SourchPathBox.Text;
-                string destPath = DestinationPathBox.Text;
-                string destPathFolder = destPath + "\\";
-
-                #region Error Messages clean-up
-                ErrorMsgBox.Text = ChousenLanguageList.TextBox_ErrorMsgBox[0]; // Resets the error message after user have fild out the UI
-                #endregion
-
-                foreach (var item in ListBox_FileTypes.Items)
+                #region Check for errors
+                if (ComboBox_SortingMethods.SelectedItem == null || ComboBox_Languages.SelectedItem == null || ListBox_FileTypes.Items.IsEmpty || SourchPathBox.Text == "" || DestinationPathBox.Text == "" || (SearchFolderOption.IsChecked == false && SearchAllSubFoldersOption.IsChecked == false))
                 {
-                    ListBoxFileTypes.Add(Convert.ToString(item));
-                } // Adds all the items in the listbox to a new global list called "ListBoxFileTypes"
-                ListBox_FileTypes.Items.Clear(); // Clears the 'ListBox_FileTypes' list after giving alle values to 'ListBoxFileTypes'
+                    runConditions = false;
 
+                    #region Error Messages 
+                    ErrorMsgBox.Text = ChousenLanguageList.TextBox_ErrorMsgBox[1]; // A error message taken from an 'array' from the ChousenLanguageList
+                    #endregion
+                }
+                else
+                {
+                    runConditions = true;
+                }
+                #endregion
 
+                if (runConditions == true)
+                {
+                    #region Local Variabler
+                    string selectedPath = SourchPathBox.Text;
+                    string destPath = DestinationPathBox.Text;
+                    string destPathFolder = destPath + "\\";
+                    #endregion
 
-                //-- Calling the search function and gets back a Array of Strings (every string is a full file path)
-                //-- Checks if the list of files is emty or null.
-                //-- Check If found Files Already Exist 
+                    ErrorMessagesCleanUp(); // sets the error messagebox to "";
 
+                    #region Making a filter out os the items from ListBox_FileTypes called 'ListBoxFileTypesFilter'
+                    foreach (var item in ListBox_FileTypes.Items)
+                    {
+                        ListBoxFileTypesFilter.Add(Convert.ToString(item));
+                    } // Adds all the items in the listbox to a new global list called "ListBoxFileTypes"
+                    ListBox_FileTypes.Items.Clear(); // Clears the 'ListBox_FileTypes' list after giving alle values to 'ListBoxFileTypes'
+                    #endregion
+
+                    #region Looking for files that mach the 'ListBoxFileTypesFilter' list
+
+                    //-- Calling the search Method and gets back a Array of Strings (every string is a full file path)
+                    String[] searchResult = SAFF.GetFilesFrom(selectedPath, ListBoxFileTypesFilter, allOrOneFolderBool);
+
+                    //-- Checks if the list of files is emty or null.
+                    if (searchResult.Length <= 0 || searchResult == null)
+                    {
+                        ErrorMsgBox.Text = ChousenLanguageList.TextBox_ErrorMsgBox[2]; // sets the error messagebox to error message number 3
+                    }
+                    else
+                    {
+                        #region  Sorting Meteds 
+                        switch (ComboBox_SortingMethods.SelectedIndex)
+                        {
+                            case 0:     // Move
+
+                                break;
+
+                            case 1:     // Copy
+                                break;
+
+                            case 2:     // Last Modefied Date
+                                break;
+
+                            case 3:     // Created Date
+                                break;
+
+                            case 4:     // Alfabetic (abc)
+                                break;
+
+                            default:
+                                ErrorMsgBox.Text = ChousenLanguageList.TextBox_ErrorMsgBox[4]; //-- Unexpected error message
+                                break;
+                        }
+                        #endregion
+                    }
+                    #endregion
+
+                    ErrorMessagesCleanUp(); // sets the error messagebox to "";
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
         #endregion
