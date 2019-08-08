@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="FileSort" 
         Icon="Billeder\FS_Icon2.jpg"
-        Height="563" Width="410"         
-        MaxHeight="563" MaxWidth="410" 
-        MinHeight="563" MinWidth="410">
+        Height="567" Width="410"         
+        MaxHeight="567" MaxWidth="410" 
+        MinHeight="567" MinWidth="410">
     <Border Padding="10 0 10 0">
         <StackPanel>
 

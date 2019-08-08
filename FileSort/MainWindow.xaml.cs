@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Repository;
+using Models;
 
 namespace FileSort
 {
@@ -24,6 +25,8 @@ namespace FileSort
     {
         #region GLOBAL 
         bool allOrOneFolderBool; // Used for walidation under Radio buttons
+        bool runConditions;
+        LanguageModel ChousenLanguageList; // A model/list of the current selectet language varibels
         string appInfoMessageBox;
 
         List<string> ListBoxFileTypes = new List<string>(); // A list of alle the selected items in the "ListBox_FileTypes"
@@ -46,7 +49,7 @@ namespace FileSort
         #region Message box
         private void InfoBox_Click(object sender, RoutedEventArgs e)
         {
-            System.Windows.Forms.MessageBox.Show(appInfoMessageBox);
+            System.Windows.Forms.MessageBox.Show(appInfoMessageBox, "Info");
         }
         #endregion
 
@@ -72,33 +75,34 @@ namespace FileSort
             {
                 int indexedSelection = ComboBox_Languages.SelectedIndex;
 
-                var LanguageList = LS.LanguageList(indexedSelection);
+                ChousenLanguageList = LS.LanguageList(indexedSelection);
+                
 
-                if (LanguageList != null)
+                if (ChousenLanguageList != null)
                 {
-                    appInfoMessageBox = LanguageList.TextBox_ContentTextBox; //for the application info messagebox
+                    appInfoMessageBox = ChousenLanguageList.TextBox_ContentTextBox; //for the application info messagebox
 
-                    ErrorMsgBox.Text = LanguageList.TextBox_ErrorMsgBox[0];
+                    ErrorMsgBox.Text = ChousenLanguageList.TextBox_ErrorMsgBox[0];
 
-                    SortingMethodsTextBox.Text = LanguageList.TextBox_SortingMethod;
-                    ComboBox_SortingMethods.ItemsSource = LanguageList.ComboBox_SortingMethods;
+                    SortingMethodsTextBox.Text = ChousenLanguageList.TextBox_SortingMethod;
+                    ComboBox_SortingMethods.ItemsSource = ChousenLanguageList.ComboBox_SortingMethods;
 
-                    FileTypesTextBox.Text = LanguageList.TextBox_FileTypes;
-                    AddFileTypeToList.Content = LanguageList.btn_AddFileTypeToList;
-                    RemoveFileTypeToList.Content = LanguageList.btn_RemoveFileTypeToList;
+                    FileTypesTextBox.Text = ChousenLanguageList.TextBox_FileTypes;
+                    AddFileTypeToList.Content = ChousenLanguageList.btn_AddFileTypeToList;
+                    RemoveFileTypeToList.Content = ChousenLanguageList.btn_RemoveFileTypeToList;
 
-                    LanguageesTextBox.Text = LanguageList.TextBox_Language;
+                    LanguageesTextBox.Text = ChousenLanguageList.TextBox_Language;
 
-                    SourchPathLabel.Content = LanguageList.TextBox_SourchPathLabel;
-                    SourchPathButton.Content = LanguageList.btn_SourchPathButton;
+                    SourchPathLabel.Content = ChousenLanguageList.TextBox_SourchPathLabel;
+                    SourchPathButton.Content = ChousenLanguageList.btn_SourchPathButton;
 
-                    DestinationPathLabel.Content = LanguageList.TextBox_DestinationPathLabel;
-                    DestinationPathButton.Content = LanguageList.btn_DestinationPathButton;
+                    DestinationPathLabel.Content = ChousenLanguageList.TextBox_DestinationPathLabel;
+                    DestinationPathButton.Content = ChousenLanguageList.btn_DestinationPathButton;
 
-                    SearchFolderOption.Content = LanguageList.radio_SearchFolderOption;
-                    SearchAllSubFoldersOption.Content = LanguageList.radio_SearchAllSubFoldersOption;
+                    SearchFolderOption.Content = ChousenLanguageList.radio_SearchFolderOption;
+                    SearchAllSubFoldersOption.Content = ChousenLanguageList.radio_SearchAllSubFoldersOption;
 
-                    StartButton.Content = LanguageList.btn_StartButton;
+                    StartButton.Content = ChousenLanguageList.btn_StartButton;
                 }
             }
             catch (Exception)
@@ -152,13 +156,44 @@ namespace FileSort
         #region START and run the program
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
-            foreach (var item in ListBox_FileTypes.Items) // Adds all the items in the listbox to a new global list called "ListBoxFileTypes"
+            #region Check for errors
+            if (ComboBox_SortingMethods.SelectedItem == null || ComboBox_Languages.SelectedItem == null || ListBox_FileTypes.Items.IsEmpty || SourchPathBox.Text == "" || DestinationPathBox.Text == "" || (SearchFolderOption.IsChecked == false && SearchAllSubFoldersOption.IsChecked == false))
             {
-                ListBoxFileTypes.Add(Convert.ToString(item)); 
+                runConditions = false;
+
+                #region Error Messages 
+                ErrorMsgBox.Text = ChousenLanguageList.TextBox_ErrorMsgBox[1]; // A error message taken from an 'array' from the ChousenLanguageList
+                #endregion
             }
-            
+            else
+            {
+                runConditions = true;
+            }
+            #endregion
+
+            if (runConditions == true)
+            {
+                string selectedPath = SourchPathBox.Text;
+                string destPath = DestinationPathBox.Text;
+                string destPathFolder = destPath + "\\";
+
+                #region Error Messages clean-up
+                ErrorMsgBox.Text = ChousenLanguageList.TextBox_ErrorMsgBox[0]; // Resets the error message after user have fild out the UI
+                #endregion
+
+                foreach (var item in ListBox_FileTypes.Items)
+                {
+                    ListBoxFileTypes.Add(Convert.ToString(item));
+                } // Adds all the items in the listbox to a new global list called "ListBoxFileTypes"
+                ListBox_FileTypes.Items.Clear(); // Clears the 'ListBox_FileTypes' list after giving alle values to 'ListBoxFileTypes'
 
 
+
+                //-- Calling the search function and gets back a Array of Strings (every string is a full file path)
+                //-- Checks if the list of files is emty or null.
+                //-- Check If found Files Already Exist 
+
+            }
         }
         #endregion
 

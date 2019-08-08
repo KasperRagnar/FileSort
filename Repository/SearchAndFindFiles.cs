@@ -23,7 +23,7 @@ namespace Repository
 
             foreach (var filter in filters)
             {
-                filesFound.AddRange(Directory.GetFiles(searchFolder, String.Format($"*.{filter}"), searchOption)); // sammensetning af søgelogig
+                filesFound.AddRange(Directory.GetFiles(searchFolder, String.Format($"*{filter}"), searchOption)); // sammensetning af søgelogig
             }
 
             return filesFound.ToArray();
