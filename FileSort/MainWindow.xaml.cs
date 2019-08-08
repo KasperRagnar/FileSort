@@ -35,6 +35,7 @@ namespace FileSort
         LanguageSettings LS = new LanguageSettings();
         DoFileExistCheck DFEC = new DoFileExistCheck();
         SearchAndFindFiles SAFF = new SearchAndFindFiles();
+        SortingMethods SM = new SortingMethods();
         #endregion
 
         public MainWindow()
@@ -46,6 +47,8 @@ namespace FileSort
 
             ComboBox_Languages.ItemsSource = LS.LanguagesArr; // Add's a 'language' list to the UI.
             ComboBox_Languages.SelectedIndex = 1; // Sets the default language in the UI to: English 
+            ComboBox_SortingMethods.SelectedIndex = 0;
+            ComboBox_FileTypes.SelectedIndex = 0;
         }
 
         #region Message box & Error Messages clean-up
@@ -57,6 +60,16 @@ namespace FileSort
         public void ErrorMessagesCleanUp() 
         {
             ErrorMsgBox.Text = ChousenLanguageList.TextBox_ErrorMsgBox[0]; // sets the error messagebox to "";
+        }
+
+        public void ClearUI()
+        {
+            ErrorMsgBox.Text = ChousenLanguageList.TextBox_ErrorMsgBox[0]; // sets the error messagebox to "";
+            ComboBox_FileTypes.SelectedIndex = 0;
+            SourchPathBox.Text = "";
+            DestinationPathBox.Text = "";
+            SearchFolderOption.IsChecked = false;
+            SearchAllSubFoldersOption.IsChecked = false;
         }
         #endregion
 
@@ -208,36 +221,41 @@ namespace FileSort
                     {
                         ErrorMsgBox.Text = ChousenLanguageList.TextBox_ErrorMsgBox[2]; // sets the error messagebox to error message number 3
                     }
+                    #endregion
+
+                    #region Sorting Meteds
                     else
                     {
-                        #region  Sorting Meteds 
                         switch (ComboBox_SortingMethods.SelectedIndex)
                         {
                             case 0:     // Move
-
+                                SM.Move(selectedPath, destPath, destPathFolder, searchResult);
                                 break;
 
                             case 1:     // Copy
+                                SM.Copy();
                                 break;
 
                             case 2:     // Last Modefied Date
+                                SM.LastModefiedDate();
                                 break;
 
                             case 3:     // Created Date
+                                SM.CreatedDate();
                                 break;
 
                             case 4:     // Alfabetic (abc)
+                                SM.Alfabetic();
                                 break;
 
                             default:
                                 ErrorMsgBox.Text = ChousenLanguageList.TextBox_ErrorMsgBox[4]; //-- Unexpected error message
                                 break;
                         }
-                        #endregion
                     }
                     #endregion
 
-                    ErrorMessagesCleanUp(); // sets the error messagebox to "";
+                    ClearUI(); // Clears all the textboxes to prepare for the next job
                 }
             }
             catch (Exception)
