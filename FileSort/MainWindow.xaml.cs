@@ -233,7 +233,7 @@ namespace FileSort
                                 break;
 
                             case 1:     // Copy
-                                SM.Copy();
+                                SM.Copy(selectedPath, destPath, destPathFolder, searchResult);
                                 break;
 
                             case 2:     // Last Modefied Date
