@@ -9,12 +9,13 @@ namespace Repository
     public class SortingMethods
     {
         #region GLOBAL 
-        int renameCounter = 0;
+        float renameCounter = 0;
 
         FileInfo movedFilesArr;
 
         FolderBrowserDialog fbd = new FolderBrowserDialog();
         DoFileExistCheck DFEC = new DoFileExistCheck();
+        MessageBoxErrorMessages MBEM = new MessageBoxErrorMessages();
         #endregion
 
         public void Move(string selectedPath, string destPathFolder, String[] searchResult)
@@ -55,9 +56,9 @@ namespace Repository
 
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
-
+                MBEM.messageBoxErrorMsg(5); // A predefined error message
                 throw;
             }
         }
@@ -101,17 +102,13 @@ namespace Repository
             }
             catch (Exception)
             {
-
+                MBEM.messageBoxErrorMsg(5); // A predefined error message
                 throw;
             }
         }
 
         public void LastModefiedDate(string selectedPath, string destPath, string destPathFolder, String[] searchResult)
         {
-            //foreach (var filePath in searchResult)
-            //{
-               
-            //}
         
         }
 

@@ -28,6 +28,7 @@ namespace FileSort
         bool runConditions;
         LanguageModel ChousenLanguageList; // A model/list of the current selectet language varibels
         string appInfoMessageBox;
+        int languageIndexedSelection; // in index-number for the current language. (Used in error handeling)
 
         List<string> ListBoxFileTypesFilter = new List<string>(); // A list of alle the selected items in the "ListBox_FileTypes"
 
@@ -36,6 +37,7 @@ namespace FileSort
         DoFileExistCheck DFEC = new DoFileExistCheck();
         SearchAndFindFiles SAFF = new SearchAndFindFiles();
         SortingMethods SM = new SortingMethods();
+        MessageBoxErrorMessages MBEM = new MessageBoxErrorMessages();
         #endregion
 
         public MainWindow()
@@ -44,6 +46,7 @@ namespace FileSort
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
             ComboBox_FileTypes.ItemsSource = LS.FileTypesArr; // Add's a 'File Type'list to the UI.
+            languageIndexedSelection = ComboBox_Languages.SelectedIndex; 
 
             ComboBox_Languages.ItemsSource = LS.LanguagesArr; // Add's a 'language' list to the UI.
             ComboBox_Languages.SelectedIndex = 1; // Sets the default language in the UI to: English 
@@ -54,12 +57,22 @@ namespace FileSort
         #region Message box & Error Messages clean-up
         private void InfoBox_Click(object sender, RoutedEventArgs e)
         {
+            // Makes a new pop-up message box with info about the program.
             System.Windows.Forms.MessageBox.Show(appInfoMessageBox, "Info");
         }
 
-        public void ErrorMessagesCleanUp() 
+        public void UiErrorMessages(int msgIndex) 
         {
-            ErrorMsgBox.Text = ChousenLanguageList.TextBox_ErrorMsgBox[0]; // sets the error messagebox to "";
+            // sets the error message (textbox) to the index (int) you have sent with the method. 
+            ErrorMsgBox.Text = ChousenLanguageList.TextBox_ErrorMsgBox[msgIndex];
+
+            // Error Message index list
+            // [0] = "",
+            // [1] = "• Error: Not all fields are selected!",
+            // [2] = "• Error: NO image files found!",
+            // [3] = "• Error: Try anothe path",
+            // [4] = "• Error: Something went wrong. Restart the program and try again!"
+            // [5] = "• Error: Something went wrong.Try another path! or see if all fields are filled out!"
         }
 
         public void ClearUI()
@@ -93,9 +106,9 @@ namespace FileSort
         {
             try
             {
-                int indexedSelection = ComboBox_Languages.SelectedIndex;
+                languageIndexedSelection = ComboBox_Languages.SelectedIndex;
 
-                ChousenLanguageList = LS.LanguageList(indexedSelection);
+                ChousenLanguageList = LS.LanguageList(languageIndexedSelection);
                 
 
                 if (ChousenLanguageList != null)
@@ -184,11 +197,12 @@ namespace FileSort
                     runConditions = false;
 
                     #region Error Messages 
-                    ErrorMsgBox.Text = ChousenLanguageList.TextBox_ErrorMsgBox[1]; // A error message taken from an 'array' from the ChousenLanguageList
+                    UiErrorMessages(1); // sets the error messagebox to error message number 1 using the 'UiErrorMessages' Method
                     #endregion
                 }
                 else
                 {
+                    MBEM.languageDefinition(languageIndexedSelection); // Sendt the index-number of the current language in use to the 'languageDefinition' method
                     runConditions = true;
                 }
                 #endregion
@@ -201,7 +215,7 @@ namespace FileSort
                     string destPathFolder = destPath + "\\";
                     #endregion
 
-                    ErrorMessagesCleanUp(); // sets the error messagebox to "";
+                    UiErrorMessages(0); // sets the error messagebox to error message number 0 using the 'UiErrorMessages' Method
 
                     #region Making a filter out os the items from ListBox_FileTypes called 'ListBoxFileTypesFilter'
                     foreach (var item in ListBox_FileTypes.Items)
@@ -219,7 +233,7 @@ namespace FileSort
                     //-- Checks if the list of files is emty or null.
                     if (searchResult.Length <= 0 || searchResult == null)
                     {
-                        ErrorMsgBox.Text = ChousenLanguageList.TextBox_ErrorMsgBox[2]; // sets the error messagebox to error message number 3
+                        UiErrorMessages(2); // sets the error messagebox to error message number 3 using the 'UiErrorMessages' Method
                     }
                     #endregion
 
