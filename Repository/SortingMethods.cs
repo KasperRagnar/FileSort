@@ -11,11 +11,13 @@ namespace Repository
         #region GLOBAL 
         int renameCounter = 0;
 
+        FileInfo movedFilesArr;
+
         FolderBrowserDialog fbd = new FolderBrowserDialog();
         DoFileExistCheck DFEC = new DoFileExistCheck();
         #endregion
 
-        public void Move(string selectedPath, string destPath, string destPathFolder, String[] searchResult)
+        public void Move(string selectedPath, string destPathFolder, String[] searchResult)
         {
             try
             {
@@ -50,7 +52,7 @@ namespace Repository
                     {
                         Directory.Move(filePath, destPathFolder + "\\" + file);
                     }
-                    
+
                 }
             }
             catch (Exception e)
@@ -60,7 +62,7 @@ namespace Repository
             }
         }
 
-        public void Copy(string selectedPath, string destPath, string destPathFolder, String[] searchResult)
+        public void Copy(string selectedPath, string destPathFolder, String[] searchResult)
         {
             try
             {
@@ -104,9 +106,13 @@ namespace Repository
             }
         }
 
-        public void LastModefiedDate()
+        public void LastModefiedDate(string selectedPath, string destPath, string destPathFolder, String[] searchResult)
         {
-
+            //foreach (var filePath in searchResult)
+            //{
+               
+            //}
+        
         }
 
         public void CreatedDate()

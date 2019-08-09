@@ -229,15 +229,15 @@ namespace FileSort
                         switch (ComboBox_SortingMethods.SelectedIndex)
                         {
                             case 0:     // Move
-                                SM.Move(selectedPath, destPath, destPathFolder, searchResult);
+                                SM.Move(selectedPath, destPathFolder, searchResult);
                                 break;
 
                             case 1:     // Copy
-                                SM.Copy(selectedPath, destPath, destPathFolder, searchResult);
+                                SM.Copy(selectedPath, destPathFolder, searchResult);
                                 break;
 
                             case 2:     // Last Modefied Date
-                                SM.LastModefiedDate();
+                                SM.LastModefiedDate(selectedPath, destPath, destPathFolder, searchResult);
                                 break;
 
                             case 3:     // Created Date
