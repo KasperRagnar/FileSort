@@ -24,13 +24,13 @@ namespace FileSort
     public partial class MainWindow : Window
     {
         #region GLOBAL 
-        bool allOrOneFolderBool; // Used for walidation under Radio buttons
-        bool runConditions;
-        LanguageModel ChousenLanguageList; // A model/list of the current selectet language varibels
-        string appInfoMessageBox;
-        int languageIndexedSelection; // in index-number for the current language. (Used in error handeling)
+        bool allOrOneFolderBool;            // Used for walidation under Radio buttons
+        bool runConditions;                 // This bool is used for error handeling in START
+        LanguageModel ChousenLanguageList;  // A model/list of the current selectet language varibels
+        string appInfoMessageBox;           // this string is the info message in 'InfoBox_Click' method
+        int languageIndexedSelection;       // in index-number for the current language. (Used in error handeling)
 
-        List<string> ListBoxFileTypesFilter = new List<string>(); // A list of alle the selected items in the "ListBox_FileTypes"
+        List<string> ListBoxFileTypesFilter = new List<string>();   // A list of alle the selected items in the "ListBox_FileTypes"
 
         FolderBrowserDialog fbd = new FolderBrowserDialog();
         LanguageSettings LS = new LanguageSettings();
@@ -43,15 +43,15 @@ namespace FileSort
         public MainWindow()
         {
             InitializeComponent();
-            WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;  // Starts the application up in the middle of the sceen
 
-            ComboBox_FileTypes.ItemsSource = LS.FileTypesArr; // Add's a 'File Type'list to the UI.
-            languageIndexedSelection = ComboBox_Languages.SelectedIndex; 
+            ComboBox_FileTypes.ItemsSource = LS.FileTypesArr;            // Add's a 'File Type'list to the UI.
+            languageIndexedSelection = ComboBox_Languages.SelectedIndex; // Is used for sending info about the selectet language down to 'MessageBoxErrorMessages' in the Repository.
 
-            ComboBox_Languages.ItemsSource = LS.LanguagesArr; // Add's a 'language' list to the UI.
-            ComboBox_Languages.SelectedIndex = 1; // Sets the default language in the UI to: English 
-            ComboBox_SortingMethods.SelectedIndex = 0;
-            ComboBox_FileTypes.SelectedIndex = 0;
+            ComboBox_Languages.ItemsSource = LS.LanguagesArr;            // Add's a 'language' list to the UI.
+            ComboBox_Languages.SelectedIndex = 1;                        // Sets the default language in the UI to: English 
+            ComboBox_SortingMethods.SelectedIndex = 0;                   // Sets the default Sorting method in the UI to: Move 
+            ComboBox_FileTypes.SelectedIndex = 0;                        // Sets the default file type in the UI to: .jpg 
         }
 
         #region Message box & Error Messages clean-up
@@ -272,9 +272,8 @@ namespace FileSort
                     ClearUI(); // Clears all the textboxes to prepare for the next job
                 }
             }
-            catch (Exception)
+            catch (Exception x)
             {
-
                 throw;
             }
         }
