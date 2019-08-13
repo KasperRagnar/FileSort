@@ -263,7 +263,7 @@ namespace FileSort
                                 break;
 
                             default:
-                                ErrorMsgBox.Text = ChousenLanguageList.TextBox_ErrorMsgBox[4]; //-- Unexpected error message
+                                UiErrorMessages(4); //-- Unexpected error message. please restart the program
                                 break;
                         }
                     }
@@ -272,9 +272,9 @@ namespace FileSort
                     ClearUI(); // Clears all the textboxes to prepare for the next job
                 }
             }
-            catch (Exception x)
+            catch (Exception)
             {
-                throw;
+                
             }
         }
         #endregion
