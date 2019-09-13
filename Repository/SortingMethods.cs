@@ -58,7 +58,6 @@ namespace Repository
             }
             catch (Exception)
             {
-                //MBEM.messageBoxErrorMsg(5); // A predefined error message
                 throw;
             }
         }
@@ -102,7 +101,6 @@ namespace Repository
             }
             catch (Exception)
             {
-                //MBEM.messageBoxErrorMsg(5); // A predefined error message
                 throw;
             }
         }

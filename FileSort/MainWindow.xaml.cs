@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Repository;
 using Models;
+using System.IO;
 
 namespace FileSort
 {
@@ -243,23 +244,88 @@ namespace FileSort
                         switch (ComboBox_SortingMethods.SelectedIndex)
                         {
                             case 0:     // Move
-                                SM.Move(selectedPath, destPathFolder, searchResult);
+                                #region case 0
+                                try
+                                {
+                                    Task.Run(() => SM.Move(selectedPath, destPathFolder, searchResult));
+                                }
+                                catch (DirectoryNotFoundException)
+                                {
+                                    // denne fejl sker hvis der bliver valgt den samme direrrectory in reverse. 
+                                }
+                                catch (Exception)
+                                {
+                                    // Fang de exeptions der bobler op
+                                }
+                                #endregion
                                 break;
 
                             case 1:     // Copy
-                                SM.Copy(selectedPath, destPathFolder, searchResult);
+                                #region case 1
+                                try
+                                {
+                                    Task.Run(() => SM.Copy(selectedPath, destPathFolder, searchResult));
+                                }
+                                catch (DirectoryNotFoundException)
+                                {
+                                    // fejl sker hvis der bliver valgt den samme direrrectory in reverse. 
+                                }
+                                catch (Exception)
+                                {
+                                    // Fang de exeptions der bobler op
+                                }
+                                #endregion
                                 break;
 
                             case 2:     // Last Modefied Date
-                                SM.LastModefiedDate(selectedPath, destPath, destPathFolder, searchResult);
+                                #region case 2
+                                try
+                                {
+                                    Task.Run(() => SM.LastModefiedDate(selectedPath, destPath, destPathFolder, searchResult));
+                                }
+                                catch (DirectoryNotFoundException)
+                                {
+                                    // fejl sker hvis der bliver valgt den samme direrrectory in reverse. 
+                                }
+                                catch (Exception)
+                                {
+                                    // Fang de exeptions der bobler op
+                                }
+                                #endregion
                                 break;
 
                             case 3:     // Created Date
-                                SM.CreatedDate();
+                                #region case 3
+                                try
+                                {
+                                    Task.Run(() => SM.CreatedDate());
+                                }
+                                catch (DirectoryNotFoundException)
+                                {
+                                    // fejl sker hvis der bliver valgt den samme direrrectory in reverse. 
+                                }
+                                catch (Exception)
+                                {
+                                    // Fang de exeptions der bobler op
+                                }
+                                #endregion
                                 break;
 
                             case 4:     // Alfabetic (abc)
-                                SM.Alfabetic();
+                                #region case 4
+                                try
+                                {
+                                    Task.Run(() => SM.Alfabetic());
+                                }
+                                catch (DirectoryNotFoundException)
+                                {
+                                    // fejl sker hvis der bliver valgt den samme direrrectory in reverse. 
+                                }
+                                catch (Exception)
+                                {
+                                    // Fang de exeptions der bobler op
+                                }
+                                #endregion
                                 break;
 
                             default:
