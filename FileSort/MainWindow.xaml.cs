@@ -315,7 +315,7 @@ namespace FileSort
                                 #region case 4
                                 try
                                 {
-                                    Task.Run(() => SM.Alfabetic());
+                                    Task.Run(() => SM.Alfabetic(selectedPath, destPathFolder, searchResult));
                                 }
                                 catch (DirectoryNotFoundException)
                                 {
