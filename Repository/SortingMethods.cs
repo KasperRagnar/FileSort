@@ -43,7 +43,7 @@ namespace Repository
 
                 filesInfoArr = null;                                                           // clears the 'FileInfo' array
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 throw;
             }

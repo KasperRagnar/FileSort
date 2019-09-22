@@ -10,18 +10,14 @@ namespace Repository
     {
         #region GLOBAL 
         float renameCounter = 0;                                                // Used for giving a number to filenames if there are more then one file with the same name
-
         FileInfo[] filesInfoArr;                                                // An empty array used for temporarily hold information about individual files 
 
         DoFileExistCheck DFEC = new DoFileExistCheck(); 
         #endregion
 
-
-        public void MovingFiles(string fullDestinationPath, FileInfo file)
+        public void MovingFiles(string fullDestination, FileInfo file)
         {
             #region Directory
-            string fullDestination = fullDestinationPath;            // Full directory path for the current file
-
             // Creates a new directory if the given directory does not yet exist
             if (!Directory.Exists(fullDestination))
             {
@@ -31,7 +27,7 @@ namespace Repository
 
             #region Moving file 
             // Moves file to new folder
-            else
+            else if (Directory.Exists(fullDestination))
             {
                 bool check1 = DFEC.CheckIfFileAlreadyExist(fullDestination, file.Name);                     // checks if the file allready exists in the destination folder
 
@@ -50,13 +46,13 @@ namespace Repository
 
                     } while (check2);
 
-                    Directory.Move(file.DirectoryName, fullDestination + "\\" + NewfileName);               // Moves a file from one dir to another
+                    Directory.Move(file.FullName, fullDestination + NewfileName);               // Moves a file from one dir to another
                 }
 
                 // Moves the file. if the file does not exists in the destination folder
                 else
                 {
-                    Directory.Move(file.DirectoryName, fullDestination + "\\" + file.Name);                 // Moves a file from one dir to another
+                    Directory.Move(file.FullName, fullDestination + file.Name);                 // Moves a file from one dir to another
                 }
 
                 renameCounter = 0;                                                                      // resets the counter for future use
