@@ -16,6 +16,7 @@ namespace Repository
         FolderBrowserDialog fbd = new FolderBrowserDialog();
         DoFileExistCheck DFEC = new DoFileExistCheck();
         MessageBoxErrorMessages MBEM = new MessageBoxErrorMessages();
+        FileMovers FM = new FileMovers();
         #endregion
 
         /// <summary>
@@ -28,40 +29,22 @@ namespace Repository
         {
             try
             {
+                // adds every files fileinfo to a 'FileInfo' array
                 foreach (var filePath in searchResult)
                 {
-                    // Gets the Directory Name from 'filePath' and split it up
-                    string[] dir = Path.GetDirectoryName(filePath + "\\").Split(Path.DirectorySeparatorChar);
-                    Array.Reverse(dir);
-
-                    string file = dir[0]; // filens originale navn
-
-                    // checks if the file allready exists in the destination folder
-                    bool check1 = DFEC.CheckIfFileAlreadyExist(destPathFolder, file);
-
-                    if (check1 == true) // if the file already exists
-                    {
-                        string[] fileNameArr = file.Split('.'); // Seperate filename and it's file type
-
-                        bool check2;
-                        string NewfileName;
-                        do
-                        {
-                            NewfileName = fileNameArr[0] + "(" + ++renameCounter + ")" + "." + fileNameArr[1]; // A new complete filename with a filetype
-                            check2 = DFEC.CheckIfFileAlreadyExist(destPathFolder, NewfileName);
-
-                        } while (check2 == true);
-
-                        Directory.Move(filePath, destPathFolder + "\\" + NewfileName);
-                        renameCounter = 0;
-                    }
-                    else  // if the file does not already exists
-                    {
-                        Directory.Move(filePath, destPathFolder + "\\" + file);
-                    }
-
+                    var dir = new DirectoryInfo(Path.GetDirectoryName(filePath));
+                    filesInfoArr = dir.GetFiles();
                 }
-                filesInfoArr = null; // clears the 'FileInfo' array
+
+                // sorting all files in the global 'movedFilesArr' array.
+                for (int i = 0; i < filesInfoArr.Length; i++)
+                {
+                    FileInfo file = filesInfoArr[i];                                           // The current file element in the array
+
+                    FM.MovingFiles(destPathFolder, file);                                      // Moves files from one place to another, checks if files already exists, makes the 'fullDestination' path if it does not already exists
+                }
+
+                filesInfoArr = null;                                                           // clears the 'FileInfo' array
             }
             catch (Exception)
             {
@@ -160,60 +143,20 @@ namespace Repository
                     string fullDestination;                                                             // A placeholder for the file destination path, for the individual scenarios
                     bool runChecker = false;                                                            // Used for checking if the 'firstInName' value already has been found in a previus foreach loop
 
-
                     #region Check if 'firstInName' starts with a letter, number or a symbol
                     // if 'firstInName' starts with a letter
                     foreach (var letter in letters)
                     {
-                        if (runChecker == true)                 // prevents the program for running through all of the foreach loop
+                        if (runChecker == true)                                                         // prevents the program for running through all of the foreach loop
                         {
                             break;
-                        }
+                        } 
+
                         else if (letter == firstInName)
                         {
-                            #region Directory
                             fullDestination = destPathFolder + "\\" + firstInName.ToUpper();            // Full directory path for letters
 
-                            // Creates a new directory if the given directory does not yet exist
-                            if (!Directory.Exists(fullDestination))
-                            {
-                                Directory.CreateDirectory(fullDestination);
-                            }
-                            #endregion
-
-                            #region Moving file 
-                            // Moves file to new folder
-                            else
-                            {
-                                bool check1 = DFEC.CheckIfFileAlreadyExist(fullDestination, file.Name);                     // checks if the file allready exists in the destination folder
-
-                                // Change the name of the file and then moves it. if the file allready exists in the destination folder
-                                if (check1 == true)
-                                {
-                                    string[] fileNameArr = file.Name.Split('.');                                            // Seperate filename and it's file type
-                                    
-                                    string NewfileName;
-                                    bool check2 = true; 
-
-                                    do
-                                    {
-                                        NewfileName = fileNameArr[0] + "(" + ++renameCounter + ")" + "." + fileNameArr[1];  // A new complete filename with a filetype
-                                        check2 = DFEC.CheckIfFileAlreadyExist(destPathFolder, NewfileName);
-
-                                    } while (check2);
-
-                                    Directory.Move(file.DirectoryName, fullDestination + "\\" + NewfileName);               // Moves a file from one dir to another
-                                    renameCounter = 0;                                                                      // resets the counter for future use
-                                }
-
-                                // Moves the file. if the file does not exists in the destination folder
-                                else
-                                {
-                                    Directory.Move(file.DirectoryName, fullDestination + "\\" + file.Name);                 // Moves a file from one dir to another
-                                    renameCounter = 0;                                                                      // resets the counter for future use
-                                }
-                            }
-                            #endregion
+                            FM.MovingFiles(fullDestination, file);                                      // Moves files from one place to another, checks if files already exists, makes the 'fullDestination' path if it does not already exists
 
                             runChecker = true;                                                          // Sets 'runChecker' to true so it does not run the other foreach loop checks
                             break;                                                                      // Breaks out of the Foreach loop after the first match 
@@ -223,48 +166,50 @@ namespace Repository
                     // if 'firstInName' starts with a nummer
                     foreach (var number in numbers)
                     {
-                        if (runChecker == true)                 // prevents the program for running through all of the foreach loop
+                        if (runChecker == true)                                                         // prevents the program for running through all of the foreach loop
                         {
                             break;
-                        }
+                        } 
+
                         else if (number == firstInName)
                         {
-                            // Check if a folder with the 'firstInName' character allready exists 
-                            // if not make one
-                            // then move the file to the correct folder
+                            fullDestination = destPathFolder + "\\" + "Numbers";                        // Full directory path for numbers
 
-                            runChecker = true;
-                            break;
+                            FM.MovingFiles(fullDestination, file);                                      // Moves files from one place to another, checks if files already exists, makes the 'fullDestination' path if it does not already exists
+
+                            runChecker = true;                                                          // Sets 'runChecker' to true so it does not run the other foreach loop checks
+                            break;                                                                      // Breaks out of the Foreach loop after the first match 
                         }
                     }
 
                     // if 'firstInName' starts with a symbol
                     foreach (var symbol in symbols)
                     {
-                        if (runChecker == true)                 // prevents the program for running through all of the foreach loop
+                        if (runChecker == true)                                                         // prevents the program for running through all of the foreach loop
                         {
                             break;
-                        }
+                        } 
+
                         else if (symbol == firstInName)
                         {
-                            // Check if a folder with the 'firstInName' character allready exists 
-                            // if not make one
-                            // then move the file to the correct folder
+                            fullDestination = destPathFolder + "\\" + "Symbols";                        // Full directory path for symbols 
 
-                            runChecker = true;
-                            break;
+                            FM.MovingFiles(fullDestination, file);                                      // Moves files from one place to another, checks if files already exists, makes the 'fullDestination' path if it does not already exists
+
+                            runChecker = true;                                                          // Sets 'runChecker' to true so it does not run the other foreach loop checks
+                            break;                                                                      // Breaks out of the Foreach loop after the first match 
                         }
                     }
-
                     #endregion
                 }
 
-                filesInfoArr = null; // clears the 'FileInfo' array
+                filesInfoArr = null;                                                                    // clears the 'FileInfo' array
             }
             catch (Exception)
             {
                 throw;
             }
         }
+
     }
 }
