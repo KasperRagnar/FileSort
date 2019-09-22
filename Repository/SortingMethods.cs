@@ -9,9 +9,9 @@ namespace Repository
     public class SortingMethods
     {
         #region GLOBAL 
-        float renameCounter = 0;
+        float renameCounter = 0;                                                // Used for giving a number to filenames if there are more then one file with the same name
 
-        FileInfo movedFilesArr;
+        FileInfo[] filesInfoArr;                                                // An empty array used for temporarily hold information about individual files
 
         FolderBrowserDialog fbd = new FolderBrowserDialog();
         DoFileExistCheck DFEC = new DoFileExistCheck();
@@ -61,6 +61,7 @@ namespace Repository
                     }
 
                 }
+                filesInfoArr = null; // clears the 'FileInfo' array
             }
             catch (Exception)
             {
@@ -110,6 +111,7 @@ namespace Repository
                         File.Copy(filePath, destPathFolder + "\\" + file);
                     }
                 }
+                filesInfoArr = null; // clears the 'FileInfo' array
             }
             catch (Exception)
             {
@@ -129,31 +131,37 @@ namespace Repository
 
         public void Alfabetic(string selectedPath, string destPathFolder, String[] searchResult)
         {
+
+            #region Arrays of (numbers, letters, symbols)
+            string[] numbers = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+            string[] letters = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "æ", "ø", "å", "ä", "ö" };
+            string[] symbols = { "!", "'", "@", "#", "£", "¤", "$", "%", "€", "&", "{", "}", "[", "]", "(", ")", "=", "+", "-", "_", ";", ".", ",", "¨", "^", "~", "§", "½", "∞", "≈", "≡", "µ" };
+            #endregion 
+
             try
             {
+                // adds every files fileinfo to a 'FileInfo' array
                 foreach (var filePath in searchResult)
                 {
-                    #region Splitting up the filepath and file name for better forting
-                    // Gets the Directory Name from 'filePath' and split it up
-                    string[] dir = Path.GetDirectoryName(filePath + "\\").Split(Path.DirectorySeparatorChar);
-                    Array.Reverse(dir);
+                    var dir = new DirectoryInfo(Path.GetDirectoryName(filePath));
+                    filesInfoArr = dir.GetFiles();
+                }
 
-                    string file = dir[0]; // filens originale navn
-                     
-                    // Splits the name up in a char array to sortis by the first char
-                    char[] nameSplatter = file.ToCharArray();
-                    string firstInName = nameSplatter[0].ToString();
-                    #endregion 
+                // sorting all files in the global 'movedFilesArr' array.
+                for (int i = 0; i < filesInfoArr.Length; i++)
+                {
+                    FileInfo file = filesInfoArr[i];                                                    // The current file element in the array
 
-                    #region Arrays of (numbers, letters, symbols)
-                    string[] numbers = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-                    string[] letters = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v" , "w", "x", "y", "z", "æ", "ø", "å", "ä", "ö" };
-                    string[] symbols = { "!", "'", "@", "#", "£", "¤", "$", "%", "€", "&", "{", "}", "[", "]", "(", ")", "=", "+", "-", "_", ";", ".", ",", "¨", "^", "~", "§", "½", "∞", "≈", "≡", "µ" };
+                    #region Splits the name up in a char array to sortis by the first char
+                    char[] nameSplatter = file.Name.ToCharArray();                                      // Splits the name up in a char array
+                    string firstInName = nameSplatter[0].ToString();                                    // Sets 'firstInName' equal to the first letter/number/sumbol in the 'nameSplatter'
                     #endregion
 
-                    #region Sorting What comes first in 'firstInName'
-                    bool runChecker = false;                    // Used for checking if the 'firstInName' value already has been found in a previus foreach loop
+                    string fullDestination;                                                             // A placeholder for the file destination path, for the individual scenarios
+                    bool runChecker = false;                                                            // Used for checking if the 'firstInName' value already has been found in a previus foreach loop
 
+
+                    #region Check if 'firstInName' starts with a letter, number or a symbol
                     // if 'firstInName' starts with a letter
                     foreach (var letter in letters)
                     {
@@ -163,12 +171,52 @@ namespace Repository
                         }
                         else if (letter == firstInName)
                         {
-                            // Check if a folder with the 'firstInName' character allready exists 
-                            // if not make one
-                            // then move the file to the correct folder
+                            #region Directory
+                            fullDestination = destPathFolder + "\\" + firstInName.ToUpper();            // Full directory path for letters
 
-                            runChecker = true;
-                            break;
+                            // Creates a new directory if the given directory does not yet exist
+                            if (!Directory.Exists(fullDestination))
+                            {
+                                Directory.CreateDirectory(fullDestination);
+                            }
+                            #endregion
+
+                            #region Moving file 
+                            // Moves file to new folder
+                            else
+                            {
+                                bool check1 = DFEC.CheckIfFileAlreadyExist(fullDestination, file.Name);                     // checks if the file allready exists in the destination folder
+
+                                // Change the name of the file and then moves it. if the file allready exists in the destination folder
+                                if (check1 == true)
+                                {
+                                    string[] fileNameArr = file.Name.Split('.');                                            // Seperate filename and it's file type
+                                    
+                                    string NewfileName;
+                                    bool check2 = true; 
+
+                                    do
+                                    {
+                                        NewfileName = fileNameArr[0] + "(" + ++renameCounter + ")" + "." + fileNameArr[1];  // A new complete filename with a filetype
+                                        check2 = DFEC.CheckIfFileAlreadyExist(destPathFolder, NewfileName);
+
+                                    } while (check2);
+
+                                    Directory.Move(file.DirectoryName, fullDestination + "\\" + NewfileName);               // Moves a file from one dir to another
+                                    renameCounter = 0;                                                                      // resets the counter for future use
+                                }
+
+                                // Moves the file. if the file does not exists in the destination folder
+                                else
+                                {
+                                    Directory.Move(file.DirectoryName, fullDestination + "\\" + file.Name);                 // Moves a file from one dir to another
+                                    renameCounter = 0;                                                                      // resets the counter for future use
+                                }
+                            }
+                            #endregion
+
+                            runChecker = true;                                                          // Sets 'runChecker' to true so it does not run the other foreach loop checks
+                            break;                                                                      // Breaks out of the Foreach loop after the first match 
                         }
                     }
 
@@ -207,9 +255,11 @@ namespace Repository
                             break;
                         }
                     }
-                    #endregion
 
+                    #endregion
                 }
+
+                filesInfoArr = null; // clears the 'FileInfo' array
             }
             catch (Exception)
             {
