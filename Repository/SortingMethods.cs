@@ -124,7 +124,7 @@ namespace Repository
                 FileInfo file = filesInfoArr[i];                                                    // The current file element in the array
 
                 // fullDestination = The crrent files last Modefied date (YYY,MM,DD) 
-                string fullDestination = Path.Combine(file.LastWriteTime.Year.ToString(), file.LastWriteTime.Month.ToString(), file.LastWriteTime.Day.ToString());
+                string fullDestination = Path.Combine(destPathFolder, file.LastWriteTime.Year.ToString(), file.LastWriteTime.Month.ToString(), file.LastWriteTime.Day.ToString());
 
                 FM.MovingFiles(fullDestination, file);                                              // Moves files from one place to another, checks if files already exists, makes the 'fullDestination' path if it does not already exists
             }
@@ -152,7 +152,7 @@ namespace Repository
                 FileInfo file = filesInfoArr[i];                                                    // The current file element in the array
 
                 // fullDestination = The crrent files Creation date
-                string fullDestination = Path.Combine(file.CreationTime.Year.ToString(), file.CreationTime.Month.ToString(), file.CreationTime.Day.ToString());
+                string fullDestination = Path.Combine(destPathFolder, file.CreationTime.Year.ToString(), file.CreationTime.Month.ToString(), file.CreationTime.Day.ToString());
 
                 FM.MovingFiles(fullDestination, file);                                              // Moves files from one place to another, checks if files already exists, makes the 'fullDestination' path if it does not already exists
             }
@@ -226,7 +226,7 @@ namespace Repository
 
                         else if (number == firstInName.ToLower())
                         {
-                            fullDestination = Path.Combine(destPathFolder, "Numbers");                  // Full directory path for numbers
+                            fullDestination = Path.Combine(destPathFolder, "[Numbers]");                  // Full directory path for numbers
 
                             FM.MovingFiles(fullDestination, file);                                      // Moves files from one place to another, checks if files already exists, makes the 'fullDestination' path if it does not already exists
 
@@ -245,7 +245,7 @@ namespace Repository
 
                         else if (symbol == firstInName.ToLower())
                         {
-                            fullDestination = Path.Combine(destPathFolder, "Symbols");                  // Full directory path for symbols 
+                            fullDestination = Path.Combine(destPathFolder, "[Symbols]");                  // Full directory path for symbols 
 
                             FM.MovingFiles(fullDestination, file);                                      // Moves files from one place to another, checks if files already exists, makes the 'fullDestination' path if it does not already exists
 
