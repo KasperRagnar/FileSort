@@ -205,9 +205,9 @@ namespace Repository
                             break;
                         } 
 
-                        else if (letter == firstInName)
+                        else if (letter == firstInName.ToLower())
                         {
-                            fullDestination = destPathFolder + "\\" + firstInName.ToUpper();            // Full directory path for letters
+                            fullDestination = Path.Combine(destPathFolder, firstInName.ToUpper());      // Full directory path for letters
 
                             FM.MovingFiles(fullDestination, file);                                      // Moves files from one place to another, checks if files already exists, makes the 'fullDestination' path if it does not already exists
 
@@ -224,9 +224,9 @@ namespace Repository
                             break;
                         } 
 
-                        else if (number == firstInName)
+                        else if (number == firstInName.ToLower())
                         {
-                            fullDestination = destPathFolder + "\\" + "Numbers";                        // Full directory path for numbers
+                            fullDestination = Path.Combine(destPathFolder, "Numbers");                  // Full directory path for numbers
 
                             FM.MovingFiles(fullDestination, file);                                      // Moves files from one place to another, checks if files already exists, makes the 'fullDestination' path if it does not already exists
 
@@ -243,9 +243,9 @@ namespace Repository
                             break;
                         } 
 
-                        else if (symbol == firstInName)
+                        else if (symbol == firstInName.ToLower())
                         {
-                            fullDestination = destPathFolder + "\\" + "Symbols";                        // Full directory path for symbols 
+                            fullDestination = Path.Combine(destPathFolder, "Symbols");                  // Full directory path for symbols 
 
                             FM.MovingFiles(fullDestination, file);                                      // Moves files from one place to another, checks if files already exists, makes the 'fullDestination' path if it does not already exists
 

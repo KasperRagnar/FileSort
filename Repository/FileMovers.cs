@@ -27,7 +27,7 @@ namespace Repository
 
             #region Moving file 
             // Moves file to new folder
-            else if (Directory.Exists(fullDestination))
+            if (Directory.Exists(fullDestination))
             {
                 bool check1 = DFEC.CheckIfFileAlreadyExist(fullDestination, file.Name);                     // checks if the file allready exists in the destination folder
 
@@ -46,13 +46,13 @@ namespace Repository
 
                     } while (check2);
 
-                    Directory.Move(file.FullName, fullDestination + NewfileName);               // Moves a file from one dir to another
+                    Directory.Move(file.FullName, fullDestination + "\\" + NewfileName);               // Moves a file from one dir to another
                 }
 
                 // Moves the file. if the file does not exists in the destination folder
                 else
                 {
-                    Directory.Move(file.FullName, fullDestination + file.Name);                 // Moves a file from one dir to another
+                    Directory.Move(file.FullName, fullDestination + "\\" + file.Name);                 // Moves a file from one dir to another
                 }
 
                 renameCounter = 0;                                                                      // resets the counter for future use
