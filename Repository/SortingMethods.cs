@@ -24,13 +24,13 @@ namespace Repository
         /// </summary>
         /// <param name="selectedPath">Where files are comming from</param>
         /// <param name="destPathFolder">Where files are going</param>
-        /// <param name="searchResult">Found files in form of a array of strings</param>
-        public void Move(string selectedPath, string destPathFolder, String[] searchResult) 
+        /// <param name="filesFoundInSearch">Found files in form of a array of strings</param>
+        public void Move(string selectedPath, string destPathFolder, String[] filesFoundInSearch) 
         {
             try
             {
                 // adds every files fileinfo to a 'FileInfo' array
-                foreach (var filePath in searchResult)
+                foreach (var filePath in filesFoundInSearch)
                 {
                     var dir = new DirectoryInfo(Path.GetDirectoryName(filePath));
                     filesInfoArr = dir.GetFiles();
@@ -57,44 +57,50 @@ namespace Repository
         /// </summary>
         /// <param name="selectedPath">Where files are comming from</param>
         /// <param name="destPathFolder">Where files are going</param>
-        /// <param name="searchResult">Found files in form of a array of strings</param>
-        public void Copy(string selectedPath, string destPathFolder, String[] searchResult)
+        /// <param name="filesFoundInSearch">Found files in form of a array of strings</param>
+        public void Copy(string selectedPath, string destPathFolder, String[] filesFoundInSearch)
         {
             try
             {
-                foreach (var filePath in searchResult)
+                // adds every files fileinfo to a 'FileInfo' array
+                foreach (var filePath in filesFoundInSearch)
                 {
-                    // Gets the Directory Name from 'filePath' and split it up
-                    string[] dir = Path.GetDirectoryName(filePath + "\\").Split(Path.DirectorySeparatorChar);
-                    Array.Reverse(dir);
+                    var dir = new DirectoryInfo(Path.GetDirectoryName(filePath));
+                    filesInfoArr = dir.GetFiles();
+                }
 
-                    string file = dir[0]; // filens originale navn
+                // sorting all files in the global 'movedFilesArr' array.
+                for (int i = 0; i < filesInfoArr.Length; i++)
+                {
+                    FileInfo file = filesInfoArr[i];                                            // The current file element in the array
 
                     // checks if the file allready exists in the destination folder
-                    bool check1 = DFEC.CheckIfFileAlreadyExist(destPathFolder, file);
+                    bool check1 = DFEC.CheckIfFileAlreadyExist(destPathFolder, file.Name);
 
-                    if (check1 == true) // if the file already exists
+                    if (check1 == true)                                                         // if the file already exists
                     {
-                        string[] fileNameArr = file.Split('.'); // Seperate filename and it's file type
+                        string[] fileNameArr = file.Name.Split('.');                            // Seperate filename and it's file type
 
-                        bool check2;
                         string NewfileName;
+                        bool check2 = true;
+
                         do
                         {
-                            NewfileName = fileNameArr[0] + "(" + ++renameCounter + ")" + "." + fileNameArr[1]; // A new complete filename with a filetype
-                            check2 = DFEC.CheckIfFileAlreadyExist(destPathFolder, NewfileName);
+                            NewfileName = fileNameArr[0] + "(" + ++renameCounter + ")" + "." + fileNameArr[1];  // A new complete filename with a filetype
+                            check2 = DFEC.CheckIfFileAlreadyExist(destPathFolder, NewfileName);                 // Checks if the new filename exists in destination folder
 
-                        } while (check2 == true);
+                        } while (check2);
 
-                        File.Copy(filePath, destPathFolder + "\\" + NewfileName);
-                        renameCounter = 0;
+                        File.Copy(file.FullName, destPathFolder + "\\" + NewfileName);
                     }
-                    else  // if the file does not already exists
+                    else                                                                        // if the file does not already exists
                     {
-                        File.Copy(filePath, destPathFolder + "\\" + file);
+                        File.Copy(file.FullName, destPathFolder + "\\" + file.Name);
                     }
+                    renameCounter = 0;                                                          // resets the counter for future use
                 }
-                filesInfoArr = null; // clears the 'FileInfo' array
+
+                filesInfoArr = null;                                                            // clears the 'FileInfo' array
             }
             catch (Exception)
             {
@@ -102,7 +108,7 @@ namespace Repository
             }
         }
 
-        public void LastModefiedDate(string selectedPath, string destPath, string destPathFolder, String[] searchResult)
+        public void LastModefiedDate(string selectedPath, string destPathFolder, String[] filesFoundInSearch)
         {
         
         }
@@ -112,7 +118,13 @@ namespace Repository
 
         }
 
-        public void Alfabetic(string selectedPath, string destPathFolder, String[] searchResult)
+        /// <summary>
+        /// Sorts files by letters, numbers and symbols
+        /// </summary>
+        /// <param name="selectedPath">Where files are comming from</param>
+        /// <param name="destPathFolder">Where files are going</param>
+        /// <param name="filesFoundInSearch">Found files in form of a array of strings</param>
+        public void Alfabetic(string selectedPath, string destPathFolder, String[] filesFoundInSearch)
         {
 
             #region Arrays of (numbers, letters, symbols)
@@ -124,7 +136,7 @@ namespace Repository
             try
             {
                 // adds every files fileinfo to a 'FileInfo' array
-                foreach (var filePath in searchResult)
+                foreach (var filePath in filesFoundInSearch)
                 {
                     var dir = new DirectoryInfo(Path.GetDirectoryName(filePath));
                     filesInfoArr = dir.GetFiles();

@@ -229,10 +229,10 @@ namespace FileSort
                     #region Looking for files that mach the 'ListBoxFileTypesFilter' list
 
                     //-- Calling the search Method and gets back a Array of Strings (every string is a full file path)
-                    String[] searchResult = SAFF.GetFilesFrom(selectedPath, ListBoxFileTypesFilter, allOrOneFolderBool);
+                    String[] filesFoundInSearch = SAFF.GetFilesFrom(selectedPath, ListBoxFileTypesFilter, allOrOneFolderBool);
 
                     //-- Checks if the list of files is emty or null.
-                    if (searchResult.Length <= 0 || searchResult == null)
+                    if (filesFoundInSearch.Length <= 0 || filesFoundInSearch == null)
                     {
                         UiErrorMessages(2); // sets the error messagebox to error message number 3 using the 'UiErrorMessages' Method
                     }
@@ -247,7 +247,7 @@ namespace FileSort
                                 #region case 0
                                 try
                                 {
-                                    Task.Run(() => SM.Move(selectedPath, destPathFolder, searchResult));
+                                    Task.Run(() => SM.Move(selectedPath, destPathFolder, filesFoundInSearch));
                                 }
                                 catch (DirectoryNotFoundException)
                                 {
@@ -264,7 +264,7 @@ namespace FileSort
                                 #region case 1
                                 try
                                 {
-                                    Task.Run(() => SM.Copy(selectedPath, destPathFolder, searchResult));
+                                    Task.Run(() => SM.Copy(selectedPath, destPathFolder, filesFoundInSearch));
                                 }
                                 catch (DirectoryNotFoundException)
                                 {
@@ -281,7 +281,7 @@ namespace FileSort
                                 #region case 2
                                 try
                                 {
-                                    Task.Run(() => SM.LastModefiedDate(selectedPath, destPath, destPathFolder, searchResult));
+                                    Task.Run(() => SM.LastModefiedDate(selectedPath, destPathFolder, filesFoundInSearch));
                                 }
                                 catch (DirectoryNotFoundException)
                                 {
@@ -315,7 +315,7 @@ namespace FileSort
                                 #region case 4
                                 try
                                 {
-                                    Task.Run(() => SM.Alfabetic(selectedPath, destPathFolder, searchResult));
+                                    Task.Run(() => SM.Alfabetic(selectedPath, destPathFolder, filesFoundInSearch));
                                 }
                                 catch (DirectoryNotFoundException)
                                 {
