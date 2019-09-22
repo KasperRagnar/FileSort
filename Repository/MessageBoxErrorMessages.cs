@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace Repository
 {
-    public class MessageBoxErrorMessages
+    public class SystemMessageBoxes
     {
         LanguageModel ChousenLanguageList;
         LanguageSettings LS = new LanguageSettings();

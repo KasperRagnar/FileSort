@@ -28,7 +28,7 @@ namespace FileSort
         LanguageSettings LS = new LanguageSettings();
         SearchAndFindFiles SAFF = new SearchAndFindFiles();
         SortingMethods SM = new SortingMethods();
-        MessageBoxErrorMessages MBEM = new MessageBoxErrorMessages();
+        SystemMessageBoxes SMB = new SystemMessageBoxes();
         #endregion
 
         public MainWindow()
@@ -193,7 +193,7 @@ namespace FileSort
                 }
                 else
                 {
-                    MBEM.languageDefinition(languageIndexedSelection); // Sendt the index-number of the current language in use to the 'languageDefinition' method
+                    SMB.languageDefinition(languageIndexedSelection); // Sendt the index-number of the current language in use to the 'languageDefinition' method
                     runConditions = true;
                 }
                 #endregion
@@ -237,12 +237,13 @@ namespace FileSort
                                 #region case 0
                                 try
                                 {
+                                    Task.Run(() => 
+                                    {
+                                        // TODO: 
+                                        //SMB. // Costum message box with a progress bar
 
-                                    Task.Run(() => SM.Move(destPathFolder, filesFoundInSearch));
-                                }
-                                catch (DirectoryNotFoundException)
-                                {
-                                    // denne fejl sker hvis der bliver valgt den samme direrrectory in reverse. 
+                                        SM.Move(destPathFolder, filesFoundInSearch);
+                                    });
                                 }
                                 catch (Exception)
                                 {
@@ -257,10 +258,6 @@ namespace FileSort
                                 {
                                     Task.Run(() => SM.Copy(destPathFolder, filesFoundInSearch));
                                 }
-                                catch (DirectoryNotFoundException)
-                                {
-                                    // fejl sker hvis der bliver valgt den samme direrrectory in reverse. 
-                                }
                                 catch (Exception)
                                 {
                                     // Fang de exeptions der bobler op
@@ -273,10 +270,6 @@ namespace FileSort
                                 try
                                 {
                                     Task.Run(() => SM.LastModefiedDate(destPathFolder, filesFoundInSearch));
-                                }
-                                catch (DirectoryNotFoundException)
-                                {
-                                    // fejl sker hvis der bliver valgt den samme direrrectory in reverse. 
                                 }
                                 catch (Exception)
                                 {
@@ -291,10 +284,6 @@ namespace FileSort
                                 {
                                     Task.Run(() => SM.CreatedDate(destPathFolder, filesFoundInSearch));
                                 }
-                                catch (DirectoryNotFoundException)
-                                {
-                                    // fejl sker hvis der bliver valgt den samme direrrectory in reverse. 
-                                }
                                 catch (Exception)
                                 {
                                     // Fang de exeptions der bobler op
@@ -307,10 +296,6 @@ namespace FileSort
                                 try
                                 {
                                     Task.Run(() => SM.Alfabetic(destPathFolder, filesFoundInSearch));
-                                }
-                                catch (DirectoryNotFoundException)
-                                {
-                                    // fejl sker hvis der bliver valgt den samme direrrectory in reverse. 
                                 }
                                 catch (Exception)
                                 {
