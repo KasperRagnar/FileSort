@@ -35,7 +35,6 @@ namespace FileSort
 
         FolderBrowserDialog fbd = new FolderBrowserDialog();
         LanguageSettings LS = new LanguageSettings();
-        DoFileExistCheck DFEC = new DoFileExistCheck();
         SearchAndFindFiles SAFF = new SearchAndFindFiles();
         SortingMethods SM = new SortingMethods();
         MessageBoxErrorMessages MBEM = new MessageBoxErrorMessages();
@@ -247,7 +246,7 @@ namespace FileSort
                                 #region case 0
                                 try
                                 {
-                                    Task.Run(() => SM.Move(selectedPath, destPathFolder, filesFoundInSearch));
+                                    Task.Run(() => SM.Move(destPathFolder, filesFoundInSearch));
                                 }
                                 catch (DirectoryNotFoundException)
                                 {
@@ -264,7 +263,7 @@ namespace FileSort
                                 #region case 1
                                 try
                                 {
-                                    Task.Run(() => SM.Copy(selectedPath, destPathFolder, filesFoundInSearch));
+                                    Task.Run(() => SM.Copy(destPathFolder, filesFoundInSearch));
                                 }
                                 catch (DirectoryNotFoundException)
                                 {
@@ -281,7 +280,7 @@ namespace FileSort
                                 #region case 2
                                 try
                                 {
-                                    Task.Run(() => SM.LastModefiedDate(selectedPath, destPathFolder, filesFoundInSearch));
+                                    Task.Run(() => SM.LastModefiedDate(destPathFolder, filesFoundInSearch));
                                 }
                                 catch (DirectoryNotFoundException)
                                 {
@@ -298,7 +297,7 @@ namespace FileSort
                                 #region case 3
                                 try
                                 {
-                                    Task.Run(() => SM.CreatedDate());
+                                    Task.Run(() => SM.CreatedDate(destPathFolder, filesFoundInSearch));
                                 }
                                 catch (DirectoryNotFoundException)
                                 {
@@ -315,7 +314,7 @@ namespace FileSort
                                 #region case 4
                                 try
                                 {
-                                    Task.Run(() => SM.Alfabetic(selectedPath, destPathFolder, filesFoundInSearch));
+                                    Task.Run(() => SM.Alfabetic(destPathFolder, filesFoundInSearch));
                                 }
                                 catch (DirectoryNotFoundException)
                                 {

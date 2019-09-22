@@ -13,19 +13,16 @@ namespace Repository
 
         FileInfo[] filesInfoArr;                                                // An empty array used for temporarily hold information about individual files
 
-        FolderBrowserDialog fbd = new FolderBrowserDialog();
         DoFileExistCheck DFEC = new DoFileExistCheck();
-        MessageBoxErrorMessages MBEM = new MessageBoxErrorMessages();
         FileMovers FM = new FileMovers();
         #endregion
 
         /// <summary>
         /// Moves found files from one folder to another
         /// </summary>
-        /// <param name="selectedPath">Where files are comming from</param>
         /// <param name="destPathFolder">Where files are going</param>
         /// <param name="filesFoundInSearch">Found files in form of a array of strings</param>
-        public void Move(string selectedPath, string destPathFolder, String[] filesFoundInSearch) 
+        public void Move(string destPathFolder, string[] filesFoundInSearch) 
         {
             try
             {
@@ -55,10 +52,9 @@ namespace Repository
         /// <summary>
         /// Copies found files from one folder to another
         /// </summary>
-        /// <param name="selectedPath">Where files are comming from</param>
         /// <param name="destPathFolder">Where files are going</param>
         /// <param name="filesFoundInSearch">Found files in form of a array of strings</param>
-        public void Copy(string selectedPath, string destPathFolder, String[] filesFoundInSearch)
+        public void Copy(string destPathFolder, string[] filesFoundInSearch)
         {
             try
             {
@@ -108,23 +104,68 @@ namespace Repository
             }
         }
 
-        public void LastModefiedDate(string selectedPath, string destPathFolder, String[] filesFoundInSearch)
+        /// <summary>
+        /// Sorts files baced on when they where last modefied
+        /// </summary>
+        /// <param name="destPathFolder">Where files are going</param>
+        /// <param name="filesFoundInSearch">Found files in form of a array of strings</param>
+        public void LastModefiedDate(string destPathFolder, string[] filesFoundInSearch)
         {
-        
+            // adds every files fileinfo to a 'FileInfo' array
+            foreach (var filePath in filesFoundInSearch)
+            {
+                var dir = new DirectoryInfo(Path.GetDirectoryName(filePath));
+                filesInfoArr = dir.GetFiles();
+            }
+
+            // sorting all files in the global 'movedFilesArr' array.
+            for (int i = 0; i < filesInfoArr.Length; i++)
+            {
+                FileInfo file = filesInfoArr[i];                                                    // The current file element in the array
+
+                // fullDestination = The crrent files last Modefied date (YYY,MM,DD) 
+                string fullDestination = Path.Combine(file.LastWriteTime.Year.ToString(), file.LastWriteTime.Month.ToString(), file.LastWriteTime.Day.ToString());
+
+                FM.MovingFiles(fullDestination, file);                                              // Moves files from one place to another, checks if files already exists, makes the 'fullDestination' path if it does not already exists
+            }
+
+            filesInfoArr = null;                                                                    // clears the 'FileInfo' array
         }
 
-        public void CreatedDate()
+        /// <summary>
+        /// Sorts files baced on when they where created
+        /// </summary>
+        /// <param name="destPathFolder">Where files are going</param>
+        /// <param name="filesFoundInSearch">Found files in form of a array of strings</param>
+        public void CreatedDate(string destPathFolder, string[] filesFoundInSearch)
         {
+            // adds every files fileinfo to a 'FileInfo' array
+            foreach (var filePath in filesFoundInSearch)
+            {
+                var dir = new DirectoryInfo(Path.GetDirectoryName(filePath));
+                filesInfoArr = dir.GetFiles();
+            }
 
+            // sorting all files in the global 'movedFilesArr' array.
+            for (int i = 0; i < filesInfoArr.Length; i++)
+            {
+                FileInfo file = filesInfoArr[i];                                                    // The current file element in the array
+
+                // fullDestination = The crrent files Creation date
+                string fullDestination = Path.Combine(file.CreationTime.Year.ToString(), file.CreationTime.Month.ToString(), file.CreationTime.Day.ToString());
+
+                FM.MovingFiles(fullDestination, file);                                              // Moves files from one place to another, checks if files already exists, makes the 'fullDestination' path if it does not already exists
+            }
+
+            filesInfoArr = null;                                                                    // clears the 'FileInfo' array
         }
 
         /// <summary>
         /// Sorts files by letters, numbers and symbols
         /// </summary>
-        /// <param name="selectedPath">Where files are comming from</param>
         /// <param name="destPathFolder">Where files are going</param>
         /// <param name="filesFoundInSearch">Found files in form of a array of strings</param>
-        public void Alfabetic(string selectedPath, string destPathFolder, String[] filesFoundInSearch)
+        public void Alfabetic(string destPathFolder, String[] filesFoundInSearch)
         {
 
             #region Arrays of (numbers, letters, symbols)
