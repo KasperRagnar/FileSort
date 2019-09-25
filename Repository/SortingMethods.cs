@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Repository
@@ -22,7 +23,7 @@ namespace Repository
         /// </summary>
         /// <param name="destPathFolder">Where files are going</param>
         /// <param name="filesFoundInSearch">Found files in form of a array of strings</param>
-        public void Move(string destPathFolder, string[] filesFoundInSearch) 
+        public void Move(string destPathFolder, string[] filesFoundInSearch, CancellationToken ct) 
         {
             try
             {
@@ -37,6 +38,8 @@ namespace Repository
                 for (int i = 0; i < filesInfoArr.Length; i++)
                 {
                     FileInfo file = filesInfoArr[i];                                           // The current file element in the array
+
+                    ct.ThrowIfCancellationRequested();                                         // CanselationToken til at stoppe flytning af filer
 
                     FM.MovingFiles(destPathFolder, file);                                      // Moves files from one place to another, checks if files already exists, makes the 'fullDestination' path if it does not already exists
                 }

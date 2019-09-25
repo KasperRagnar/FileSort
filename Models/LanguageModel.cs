@@ -29,5 +29,9 @@ namespace Models
         public string radio_SearchAllSubFoldersOption { get; set; }
 
         public string btn_StartButton { get; set; }
+
+        public string[] MsgBoxText { get; set; }
+
+        public string MsgBoxHeader { get; set; }
     }
 }

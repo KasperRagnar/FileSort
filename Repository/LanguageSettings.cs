@@ -39,10 +39,13 @@ namespace Repository
                 TextBox_DestinationPathLabel = "Hvor til ?",
                 btn_DestinationPathButton = "Gennemse",
 
-                radio_SearchFolderOption = "Søg kun i den valgte folder!", 
+                radio_SearchFolderOption = "Søg kun i den valgte folder!",
                 radio_SearchAllSubFoldersOption = "Søg i den valgte folder og alle dens undermapper.",
 
                 btn_StartButton = "START",
+
+                MsgBoxText = new String[] { "Flytter filer Fra:", "Til:"},
+                MsgBoxHeader = "Arbejder...",
             });
 
             // English = Index 1
@@ -70,6 +73,9 @@ namespace Repository
                 radio_SearchAllSubFoldersOption = "Search in the selected folder and all of its sub-folders.",
 
                 btn_StartButton = "START",
+
+                MsgBoxText = new String[] { "Moving Files from:", "To:"},
+                MsgBoxHeader = "Loading...",
             });
 
 

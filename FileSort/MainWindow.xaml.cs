@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using Repository;
 using Models;
 using System.IO;
+using System.Threading;
 
 namespace FileSort
 {
@@ -21,8 +22,12 @@ namespace FileSort
         LanguageModel ChousenLanguageList;  // A model/list of the current selectet language varibels
         string appInfoMessageBox;           // this string is the info message in 'InfoBox_Click' method
         int languageIndexedSelection;       // in index-number for the current language. (Used in error handeling)
+        string[] MsgBoxTextIndput;          // A plaseholder for the Message box "From: To:" text
+        string MsgBoxHeaderIndput;          // A placeholder for the Message box "Header" text
 
-        List<string> ListBoxFileTypesFilter = new List<string>();   // A list of alle the selected items in the "ListBox_FileTypes"
+        List<string> ListBoxFileTypesFilter = new List<string>();       // A list of alle the selected items in the "ListBox_FileTypes"
+
+        CancellationTokenSource cts = new CancellationTokenSource();   // CancellationTokenSource
 
         FolderBrowserDialog fbd = new FolderBrowserDialog();
         LanguageSettings LS = new LanguageSettings();
@@ -34,6 +39,8 @@ namespace FileSort
         public MainWindow()
         {
             InitializeComponent();
+
+            #region UI / GUI
             WindowStartupLocation = WindowStartupLocation.CenterScreen;  // Starts the application up in the middle of the sceen
 
             ComboBox_FileTypes.ItemsSource = LS.FileTypesArr;            // Add's a 'File Type'list to the UI.
@@ -43,6 +50,8 @@ namespace FileSort
             ComboBox_Languages.SelectedIndex = 1;                        // Sets the default language in the UI to: English 
             ComboBox_SortingMethods.SelectedIndex = 0;                   // Sets the default Sorting method in the UI to: Move 
             ComboBox_FileTypes.SelectedIndex = 0;                        // Sets the default file type in the UI to: .jpg 
+            #endregion
+
         }
 
         #region Message box & Error Messages clean-up
@@ -104,7 +113,7 @@ namespace FileSort
 
                 if (ChousenLanguageList != null)
                 {
-                    appInfoMessageBox = ChousenLanguageList.TextBox_ContentTextBox; //for the application info messagebox
+                    appInfoMessageBox = ChousenLanguageList.TextBox_ContentTextBox;                             //for the application info messagebox
 
                     ErrorMsgBox.Text = ChousenLanguageList.TextBox_ErrorMsgBox[0];
 
@@ -127,6 +136,9 @@ namespace FileSort
                     SearchAllSubFoldersOption.Content = ChousenLanguageList.radio_SearchAllSubFoldersOption;
 
                     StartButton.Content = ChousenLanguageList.btn_StartButton;
+
+                    MsgBoxTextIndput = ChousenLanguageList.MsgBoxText;                                          // A string[] for dynamid text indput on the message box text fild
+                    MsgBoxHeaderIndput = ChousenLanguageList.MsgBoxHeader;                                      // A string for dynamid text indput on the message box header
                 }
             }
             catch (Exception)
@@ -193,7 +205,7 @@ namespace FileSort
                 }
                 else
                 {
-                    SMB.languageDefinition(languageIndexedSelection); // Sendt the index-number of the current language in use to the 'languageDefinition' method
+                    SMB.LanguageDefinition(languageIndexedSelection); // Sendt the index-number of the current language in use to the 'languageDefinition' method
                     runConditions = true;
                 }
                 #endregion
@@ -239,10 +251,51 @@ namespace FileSort
                                 {
                                     Task.Run(() => 
                                     {
-                                        // TODO: 
-                                        //SMB. // Costum message box with a progress bar
+                                        #region CancellationToken
+                                        CancellationToken ct = cts.Token;
+                                        if (ct.IsCancellationRequested)
+                                        {
+                                            cts.Dispose();
+                                            cts = new CancellationTokenSource();
+                                            ct = cts.Token;
+                                        }
+                                        #endregion
 
-                                        SM.Move(destPathFolder, filesFoundInSearch);
+                                        #region MessageBox
+                                        #region Display names for the "From: and To:" paths
+                                        // TO: path
+                                        string[] destPathSplitterArr = destPathFolder.Split('\\');
+                                        List<string> destPathEndFolder = new List<string>();
+                                        foreach (var split in destPathSplitterArr)
+                                        {
+                                            if (split != "")
+                                            {
+                                                destPathEndFolder.Add(split);
+                                            }
+                                        }
+
+                                        //From: path
+                                        string[] sourcePathSplitterArr = selectedPath.Split('\\');
+                                        List<string> sourcePathEndFolder = new List<string>();
+                                        foreach (var split in sourcePathSplitterArr)
+                                        {
+                                            if (split != "")
+                                            {
+                                                sourcePathEndFolder.Add(split);
+                                            }
+                                        }
+
+                                        #endregion
+
+                                        // MsgBoxTextIndput[ ] = dynamisk string[] indput from LanguageSettings
+                                        string msgText = $"{MsgBoxTextIndput[0]} {sourcePathEndFolder[sourcePathEndFolder.Count - 1]}. {MsgBoxTextIndput[1]} {destPathEndFolder[destPathEndFolder.Count - 1]}.";
+                                        string msgHeader = $"{MsgBoxHeaderIndput}";
+
+                                        SMB.MessageBoxProgressBar(msgText, msgHeader, cts);         // Sends A (messageBox text, MessageBox Header, CancellationTokenSource)
+                                        #endregion
+
+                                        // Caling the 'Move' method
+                                        SM.Move(destPathFolder, filesFoundInSearch, ct);            // Sending a (Destination string Path, List<string>, CancellationToken)
                                     });
                                 }
                                 catch (Exception)
