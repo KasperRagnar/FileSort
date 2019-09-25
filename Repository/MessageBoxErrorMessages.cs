@@ -51,15 +51,17 @@ namespace Repository
             if (dialogResult == DialogResult.Cancel)
             {
                 cts.Cancel();                           // Cansels all CancellationTokens on this thread
-
-
-                // 'MessageBoxButtons.OKCancel' should be changed 
-                // to a costum Message Box Button 'MessageBoxButtons.Cansel'
             }
             else
             {
-
+                cts.Cancel();                           // Cansels all CancellationTokens on this thread
             }
+
+            // TODO: 
+            // 1). Progress Bar goes GUI here!
+
+            // 2). 'MessageBoxButtons.OKCancel' should be changed 
+            //     to a costum Message Box Button 'MessageBoxButtons.Cansel'
         }
 
     }
