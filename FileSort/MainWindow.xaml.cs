@@ -262,6 +262,7 @@ namespace FileSort
                                         #endregion
 
                                         #region MessageBox
+
                                         #region Display names for the "From: and To:" paths
                                         // TO: path
                                         string[] destPathSplitterArr = destPathFolder.Split('\\');
@@ -369,7 +370,7 @@ namespace FileSort
             }
             catch (Exception)
             {
-                
+                // Højeste lag af Exception
             }
         }
         #endregion
