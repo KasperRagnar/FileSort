@@ -20,6 +20,15 @@ namespace Repository
         FileMovers FM = new FileMovers();
         #endregion
 
+        // TODO: 
+        //  • Få progressbaren til at lukke automatisk når progress rammer 100%
+        //
+        //  • Find ud af hvorfor dette regnestykke ikke vil slutte på 100% i progressbaren. 
+
+        // Udregner hvor langet programmet er i processen, og omdanner det til procenter (%) 
+        // progressObserver.Report(new ProgressReportModel { PercentageCompleted = (i* 100) / filesInfoArr.Length});
+
+
         /// <summary>
         /// Moves found files from one folder to another
         /// </summary>
