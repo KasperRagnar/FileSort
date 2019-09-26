@@ -44,25 +44,5 @@ namespace Repository
             // [5] = "• Error: Something went wrong.Try another path! or see if all fields are filled out!"
         }
 
-
-        public void MessageBoxProgressBar(string msgText, string msgHeader, CancellationTokenSource cts)
-        {
-            DialogResult dialogResult = MessageBox.Show(msgText, msgHeader, MessageBoxButtons.OKCancel, MessageBoxIcon.None);
-            if (dialogResult == DialogResult.Cancel)
-            {
-                cts.Cancel();                           // Cansels all CancellationTokens on this thread
-            }
-            else
-            {
-                cts.Cancel();                           // Cansels all CancellationTokens on this thread
-            }
-
-            // TODO: 
-            // 1). Progress Bar goes GUI here!
-
-            // 2). 'MessageBoxButtons.OKCancel' should be changed 
-            //     to a costum Message Box Button 'MessageBoxButtons.Cansel'
-        }
-
     }
 }
