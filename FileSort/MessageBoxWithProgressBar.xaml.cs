@@ -35,12 +35,22 @@ namespace FileSort
 
         public MessageBoxWithProgressBar()
         {
-            InitializeComponent();
-            WindowStartupLocation = WindowStartupLocation.CenterScreen;     // Starts this window in the center of the screen.
-            
-            ct = cts.Token;                                                 // CancellationToken is set
 
+        }
+
+        public MessageBoxWithProgressBar(int sortingMethod, string msgText, string msgHeader, string destPathFolder, string[] filesFoundInSearch)
+        {
+            InitializeComponent();
+
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;     // Starts this window in the center of the screen.
+            ct = cts.Token;                                                 // CancellationToken is set
             DataImport(new SortingMethods());
+
+            Title = msgHeader;                              // Window Titel = message header
+            textMessage.Text = msgText;                     // TextBox text = message text
+            destinationPathFolder = destPathFolder;         // destPathFolder = users chosen destination folder path
+            FoundFielsFromSearch = filesFoundInSearch;      // filesFoundInSearch = A string array of paths to files that match the users search
+            sortingMethodOfChoice = sortingMethod;
         }
 
         #region Buttons 
@@ -60,11 +70,11 @@ namespace FileSort
         #region Message Text 
         public void MessageBox(int sortingMethod, string msgText, string msgHeader, string destPathFolder, string[] filesFoundInSearch)
         {
-            Title = msgHeader;                              // Window Titel = message header
-            textMessage.Text = msgText;                     // TextBox text = message text
-            destinationPathFolder = destPathFolder;         // destPathFolder = users chosen destination folder path
-            FoundFielsFromSearch = filesFoundInSearch;      // filesFoundInSearch = A string array of paths to files that match the users search
-            sortingMethodOfChoice = sortingMethod;
+            //Title = msgHeader;                              // Window Titel = message header
+            //textMessage.Text = msgText;                     // TextBox text = message text
+            //destinationPathFolder = destPathFolder;         // destPathFolder = users chosen destination folder path
+            //FoundFielsFromSearch = filesFoundInSearch;      // filesFoundInSearch = A string array of paths to files that match the users search
+            //sortingMethodOfChoice = sortingMethod;
         }
 
         #endregion

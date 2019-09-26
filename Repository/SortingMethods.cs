@@ -13,7 +13,6 @@ namespace Repository
     {
         #region GLOBAL 
         float renameCounter = 0;                                                // Used for giving a number to filenames if there are more then one file with the same name
-        int fileCounter = 0;
 
         FileInfo[] filesInfoArr;                                                // An empty array used for temporarily hold information about individual files
 

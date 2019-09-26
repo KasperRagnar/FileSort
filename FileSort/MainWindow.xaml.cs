@@ -276,10 +276,9 @@ namespace FileSort
 
                                     #endregion
 
-                                    MessageBoxWithProgressBar MBWPB = new MessageBoxWithProgressBar();          // Makes a new window everytime it opens
-                                    MBWPB.Show();                                                               // Opens a new 'MessageBoxWithProgressBar' window
-                                    MBWPB.MessageBox(ComboBox_SortingMethods.SelectedIndex, msgText, msgHeader, destPathFolder, filesFoundInSearch);    // Sender: Int, string, string, string, string[]
-
+                                    // Makes a new window everytime it opens
+                                    MessageBoxWithProgressBar MBWPB = new MessageBoxWithProgressBar(ComboBox_SortingMethods.SelectedIndex, msgText, msgHeader, destPathFolder, filesFoundInSearch);          
+                                    MBWPB.Show();                                       // Opens a new 'MessageBoxWithProgressBar' window
                                 }
                                 catch (Exception)
                                 {
@@ -321,10 +320,9 @@ namespace FileSort
 
                                     #endregion
 
-                                    MessageBoxWithProgressBar MBWPB = new MessageBoxWithProgressBar();          // Makes a new window everytime it opens
-                                    MBWPB.Show();                                                               // Opens a new 'MessageBoxWithProgressBar' window
-                                    MBWPB.MessageBox(ComboBox_SortingMethods.SelectedIndex, msgText, msgHeader, destPathFolder, filesFoundInSearch);    // Sender: Int, string, string, string, string[]
-
+                                    // Makes a new window everytime it opens
+                                    MessageBoxWithProgressBar MBWPB = new MessageBoxWithProgressBar(ComboBox_SortingMethods.SelectedIndex, msgText, msgHeader, destPathFolder, filesFoundInSearch);
+                                    MBWPB.Show();                                       // Opens a new 'MessageBoxWithProgressBar' window
                                 }
                                 catch (Exception)
                                 {
@@ -366,10 +364,9 @@ namespace FileSort
 
                                     #endregion
 
-                                    MessageBoxWithProgressBar MBWPB = new MessageBoxWithProgressBar();          // Makes a new window everytime it opens
-                                    MBWPB.Show();                                                               // Opens a new 'MessageBoxWithProgressBar' window
-                                    MBWPB.MessageBox(ComboBox_SortingMethods.SelectedIndex, msgText, msgHeader, destPathFolder, filesFoundInSearch);    // Sender: Int, string, string, string, string[]
-
+                                    // Makes a new window everytime it opens
+                                    MessageBoxWithProgressBar MBWPB = new MessageBoxWithProgressBar(ComboBox_SortingMethods.SelectedIndex, msgText, msgHeader, destPathFolder, filesFoundInSearch);
+                                    MBWPB.Show();                                       // Opens a new 'MessageBoxWithProgressBar' window
                                 }
                                 catch (Exception)
                                 {
@@ -411,10 +408,9 @@ namespace FileSort
 
                                     #endregion
 
-                                    MessageBoxWithProgressBar MBWPB = new MessageBoxWithProgressBar();          // Makes a new window everytime it opens
-                                    MBWPB.Show();                                                               // Opens a new 'MessageBoxWithProgressBar' window
-                                    MBWPB.MessageBox(ComboBox_SortingMethods.SelectedIndex, msgText, msgHeader, destPathFolder, filesFoundInSearch);    // Sender: Int, string, string, string, string[]
-
+                                    // Makes a new window everytime it opens
+                                    MessageBoxWithProgressBar MBWPB = new MessageBoxWithProgressBar(ComboBox_SortingMethods.SelectedIndex, msgText, msgHeader, destPathFolder, filesFoundInSearch);
+                                    MBWPB.Show();                                       // Opens a new 'MessageBoxWithProgressBar' window
                                 }
                                 catch (Exception)
                                 {
@@ -456,10 +452,9 @@ namespace FileSort
 
                                     #endregion
 
-                                    MessageBoxWithProgressBar MBWPB = new MessageBoxWithProgressBar();          // Makes a new window everytime it opens
-                                    MBWPB.Show();                                                               // Opens a new 'MessageBoxWithProgressBar' window
-                                    MBWPB.MessageBox(ComboBox_SortingMethods.SelectedIndex, msgText, msgHeader, destPathFolder, filesFoundInSearch);    // Sender: Int, string, string, string, string[]
-
+                                    // Makes a new window everytime it opens
+                                    MessageBoxWithProgressBar MBWPB = new MessageBoxWithProgressBar(ComboBox_SortingMethods.SelectedIndex, msgText, msgHeader, destPathFolder, filesFoundInSearch);
+                                    MBWPB.Show();                                       // Opens a new 'MessageBoxWithProgressBar' window
                                 }
                                 catch (Exception)
                                 {
