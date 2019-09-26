@@ -14,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Repository;
 
 namespace FileSort
 {
@@ -23,33 +24,97 @@ namespace FileSort
     public partial class MessageBoxWithProgressBar : Window
     {
         #region GLOBAL 
-        CancellationTokenSource cts;        // A placeholder for a CancellationTokenSource from MainWindow
+        CancellationTokenSource cts = new CancellationTokenSource();        // CancellationTokenSource
+        CancellationToken ct;                                               // CancellationToken
 
-        #endregion 
+        string destinationPathFolder;                                       // A placeholder for the users chosen destination folder path
+        string[] FoundFielsFromSearch;                                      // A placeholder for a string array of paths to files that match the users search
+
+        int sortingMethodOfChoice;
+        #endregion
 
         public MessageBoxWithProgressBar()
         {
             InitializeComponent();
             WindowStartupLocation = WindowStartupLocation.CenterScreen;     // Starts this window in the center of the screen.
+            
+            ct = cts.Token;                                                 // CancellationToken is set
+
+            DataImport(new SortingMethods());
         }
 
-        #region Message Text
-        public void MessageBox(string msgText, string msgHeader, CancellationTokenSource cancellationTokenSource)
-        {
-            Title = msgHeader;              // window Titel = message header
-            textMessage.Text = msgText;     // textBox text = message text
-            cts = cancellationTokenSource;  // Setter global cts = lig med local cancellationTokenSource 
-
-            // ProgressBar
-
-        }
-
-        #endregion
-
+        #region Buttons 
+        /// <summary>
+        /// A cansel button that closes the window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Btn_Cansel_Click(object sender, RoutedEventArgs e)
         {
             cts.Cancel();   // Cansels all CancellationTokens on this thread
             this.Close();   // Closes this window
         }
+
+        #endregion
+
+        #region Message Text 
+        public void MessageBox(int sortingMethod, string msgText, string msgHeader, string destPathFolder, string[] filesFoundInSearch)
+        {
+            Title = msgHeader;                              // Window Titel = message header
+            textMessage.Text = msgText;                     // TextBox text = message text
+            destinationPathFolder = destPathFolder;         // destPathFolder = users chosen destination folder path
+            FoundFielsFromSearch = filesFoundInSearch;      // filesFoundInSearch = A string array of paths to files that match the users search
+            sortingMethodOfChoice = sortingMethod;
+        }
+
+        #endregion
+
+        #region Progress 
+        /// <summary>
+        /// Checks what method the user have chousen and call the chousen method
+        /// </summary>
+        /// <param name="importFiles">A new instance of the SortingMethods class</param>
+        public void DataImport(SortingMethods importFiles)
+        {
+            switch (sortingMethodOfChoice)
+            {
+                case 0:
+                    importFiles.Move(new Progress<ProgressReportModel>(DisplayProgress), destinationPathFolder, FoundFielsFromSearch, ct);
+                    break;
+
+                case 1:
+                    importFiles.Copy(new Progress<ProgressReportModel>(DisplayProgress), destinationPathFolder, FoundFielsFromSearch, ct);
+                    break;
+
+                case 2:
+                    importFiles.LastModefiedDate(new Progress<ProgressReportModel>(DisplayProgress), destinationPathFolder, FoundFielsFromSearch, ct);
+                    break;
+
+                case 3:
+                    importFiles.CreatedDate(new Progress<ProgressReportModel>(DisplayProgress), destinationPathFolder, FoundFielsFromSearch, ct);
+                    break;
+
+                case 4:
+                    importFiles.Alfabetic(new Progress<ProgressReportModel>(DisplayProgress), destinationPathFolder, FoundFielsFromSearch, ct);
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Takes an int value and uses it to display the progresbar value
+        /// </summary>
+        /// <param name="progress">An int value for the progressbar Value</param>
+        private void DisplayProgress(ProgressReportModel progress)
+        {
+            // Udskriver Progressbar value (hvor langt progressbaren den er)
+            progressBar.Value = progress.PercentageCompleted;
+        }
+
+        #endregion
+
+        
     }
 }

@@ -27,8 +27,6 @@ namespace FileSort
 
         List<string> ListBoxFileTypesFilter = new List<string>();       // A list of alle the selected items in the "ListBox_FileTypes"
 
-        CancellationTokenSource cts = new CancellationTokenSource();   // CancellationTokenSource
-
         FolderBrowserDialog fbd = new FolderBrowserDialog();
         LanguageSettings LS = new LanguageSettings();
         SearchAndFindFiles SAFF = new SearchAndFindFiles();
@@ -249,61 +247,39 @@ namespace FileSort
                                 #region case 0
                                 try
                                 {
-                                    Task.Run(() => 
+                                    #region Display names for the "From: and To:" paths
+                                    // TO: path
+                                    string[] destPathSplitterArr = destPathFolder.Split('\\');
+                                    List<string> destPathEndFolder = new List<string>();
+                                    foreach (var split in destPathSplitterArr)
                                     {
-                                        #region CancellationToken
-                                        CancellationToken ct = cts.Token;
-                                        if (ct.IsCancellationRequested)
+                                        if (split != "")
                                         {
-                                            cts.Dispose();
-                                            cts = new CancellationTokenSource();
-                                            ct = cts.Token;
+                                            destPathEndFolder.Add(split);
                                         }
-                                        #endregion
+                                    }
 
-                                        #region MessageBox
-
-                                        #region Display names for the "From: and To:" paths
-                                        // TO: path
-                                        string[] destPathSplitterArr = destPathFolder.Split('\\');
-                                        List<string> destPathEndFolder = new List<string>();
-                                        foreach (var split in destPathSplitterArr)
+                                    //From: path
+                                    string[] sourcePathSplitterArr = selectedPath.Split('\\');
+                                    List<string> sourcePathEndFolder = new List<string>();
+                                    foreach (var split in sourcePathSplitterArr)
+                                    {
+                                        if (split != "")
                                         {
-                                            if (split != "")
-                                            {
-                                                destPathEndFolder.Add(split);
-                                            }
+                                            sourcePathEndFolder.Add(split);
                                         }
+                                    }
 
-                                        //From: path
-                                        string[] sourcePathSplitterArr = selectedPath.Split('\\');
-                                        List<string> sourcePathEndFolder = new List<string>();
-                                        foreach (var split in sourcePathSplitterArr)
-                                        {
-                                            if (split != "")
-                                            {
-                                                sourcePathEndFolder.Add(split);
-                                            }
-                                        }
+                                    // MsgBoxTextIndput[ ] = dynamisk string[] indput from LanguageSettings
+                                    string msgText = $"{MsgBoxTextIndput[0]} {sourcePathEndFolder[sourcePathEndFolder.Count - 1]}. {MsgBoxTextIndput[1]} {destPathEndFolder[destPathEndFolder.Count - 1]}.";
+                                    string msgHeader = $"{MsgBoxHeaderIndput}";
 
-                                        #endregion
+                                    #endregion
 
-                                        // MsgBoxTextIndput[ ] = dynamisk string[] indput from LanguageSettings
-                                        string msgText = $"{MsgBoxTextIndput[0]} {sourcePathEndFolder[sourcePathEndFolder.Count - 1]}. {MsgBoxTextIndput[1]} {destPathEndFolder[destPathEndFolder.Count - 1]}.";
-                                        string msgHeader = $"{MsgBoxHeaderIndput}";
+                                    MessageBoxWithProgressBar MBWPB = new MessageBoxWithProgressBar();          // Makes a new window everytime it opens
+                                    MBWPB.Show();                                                               // Opens a new 'MessageBoxWithProgressBar' window
+                                    MBWPB.MessageBox(ComboBox_SortingMethods.SelectedIndex, msgText, msgHeader, destPathFolder, filesFoundInSearch);    // Sender: Int, string, string, string, string[]
 
-                                        // Goes to the main thread to open a new window
-                                        Dispatcher.Invoke(() => 
-                                        {
-                                            MessageBoxWithProgressBar MBWPB = new MessageBoxWithProgressBar();  // Makes a new window everytime it opens
-                                            MBWPB.Show();                                                       // Opens a new 'MessageBoxWithProgressBar' window
-                                            MBWPB.MessageBox(msgText, msgHeader, cts);                          // Sends A (messageBox text, MessageBox Header, CancellationTokenSource)
-                                        });
-                                        #endregion
-
-                                        // Caling the 'Move' method
-                                        SM.Move(destPathFolder, filesFoundInSearch, ct);                        // Sending a (Destination string Path, List<string>, CancellationToken)
-                                    });
                                 }
                                 catch (Exception)
                                 {
@@ -316,7 +292,39 @@ namespace FileSort
                                 #region case 1
                                 try
                                 {
-                                    Task.Run(() => SM.Copy(destPathFolder, filesFoundInSearch));
+                                    #region Display names for the "From: and To:" paths
+                                    // TO: path
+                                    string[] destPathSplitterArr = destPathFolder.Split('\\');
+                                    List<string> destPathEndFolder = new List<string>();
+                                    foreach (var split in destPathSplitterArr)
+                                    {
+                                        if (split != "")
+                                        {
+                                            destPathEndFolder.Add(split);
+                                        }
+                                    }
+
+                                    //From: path
+                                    string[] sourcePathSplitterArr = selectedPath.Split('\\');
+                                    List<string> sourcePathEndFolder = new List<string>();
+                                    foreach (var split in sourcePathSplitterArr)
+                                    {
+                                        if (split != "")
+                                        {
+                                            sourcePathEndFolder.Add(split);
+                                        }
+                                    }
+
+                                    // MsgBoxTextIndput[ ] = dynamisk string[] indput from LanguageSettings
+                                    string msgText = $"{MsgBoxTextIndput[0]} {sourcePathEndFolder[sourcePathEndFolder.Count - 1]}. {MsgBoxTextIndput[1]} {destPathEndFolder[destPathEndFolder.Count - 1]}.";
+                                    string msgHeader = $"{MsgBoxHeaderIndput}";
+
+                                    #endregion
+
+                                    MessageBoxWithProgressBar MBWPB = new MessageBoxWithProgressBar();          // Makes a new window everytime it opens
+                                    MBWPB.Show();                                                               // Opens a new 'MessageBoxWithProgressBar' window
+                                    MBWPB.MessageBox(ComboBox_SortingMethods.SelectedIndex, msgText, msgHeader, destPathFolder, filesFoundInSearch);    // Sender: Int, string, string, string, string[]
+
                                 }
                                 catch (Exception)
                                 {
@@ -329,7 +337,39 @@ namespace FileSort
                                 #region case 2
                                 try
                                 {
-                                    Task.Run(() => SM.LastModefiedDate(destPathFolder, filesFoundInSearch));
+                                    #region Display names for the "From: and To:" paths
+                                    // TO: path
+                                    string[] destPathSplitterArr = destPathFolder.Split('\\');
+                                    List<string> destPathEndFolder = new List<string>();
+                                    foreach (var split in destPathSplitterArr)
+                                    {
+                                        if (split != "")
+                                        {
+                                            destPathEndFolder.Add(split);
+                                        }
+                                    }
+
+                                    //From: path
+                                    string[] sourcePathSplitterArr = selectedPath.Split('\\');
+                                    List<string> sourcePathEndFolder = new List<string>();
+                                    foreach (var split in sourcePathSplitterArr)
+                                    {
+                                        if (split != "")
+                                        {
+                                            sourcePathEndFolder.Add(split);
+                                        }
+                                    }
+
+                                    // MsgBoxTextIndput[ ] = dynamisk string[] indput from LanguageSettings
+                                    string msgText = $"{MsgBoxTextIndput[0]} {sourcePathEndFolder[sourcePathEndFolder.Count - 1]}. {MsgBoxTextIndput[1]} {destPathEndFolder[destPathEndFolder.Count - 1]}.";
+                                    string msgHeader = $"{MsgBoxHeaderIndput}";
+
+                                    #endregion
+
+                                    MessageBoxWithProgressBar MBWPB = new MessageBoxWithProgressBar();          // Makes a new window everytime it opens
+                                    MBWPB.Show();                                                               // Opens a new 'MessageBoxWithProgressBar' window
+                                    MBWPB.MessageBox(ComboBox_SortingMethods.SelectedIndex, msgText, msgHeader, destPathFolder, filesFoundInSearch);    // Sender: Int, string, string, string, string[]
+
                                 }
                                 catch (Exception)
                                 {
@@ -342,7 +382,39 @@ namespace FileSort
                                 #region case 3
                                 try
                                 {
-                                    Task.Run(() => SM.CreatedDate(destPathFolder, filesFoundInSearch));
+                                    #region Display names for the "From: and To:" paths
+                                    // TO: path
+                                    string[] destPathSplitterArr = destPathFolder.Split('\\');
+                                    List<string> destPathEndFolder = new List<string>();
+                                    foreach (var split in destPathSplitterArr)
+                                    {
+                                        if (split != "")
+                                        {
+                                            destPathEndFolder.Add(split);
+                                        }
+                                    }
+
+                                    //From: path
+                                    string[] sourcePathSplitterArr = selectedPath.Split('\\');
+                                    List<string> sourcePathEndFolder = new List<string>();
+                                    foreach (var split in sourcePathSplitterArr)
+                                    {
+                                        if (split != "")
+                                        {
+                                            sourcePathEndFolder.Add(split);
+                                        }
+                                    }
+
+                                    // MsgBoxTextIndput[ ] = dynamisk string[] indput from LanguageSettings
+                                    string msgText = $"{MsgBoxTextIndput[0]} {sourcePathEndFolder[sourcePathEndFolder.Count - 1]}. {MsgBoxTextIndput[1]} {destPathEndFolder[destPathEndFolder.Count - 1]}.";
+                                    string msgHeader = $"{MsgBoxHeaderIndput}";
+
+                                    #endregion
+
+                                    MessageBoxWithProgressBar MBWPB = new MessageBoxWithProgressBar();          // Makes a new window everytime it opens
+                                    MBWPB.Show();                                                               // Opens a new 'MessageBoxWithProgressBar' window
+                                    MBWPB.MessageBox(ComboBox_SortingMethods.SelectedIndex, msgText, msgHeader, destPathFolder, filesFoundInSearch);    // Sender: Int, string, string, string, string[]
+
                                 }
                                 catch (Exception)
                                 {
@@ -355,7 +427,39 @@ namespace FileSort
                                 #region case 4
                                 try
                                 {
-                                    Task.Run(() => SM.Alfabetic(destPathFolder, filesFoundInSearch));
+                                    #region Display names for the "From: and To:" paths
+                                    // TO: path
+                                    string[] destPathSplitterArr = destPathFolder.Split('\\');
+                                    List<string> destPathEndFolder = new List<string>();
+                                    foreach (var split in destPathSplitterArr)
+                                    {
+                                        if (split != "")
+                                        {
+                                            destPathEndFolder.Add(split);
+                                        }
+                                    }
+
+                                    //From: path
+                                    string[] sourcePathSplitterArr = selectedPath.Split('\\');
+                                    List<string> sourcePathEndFolder = new List<string>();
+                                    foreach (var split in sourcePathSplitterArr)
+                                    {
+                                        if (split != "")
+                                        {
+                                            sourcePathEndFolder.Add(split);
+                                        }
+                                    }
+
+                                    // MsgBoxTextIndput[ ] = dynamisk string[] indput from LanguageSettings
+                                    string msgText = $"{MsgBoxTextIndput[0]} {sourcePathEndFolder[sourcePathEndFolder.Count - 1]}. {MsgBoxTextIndput[1]} {destPathEndFolder[destPathEndFolder.Count - 1]}.";
+                                    string msgHeader = $"{MsgBoxHeaderIndput}";
+
+                                    #endregion
+
+                                    MessageBoxWithProgressBar MBWPB = new MessageBoxWithProgressBar();          // Makes a new window everytime it opens
+                                    MBWPB.Show();                                                               // Opens a new 'MessageBoxWithProgressBar' window
+                                    MBWPB.MessageBox(ComboBox_SortingMethods.SelectedIndex, msgText, msgHeader, destPathFolder, filesFoundInSearch);    // Sender: Int, string, string, string, string[]
+
                                 }
                                 catch (Exception)
                                 {
