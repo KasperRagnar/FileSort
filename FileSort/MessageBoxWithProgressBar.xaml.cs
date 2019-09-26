@@ -44,13 +44,15 @@ namespace FileSort
 
             WindowStartupLocation = WindowStartupLocation.CenterScreen;     // Starts this window in the center of the screen.
             ct = cts.Token;                                                 // CancellationToken is set
-            DataImport(new SortingMethods());
+            
 
             Title = msgHeader;                              // Window Titel = message header
             textMessage.Text = msgText;                     // TextBox text = message text
             destinationPathFolder = destPathFolder;         // destPathFolder = users chosen destination folder path
             FoundFielsFromSearch = filesFoundInSearch;      // filesFoundInSearch = A string array of paths to files that match the users search
             sortingMethodOfChoice = sortingMethod;
+
+            DataImport(new SortingMethods());               // Starter En progressbar sammen med den valgte metode
         }
 
         #region Buttons 
@@ -63,18 +65,6 @@ namespace FileSort
         {
             cts.Cancel();   // Cansels all CancellationTokens on this thread
             this.Close();   // Closes this window
-        }
-
-        #endregion
-
-        #region Message Text 
-        public void MessageBox(int sortingMethod, string msgText, string msgHeader, string destPathFolder, string[] filesFoundInSearch)
-        {
-            //Title = msgHeader;                              // Window Titel = message header
-            //textMessage.Text = msgText;                     // TextBox text = message text
-            //destinationPathFolder = destPathFolder;         // destPathFolder = users chosen destination folder path
-            //FoundFielsFromSearch = filesFoundInSearch;      // filesFoundInSearch = A string array of paths to files that match the users search
-            //sortingMethodOfChoice = sortingMethod;
         }
 
         #endregion
