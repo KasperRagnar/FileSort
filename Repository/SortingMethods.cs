@@ -20,11 +20,6 @@ namespace Repository
         FileMovers FM = new FileMovers();
         #endregion
 
-        // TODO: 
-        //  • Få progressbaren til at lukke automatisk når progress rammer 100%
-        //
-
-
 
         /// <summary>
         /// Moves found files from one folder to another

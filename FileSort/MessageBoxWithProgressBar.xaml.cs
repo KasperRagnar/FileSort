@@ -35,7 +35,7 @@ namespace FileSort
 
         public MessageBoxWithProgressBar()
         {
-
+            // default constructor
         }
 
         public MessageBoxWithProgressBar(int sortingMethod, string msgText, string msgHeader, string destPathFolder, string[] filesFoundInSearch)
@@ -76,6 +76,10 @@ namespace FileSort
         /// <param name="importFiles">A new instance of the SortingMethods class</param>
         public void DataImport(SortingMethods importFiles)
         {
+            // TODO: 
+            //  • Få progressbaren til at lukke automatisk når progress rammer 100%
+            //
+
             try
             {
                 switch (sortingMethodOfChoice)
