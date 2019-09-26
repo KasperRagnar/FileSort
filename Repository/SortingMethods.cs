@@ -23,10 +23,7 @@ namespace Repository
         // TODO: 
         //  • Få progressbaren til at lukke automatisk når progress rammer 100%
         //
-        //  • Find ud af hvorfor dette regnestykke ikke vil slutte på 100% i progressbaren. 
 
-        // Udregner hvor langet programmet er i processen, og omdanner det til procenter (%) 
-        // progressObserver.Report(new ProgressReportModel { PercentageCompleted = (i* 100) / filesInfoArr.Length});
 
 
         /// <summary>
@@ -58,7 +55,7 @@ namespace Repository
                         FM.MovingFiles(destPathFolder, file);                                      // Moves files from one place to another, checks if files already exists, makes the 'fullDestination' path if it does not already exists
 
                         // Udregner hvor langet programmet er i processen, og omdanner det til procenter (%) 
-                        progressObserver.Report(new ProgressReportModel { PercentageCompleted = (i * 100) / filesInfoArr.Length });
+                        progressObserver.Report(new ProgressReportModel { PercentageCompleted = (( i +1) * 100) / filesInfoArr.Length });
                     }
 
                     filesInfoArr = null;                                                           // clears the 'FileInfo' array
@@ -125,7 +122,7 @@ namespace Repository
                         renameCounter = 0;                                                          // resets the counter for future use
 
                         // Udregner hvor langet programmet er i processen, og omdanner det til procenter (%) 
-                        progressObserver.Report(new ProgressReportModel { PercentageCompleted = (i * 100) / filesInfoArr.Length });
+                        progressObserver.Report(new ProgressReportModel { PercentageCompleted = ((i + 1) * 100) / filesInfoArr.Length });
                     }
 
                     filesInfoArr = null;                                                            // clears the 'FileInfo' array
@@ -169,7 +166,7 @@ namespace Repository
                         FM.MovingFiles(fullDestination, file);                                              // Moves files from one place to another, checks if files already exists, makes the 'fullDestination' path if it does not already exists
 
                         // Udregner hvor langet programmet er i processen, og omdanner det til procenter (%) 
-                        progressObserver.Report(new ProgressReportModel { PercentageCompleted = (i * 100) / filesInfoArr.Length });
+                        progressObserver.Report(new ProgressReportModel { PercentageCompleted = ((i + 1) * 100) / filesInfoArr.Length });
                     }
 
                     filesInfoArr = null;                                                                    // clears the 'FileInfo' array
@@ -214,7 +211,7 @@ namespace Repository
                         FM.MovingFiles(fullDestination, file);                                              // Moves files from one place to another, checks if files already exists, makes the 'fullDestination' path if it does not already exists
 
                         // Udregner hvor langet programmet er i processen, og omdanner det til procenter (%) 
-                        progressObserver.Report(new ProgressReportModel { PercentageCompleted = (i * 100) / filesInfoArr.Length });
+                        progressObserver.Report(new ProgressReportModel { PercentageCompleted = ((i + 1) * 100) / filesInfoArr.Length });
                     }
 
                     filesInfoArr = null;                                                                    // clears the 'FileInfo' array
@@ -329,7 +326,7 @@ namespace Repository
                         #endregion
 
                         // Udregner hvor langet programmet er i processen, og omdanner det til procenter (%) 
-                        progressObserver.Report(new ProgressReportModel { PercentageCompleted = (i * 100) / filesInfoArr.Length });
+                        progressObserver.Report(new ProgressReportModel { PercentageCompleted = ((i + 1) * 100) / filesInfoArr.Length });
                     }
 
                     filesInfoArr = null;                                                                    // clears the 'FileInfo' array
