@@ -76,31 +76,39 @@ namespace FileSort
         /// <param name="importFiles">A new instance of the SortingMethods class</param>
         public void DataImport(SortingMethods importFiles)
         {
-            switch (sortingMethodOfChoice)
+            try
             {
-                case 0:
-                    importFiles.Move(new Progress<ProgressReportModel>(DisplayProgress), destinationPathFolder, FoundFielsFromSearch, ct);
-                    break;
+                switch (sortingMethodOfChoice)
+                {
+                    case 0:
+                        importFiles.Move(new Progress<ProgressReportModel>(DisplayProgress), destinationPathFolder, FoundFielsFromSearch, ct);
+                        break;
 
-                case 1:
-                    importFiles.Copy(new Progress<ProgressReportModel>(DisplayProgress), destinationPathFolder, FoundFielsFromSearch, ct);
-                    break;
+                    case 1:
+                        importFiles.Copy(new Progress<ProgressReportModel>(DisplayProgress), destinationPathFolder, FoundFielsFromSearch, ct);
+                        break;
 
-                case 2:
-                    importFiles.LastModefiedDate(new Progress<ProgressReportModel>(DisplayProgress), destinationPathFolder, FoundFielsFromSearch, ct);
-                    break;
+                    case 2:
+                        importFiles.LastModefiedDate(new Progress<ProgressReportModel>(DisplayProgress), destinationPathFolder, FoundFielsFromSearch, ct);
+                        break;
 
-                case 3:
-                    importFiles.CreatedDate(new Progress<ProgressReportModel>(DisplayProgress), destinationPathFolder, FoundFielsFromSearch, ct);
-                    break;
+                    case 3:
+                        importFiles.CreatedDate(new Progress<ProgressReportModel>(DisplayProgress), destinationPathFolder, FoundFielsFromSearch, ct);
+                        break;
 
-                case 4:
-                    importFiles.Alfabetic(new Progress<ProgressReportModel>(DisplayProgress), destinationPathFolder, FoundFielsFromSearch, ct);
-                    break;
+                    case 4:
+                        importFiles.Alfabetic(new Progress<ProgressReportModel>(DisplayProgress), destinationPathFolder, FoundFielsFromSearch, ct);
+                        break;
 
-                default:
-                    break;
+                    default:
+                        break;
+                }
             }
+            catch (Exception)
+            {
+                // Hånter Exception her
+            }
+
         }
 
         /// <summary>
