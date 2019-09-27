@@ -227,7 +227,6 @@ namespace FileSort
                     #endregion
 
                     #region Looking for files that mach the 'ListBoxFileTypesFilter' list
-
                     //-- Calling the search Method and gets back a Array of Strings (every string is a full file path)
                     String[] filesFoundInSearch = SAFF.GetFilesFrom(selectedPath, ListBoxFileTypesFilter, allOrOneFolderBool);
 

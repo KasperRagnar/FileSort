@@ -18,7 +18,7 @@
         </Grid.RowDefinitions>
 
         <!--#region Row 0-->
-        <TextBox Name="textMessage" Text="hellow world!" Grid.Column="0" Grid.Row="0" Margin="15,10,15,0" IsReadOnly="True" BorderThickness="0"></TextBox>
+        <TextBox Name="textMessage" Text="" Grid.Column="0" Grid.Row="0" Margin="15,10,15,0" IsReadOnly="True" BorderThickness="0"></TextBox>
         <!--#endregion-->
         
         <!--#region Row 1-->

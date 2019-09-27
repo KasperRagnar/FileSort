@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,8 +14,6 @@ namespace Repository
     {
         #region GLOBAL 
         float renameCounter = 0;                                                // Used for giving a number to filenames if there are more then one file with the same name
-
-        FileInfo[] filesInfoArr;                                                // An empty array used for temporarily hold information about individual files
 
         DoFileExistCheck DFEC = new DoFileExistCheck();
         FileMovers FM = new FileMovers();
@@ -32,16 +31,18 @@ namespace Repository
             {
                 return Task.Run(() =>
                 {
-                    // adds every files fileinfo to a 'FileInfo' array
+                    List<FileInfo> filesInfoArr = new List<FileInfo>();                             // An empty list used for temporarily hold information about individual files
+
+                    // adds every files fileinfo from 'filesFoundInSearch' to a 'FileInfo' list
                     foreach (var filePath in filesFoundInSearch)
                     {
-                        ct.ThrowIfCancellationRequested();                                         // CanselationToken 
-                        var dir = new DirectoryInfo(Path.GetDirectoryName(filePath));
-                        filesInfoArr = dir.GetFiles();
+                        ct.ThrowIfCancellationRequested();                                          // CanselationToken 
+
+                        filesInfoArr.Add(new FileInfo(filePath));                                   // Adds a new 'FileInfo' object made from a filepath to a list<FileInfo>
                     }
 
                     // sorting all files in the global 'movedFilesArr' array.
-                    for (int i = 0; i < filesInfoArr.Length; i++)
+                    for (int i = 0; i < filesInfoArr.Count; i++)
                     {
                         FileInfo file = filesInfoArr[i];                                           // The current file element in the array
 
@@ -50,7 +51,7 @@ namespace Repository
                         FM.MovingFiles(destPathFolder, file);                                      // Moves files from one place to another, checks if files already exists, makes the 'fullDestination' path if it does not already exists
 
                         // Udregner hvor langet programmet er i processen, og omdanner det til procenter (%) 
-                        progressObserver.Report(new ProgressReportModel { PercentageCompleted = (( i +1) * 100) / filesInfoArr.Length });
+                        progressObserver.Report(new ProgressReportModel { PercentageCompleted = (( i +1) * 100) / filesInfoArr.Count });
                     }
 
                     filesInfoArr = null;                                                           // clears the 'FileInfo' array
@@ -73,16 +74,18 @@ namespace Repository
             {
                 return Task.Run(() =>
                 {
-                    // adds every files fileinfo to a 'FileInfo' array
+                    List<FileInfo> filesInfoArr = new List<FileInfo>();                             // An empty list used for temporarily hold information about individual files
+
+                    // adds every files fileinfo from 'filesFoundInSearch' to a 'FileInfo' list
                     foreach (var filePath in filesFoundInSearch)
                     {
                         ct.ThrowIfCancellationRequested();                                          // CanselationToken 
-                        var dir = new DirectoryInfo(Path.GetDirectoryName(filePath));
-                        filesInfoArr = dir.GetFiles();
+
+                        filesInfoArr.Add(new FileInfo(filePath));                                   // Adds a new 'FileInfo' object made from a filepath to a list<FileInfo>
                     }
 
                     // sorting all files in the global 'movedFilesArr' array.
-                    for (int i = 0; i < filesInfoArr.Length; i++)
+                    for (int i = 0; i < filesInfoArr.Count; i++)
                     {
                         FileInfo file = filesInfoArr[i];                                            // The current file element in the array
 
@@ -117,7 +120,7 @@ namespace Repository
                         renameCounter = 0;                                                          // resets the counter for future use
 
                         // Udregner hvor langet programmet er i processen, og omdanner det til procenter (%) 
-                        progressObserver.Report(new ProgressReportModel { PercentageCompleted = ((i + 1) * 100) / filesInfoArr.Length });
+                        progressObserver.Report(new ProgressReportModel { PercentageCompleted = ((i + 1) * 100) / filesInfoArr.Count });
                     }
 
                     filesInfoArr = null;                                                            // clears the 'FileInfo' array
@@ -140,16 +143,18 @@ namespace Repository
             {
                 return Task.Run(() =>
                 {
-                    // adds every files fileinfo to a 'FileInfo' array
+                    List<FileInfo> filesInfoArr = new List<FileInfo>();                             // An empty list used for temporarily hold information about individual files
+
+                    // adds every files fileinfo from 'filesFoundInSearch' to a 'FileInfo' list
                     foreach (var filePath in filesFoundInSearch)
                     {
-                        ct.ThrowIfCancellationRequested();                                                  // CanselationToken 
-                        var dir = new DirectoryInfo(Path.GetDirectoryName(filePath));
-                        filesInfoArr = dir.GetFiles();
+                        ct.ThrowIfCancellationRequested();                                          // CanselationToken 
+
+                        filesInfoArr.Add(new FileInfo(filePath));                                   // Adds a new 'FileInfo' object made from a filepath to a list<FileInfo>
                     }
 
                     // sorting all files in the global 'movedFilesArr' array.
-                    for (int i = 0; i < filesInfoArr.Length; i++)
+                    for (int i = 0; i < filesInfoArr.Count; i++)
                     {
                         FileInfo file = filesInfoArr[i];                                                    // The current file element in the array
 
@@ -161,7 +166,7 @@ namespace Repository
                         FM.MovingFiles(fullDestination, file);                                              // Moves files from one place to another, checks if files already exists, makes the 'fullDestination' path if it does not already exists
 
                         // Udregner hvor langet programmet er i processen, og omdanner det til procenter (%) 
-                        progressObserver.Report(new ProgressReportModel { PercentageCompleted = ((i + 1) * 100) / filesInfoArr.Length });
+                        progressObserver.Report(new ProgressReportModel { PercentageCompleted = ((i + 1) * 100) / filesInfoArr.Count });
                     }
 
                     filesInfoArr = null;                                                                    // clears the 'FileInfo' array
@@ -185,16 +190,18 @@ namespace Repository
             {
                 return Task.Run(() =>
                 {
-                    // adds every files fileinfo to a 'FileInfo' array
+                    List<FileInfo> filesInfoArr = new List<FileInfo>();                             // An empty list used for temporarily hold information about individual files
+
+                    // adds every files fileinfo from 'filesFoundInSearch' to a 'FileInfo' list
                     foreach (var filePath in filesFoundInSearch)
                     {
-                        ct.ThrowIfCancellationRequested();                                                  // CanselationToken 
-                        var dir = new DirectoryInfo(Path.GetDirectoryName(filePath));
-                        filesInfoArr = dir.GetFiles();
+                        ct.ThrowIfCancellationRequested();                                          // CanselationToken 
+
+                        filesInfoArr.Add(new FileInfo(filePath));                                   // Adds a new 'FileInfo' object made from a filepath to a list<FileInfo>
                     }
 
                     // sorting all files in the global 'movedFilesArr' array.
-                    for (int i = 0; i < filesInfoArr.Length; i++)
+                    for (int i = 0; i < filesInfoArr.Count; i++)
                     {
                         FileInfo file = filesInfoArr[i];                                                    // The current file element in the array
 
@@ -206,7 +213,7 @@ namespace Repository
                         FM.MovingFiles(fullDestination, file);                                              // Moves files from one place to another, checks if files already exists, makes the 'fullDestination' path if it does not already exists
 
                         // Udregner hvor langet programmet er i processen, og omdanner det til procenter (%) 
-                        progressObserver.Report(new ProgressReportModel { PercentageCompleted = ((i + 1) * 100) / filesInfoArr.Length });
+                        progressObserver.Report(new ProgressReportModel { PercentageCompleted = ((i + 1) * 100) / filesInfoArr.Count });
                     }
 
                     filesInfoArr = null;                                                                    // clears the 'FileInfo' array
@@ -238,16 +245,18 @@ namespace Repository
             {
                 return Task.Run(() =>
                 {
-                    // adds every files fileinfo to a 'FileInfo' array
+                    List<FileInfo> filesInfoArr = new List<FileInfo>();                             // An empty list used for temporarily hold information about individual files
+
+                    // adds every files fileinfo from 'filesFoundInSearch' to a 'FileInfo' list
                     foreach (var filePath in filesFoundInSearch)
                     {
-                        ct.ThrowIfCancellationRequested();                                                  // CanselationToken 
-                        var dir = new DirectoryInfo(Path.GetDirectoryName(filePath));
-                        filesInfoArr = dir.GetFiles();
+                        ct.ThrowIfCancellationRequested();                                          // CanselationToken 
+
+                        filesInfoArr.Add(new FileInfo(filePath));                                   // Adds a new 'FileInfo' object made from a filepath to a list<FileInfo>
                     }
 
                     // sorting all files in the global 'movedFilesArr' array.
-                    for (int i = 0; i < filesInfoArr.Length; i++)
+                    for (int i = 0; i < filesInfoArr.Count; i++)
                     {
                         FileInfo file = filesInfoArr[i];                                                    // The current file element in the array
 
@@ -321,7 +330,7 @@ namespace Repository
                         #endregion
 
                         // Udregner hvor langet programmet er i processen, og omdanner det til procenter (%) 
-                        progressObserver.Report(new ProgressReportModel { PercentageCompleted = ((i + 1) * 100) / filesInfoArr.Length });
+                        progressObserver.Report(new ProgressReportModel { PercentageCompleted = ((i + 1) * 100) / filesInfoArr.Count });
                     }
 
                     filesInfoArr = null;                                                                    // clears the 'FileInfo' array

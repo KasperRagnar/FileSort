@@ -18,7 +18,6 @@ namespace Repository
         {
             List<String> filesFound = new List<String>();
 
-
             var searchOption = isRecursive ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly; // true | false
 
             foreach (var filter in filters)

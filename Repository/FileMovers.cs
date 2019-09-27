@@ -17,47 +17,55 @@ namespace Repository
 
         public void MovingFiles(string fullDestination, FileInfo file)
         {
-            #region Directory
-            // Creates a new directory if the given directory does not yet exist
-            if (!Directory.Exists(fullDestination))
+            try
             {
-                Directory.CreateDirectory(fullDestination);
-            }
-            #endregion
-
-            #region Moving file 
-            // Moves file to new folder
-            if (Directory.Exists(fullDestination))
-            {
-                bool check1 = DFEC.CheckIfFileAlreadyExist(fullDestination, file.Name);                     // checks if the file allready exists in the destination folder
-
-                // Change the name of the file and then moves it. if the file allready exists in the destination folder
-                if (check1 == true)
+                #region Directory
+                // Creates a new directory if the given directory does not yet exist
+                if (!Directory.Exists(fullDestination))
                 {
-                    string[] fileNameArr = file.Name.Split('.');                                            // Seperate filename and it's file type
+                    Directory.CreateDirectory(fullDestination);
+                }
+                #endregion
 
-                    string NewfileName;
-                    bool check2 = true;
+                #region Moving file 
+                // Moves file to new folder
+                if (Directory.Exists(fullDestination))
+                {
+                    bool check1 = DFEC.CheckIfFileAlreadyExist(fullDestination, file.Name);                     // checks if the file allready exists in the destination folder
 
-                    do // If the filename already exists in this directory. then add or increment a number in front of the filename to get a unique filename
+                    // Change the name of the file and then moves it. if the file allready exists in the destination folder
+                    if (check1 == true)
                     {
-                        NewfileName = fileNameArr[0] + "(" + ++renameCounter + ")" + "." + fileNameArr[1];  // A new complete filename with a filetype
-                        check2 = DFEC.CheckIfFileAlreadyExist(fullDestination, NewfileName);
+                        string[] fileNameArr = file.Name.Split('.');                                            // Seperate filename and it's file type
 
-                    } while (check2);
+                        string NewfileName;
+                        bool check2 = true;
 
-                    Directory.Move(file.FullName, fullDestination + "\\" + NewfileName);               // Moves a file from one dir to another
+                        do // If the filename already exists in this directory. then add or increment a number in front of the filename to get a unique filename
+                        {
+                            NewfileName = fileNameArr[0] + "(" + ++renameCounter + ")" + "." + fileNameArr[1];  // A new complete filename with a filetype
+                            check2 = DFEC.CheckIfFileAlreadyExist(fullDestination, NewfileName);
+
+                        } while (check2);
+
+                        Directory.Move(file.FullName, fullDestination + "\\" + NewfileName);               // Moves a file from one dir to another
+                    }
+
+                    // Moves the file. if the file does not exists in the destination folder
+                    else
+                    {
+                        Directory.Move(file.FullName, fullDestination + "\\" + file.Name);                 // Moves a file from one dir to another
+                    }
+
+                    renameCounter = 0;                                                                      // resets the counter for future use
                 }
-
-                // Moves the file. if the file does not exists in the destination folder
-                else
-                {
-                    Directory.Move(file.FullName, fullDestination + "\\" + file.Name);                 // Moves a file from one dir to another
-                }
-
-                renameCounter = 0;                                                                      // resets the counter for future use
+                #endregion
             }
-            #endregion
+            catch (Exception)
+            {
+                throw;
+            }
+            
         }
 
     }
