@@ -54,7 +54,7 @@ namespace Repository
                     // Moves the file. if the file does not exists in the destination folder
                     else
                     {
-                        Directory.Move(file.FullName, fullDestination + "\\" + file.Name);                 // Moves a file from one dir to another
+                        Directory.Move(file.FullName, fullDestination + file.Name);                 // Moves a file from one dir to another
                     }
 
                     renameCounter = 0;                                                                      // resets the counter for future use
