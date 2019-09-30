@@ -17,6 +17,7 @@ namespace Models
         public string TextBox_FileTypes { get; set; }
         public string TextBox_Language { get; set; }
         public string TextBox_StylesTextBox { get; set; }
+        public string TextBox_AddCostumFileType { get; set; }
 
         // Text inside the ConboBoxes "SortingMethod, FileTypes, Language"
         public string[] ComboBox_SortingMethods { get; set; }
@@ -34,6 +35,7 @@ namespace Models
         public string btn_DestinationPathButton { get; set; }
         public string btn_RemoveFileTypeToList { get; set; }
         public string btn_AddFileTypeToList { get; set; }
+        public string btn_AddCostumFileType { get; set; }
 
         // Radio buttons text
         public string radio_SearchFolderOption { get; set; }

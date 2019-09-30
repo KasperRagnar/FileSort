@@ -142,8 +142,8 @@
                         <Button Name="RemoveFileTypeToList" Content="Remove" Grid.Column="1" Grid.Row="0" Margin="5 0 0 0" Click="RemoveFileTypeToList_Click"></Button>
                     </Grid>
 
-                    <!--Add a costum File Types-->
-                    <TextBox Grid.Column="0" Grid.Row="7" Text="Add a costum File Type" Margin="0 0 0 5" IsReadOnly="True" BorderThickness="0"></TextBox>
+                    <!--#region Add a costum File Types-->
+                    <TextBox Name="TextBox_AddCostumFileType" Grid.Column="0" Grid.Row="7" Text="Add a costum File Type" Margin="0 0 0 5" IsReadOnly="True" BorderThickness="0"></TextBox>
                     <Grid Grid.Column="0" Grid.Row="8">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="2*"/>
@@ -153,11 +153,11 @@
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
-
-                        <TextBox Grid.Column="0" Grid.Row="0" Text="kjfhgsoaejf"></TextBox>
-                        <Button Grid.Column="1" Grid.Row="0" Content="add"></Button>
+                        <TextBox Name="TextBox_AddCostumFileTypeInput" Grid.Column="0" Grid.Row="0" Margin="0 0 5 0" Text=""></TextBox>
+                        <Button Name="btn_AddCostumFileType" Grid.Column="1" Grid.Row="0" Content="Add" ></Button>
                     </Grid>
-
+                    <!--#endregion--> 
+                    
                 </Grid>
                 <!--#endregion -->
 

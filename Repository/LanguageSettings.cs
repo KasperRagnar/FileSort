@@ -28,13 +28,16 @@ namespace Repository
                 ComboBox_SortingMethods = new String[] { "Flyt", "Kopiere", "Sidste redigeret dato", "Skaber Dato", "Alfabetisk (abc)" },
 
                 TextBox_FileTypes = "Fil Typer",
-                btn_AddFileTypeToList = "Tilføj til listen",
-                btn_RemoveFileTypeToList = "Fjern fra listen",
+                btn_AddFileTypeToList = "Tilføj",
+                btn_RemoveFileTypeToList = "Fjern",
 
                 TextBox_Language = "Sprog",
 
                 TextBox_StylesTextBox = "Temaer", 
                 ComboBox_Styles = new String[] { "Lyst Tema", "Mørkt Tema" },
+
+                TextBox_AddCostumFileType = "Tilføj en ny filtype",
+                btn_AddCostumFileType = "Tilføj",
 
                 TextBox_SourchPathLabel = "Hvor fra ?",
                 btn_SourchPathButton = "Gennemse",
@@ -61,13 +64,16 @@ namespace Repository
                 ComboBox_SortingMethods = new String[] { "Move", "Copy", "Last Modefied Date", "Created Date", "Alfabetic (abc)" },
 
                 TextBox_FileTypes = "File Types",
-                btn_AddFileTypeToList = "Add to list",
-                btn_RemoveFileTypeToList = "Remove from list",
+                btn_AddFileTypeToList = "Add",
+                btn_RemoveFileTypeToList = "Remove",
 
                 TextBox_Language = "Language",
 
                 TextBox_StylesTextBox = "Themes",
                 ComboBox_Styles = new String[] { "Light Mode", "Dark Mode"},
+
+                TextBox_AddCostumFileType = "Add a custom File Type",
+                btn_AddCostumFileType = "Add",
 
                 TextBox_SourchPathLabel = "Sourch Path",
                 btn_SourchPathButton = "Browse",

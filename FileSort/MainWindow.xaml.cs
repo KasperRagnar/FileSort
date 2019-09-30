@@ -100,6 +100,8 @@ namespace FileSort
         {
             ListBox_FileTypes.Items.Remove(ListBox_FileTypes.SelectedItem);
         }
+
+
         #endregion
 
         #region Language
@@ -129,6 +131,9 @@ namespace FileSort
 
                     TextBox_StylesTextBox.Text = ChousenLanguageList.TextBox_StylesTextBox;
                     ComboBox_Styles.ItemsSource = ChousenLanguageList.ComboBox_Styles;
+
+                    TextBox_AddCostumFileType.Text = ChousenLanguageList.TextBox_AddCostumFileType;
+                    btn_AddCostumFileType.Content = ChousenLanguageList.btn_AddCostumFileType;
 
                     SourchPathLabel.Content = ChousenLanguageList.TextBox_SourchPathLabel;
                     SourchPathButton.Content = ChousenLanguageList.btn_SourchPathButton;
@@ -535,6 +540,7 @@ namespace FileSort
             }
         }
         #endregion
+
 
     }
 }
