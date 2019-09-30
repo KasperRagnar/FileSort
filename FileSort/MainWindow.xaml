@@ -14,14 +14,14 @@
         <StackPanel>
 
             <!--#region Application image-->
-            <Grid>
+            <Grid Height="100">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*" />
-                    <ColumnDefinition Width="7*" />
-                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="0.5*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="0.5*" />
                 </Grid.ColumnDefinitions>
 
-                <Image Source="Billeder\FileSort Image2.png" MaxHeight="150" Grid.Column="1"></Image>
+                <Image Source="Billeder\FileSort Image2.png" MaxHeight="150" Grid.Column="1"/>
 
                 <StackPanel Grid.Column="0">
                     <Button Name="InfoBox" Content="Info" Background="{x:Null}" BorderBrush="{x:Null}" Cursor="Hand" Click="InfoBox_Click"  />
@@ -53,6 +53,8 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
 
@@ -60,22 +62,38 @@
                 <TextBox Name="SortingMethodsTextBox" Text="Sorting Method" IsReadOnly="True" BorderThickness="0" Margin="0 0 0 5" Grid.Column="0" Grid.Row="0"/>
                 <ComboBox Name="ComboBox_SortingMethods" Grid.Column="0" Grid.Row="1"></ComboBox>
 
+                <!--Space-->
+                <TextBox Grid.Column="0" Grid.Row="2" IsReadOnly="True" BorderThickness="0"></TextBox>
+                
+                <!--Mode-->
+                <TextBox Name="TextBox_StylesTextBox" Text="Styles" IsReadOnly="True" BorderThickness="0" Margin="0 0 0 5" Grid.Column="0" Grid.Row="3"/>
+                <ComboBox Name="ComboBox_Styles" Grid.Column="0" Grid.Row="4" Height="22" VerticalAlignment="Bottom" SelectionChanged="ComboBox_Languages_SelectionChanged"></ComboBox>
+                
+                <!--Space-->
+                <TextBox Grid.Column="0" Grid.Row="5" IsReadOnly="True" BorderThickness="0"></TextBox>
+                
                 <!--Language-->
-                <TextBox Name="LanguageesTextBox" Text="Language" IsReadOnly="True" BorderThickness="0" Margin="0 0 0 5" Grid.Column="0" Grid.Row="4"/>
-                <ComboBox Name="ComboBox_Languages" Grid.Column="0" Grid.Row="5" Height="22" VerticalAlignment="Bottom" SelectionChanged="ComboBox_Languages_SelectionChanged"></ComboBox>
+                <TextBox Name="LanguageesTextBox" Text="Language" IsReadOnly="True" BorderThickness="0" Margin="0 0 0 5" Grid.Column="0" Grid.Row="6"/>
+                <ComboBox Name="ComboBox_Languages" Grid.Column="0" Grid.Row="7" Height="22" VerticalAlignment="Bottom" SelectionChanged="ComboBox_Languages_SelectionChanged"></ComboBox>
 
                 <!--File Types-->
                 <TextBox Name="FileTypesTextBox" Text="File Types" IsReadOnly="True" BorderThickness="0" Margin="0 0 0 5" Grid.Column="2" Grid.Row="0"/>
                 <ComboBox Name="ComboBox_FileTypes" Grid.Column="2" Grid.Row="1"></ComboBox>
 
+                <!--Space-->
+                <TextBox Grid.Column="2" Grid.Row="2" IsReadOnly="True" BorderThickness="0"></TextBox>
+                
                 <!--Add a File Type to the list-->
-                <Button Name="AddFileTypeToList" Content="Add to list" Grid.Column="2" Grid.Row="3" Margin="0 23 0 0" Click="AddFileTypeToList_Click"></Button>
+                <Button Name="AddFileTypeToList" Content="Add to list" Grid.Column="2" Grid.Row="3" Grid.RowSpan="2" Margin="0 0 0 0" Click="AddFileTypeToList_Click"></Button>
 
+                <!--Space-->
+                <TextBox Grid.Column="2" Grid.Row="5" IsReadOnly="True" BorderThickness="0"></TextBox>
+                
                 <!--Remove a File Type to the list-->
-                <Button Name="RemoveFileTypeToList" Content="Remove from list" Grid.Column="2" Grid.Row="5" Height="22" VerticalAlignment="Top" Click="RemoveFileTypeToList_Click"></Button>
+                <Button Name="RemoveFileTypeToList" Content="Remove from list" Grid.Column="2" Grid.Row="6" Grid.RowSpan="2"  Click="RemoveFileTypeToList_Click"></Button>
 
                 <!--File Listbox-->
-                <ListBox Name="ListBox_FileTypes" Grid.Column="1" Grid.Row="1" Grid.RowSpan="6" BorderThickness="1" BorderBrush="Gray" Margin="5 0 5 0" MaxHeight="108" ></ListBox>
+                <ListBox Name="ListBox_FileTypes" Grid.Column="1" Grid.Row="1" Grid.RowSpan="7" BorderThickness="1" BorderBrush="Gray" Margin="5 0 5 0" MaxHeight="140" ></ListBox>
 
             </Grid>
             <!--#endregion-->
@@ -91,16 +109,20 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <Label Grid.Column="0" Grid.Row="0" Name="SourchPathLabel" Content="Source Path" Margin="0 10 0 0"></Label>
-                <Label Grid.Column="0" Grid.Row="2" Name="DestinationPathLabel" Content="Destination Path"></Label>
+                <!--Spaceer line-->
+                <TextBox Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" IsReadOnly="True" BorderThickness="0" Text="___________________________________________________________________________" ></TextBox>
 
-                <Button Grid.Column="1" Grid.Row="1" Name="SourchPathButton" Content="Browse" Margin="5 0 0 0" Click="SourchPathButton_Click"></Button>
-                <Button Grid.Column="1" Grid.Row="3" Name="DestinationPathButton" Content="Browse" Margin="5 0 0 0" Click="DestinationPathButton_Click"></Button>
+                <Label Grid.Column="0" Grid.Row="1" Name="SourchPathLabel" Content="Source Path" Margin="0 0 0 0"></Label>
+                <Label Grid.Column="0" Grid.Row="3" Name="DestinationPathLabel" Content="Destination Path"></Label>
 
-                <TextBox Grid.Column="0" Grid.Row="1" Name="SourchPathBox" IsEnabled="False" IsReadOnly="True" BorderBrush="Black"></TextBox>
-                <TextBox Grid.Column="0" Grid.Row="3" Name="DestinationPathBox" IsEnabled="False" IsReadOnly="True" BorderBrush="Black"></TextBox>
+                <Button Grid.Column="1" Grid.Row="2" Name="SourchPathButton" Content="Browse" Margin="5 0 0 0" Click="SourchPathButton_Click"></Button>
+                <Button Grid.Column="1" Grid.Row="4" Name="DestinationPathButton" Content="Browse" Margin="5 0 0 0" Click="DestinationPathButton_Click"></Button>
+
+                <TextBox Grid.Column="0" Grid.Row="2" Name="SourchPathBox" IsEnabled="False" IsReadOnly="True" BorderBrush="Black"></TextBox>
+                <TextBox Grid.Column="0" Grid.Row="4" Name="DestinationPathBox" IsEnabled="False" IsReadOnly="True" BorderBrush="Black"></TextBox>
             </Grid>
             <!--#endregion-->
 

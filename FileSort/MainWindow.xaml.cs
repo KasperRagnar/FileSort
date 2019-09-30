@@ -39,17 +39,18 @@ namespace FileSort
             InitializeComponent();
 
             #region UI / GUI
-            WindowStartupLocation = WindowStartupLocation.CenterScreen;  // Starts the application up in the middle of the sceen
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;     // Starts the application up in the middle of the sceen
 
-            ComboBox_FileTypes.ItemsSource = LS.FileTypesArr;            // Add's a 'File Type'list to the UI.
-            languageIndexedSelection = ComboBox_Languages.SelectedIndex; // Is used for sending info about the selectet language down to 'MessageBoxErrorMessages' in the Repository.
+            ComboBox_FileTypes.ItemsSource = LS.FileTypesArr;               // Add's a 'File Type'list to the UI.
+            languageIndexedSelection = ComboBox_Languages.SelectedIndex;    // Is used for sending info about the selectet language down to 'MessageBoxErrorMessages' in the Repository.
 
-            ComboBox_Languages.ItemsSource = LS.LanguagesArr;            // Add's a 'language' list to the UI.
-            ComboBox_Languages.SelectedIndex = 1;                        // Sets the default language in the UI to: English 
-            ComboBox_SortingMethods.SelectedIndex = 0;                   // Sets the default Sorting method in the UI to: Move 
-            ComboBox_FileTypes.SelectedIndex = 0;                        // Sets the default file type in the UI to: .jpg 
+            ComboBox_Languages.ItemsSource = LS.LanguagesArr;               // Add's a 'language' list to the UI.
+            ComboBox_Languages.SelectedIndex = 1;                           // Sets the default language in the UI to: English 
+            ComboBox_Styles.SelectedIndex = 0;                              // Sets the default Theam in the UI to: Light Mode 
+            ComboBox_SortingMethods.SelectedIndex = 0;                      // Sets the default Sorting method in the UI to: Move 
+            ComboBox_FileTypes.SelectedIndex = 0;                           // Sets the default file type in the UI to: .jpg 
             #endregion
-
+            
         }
 
         #region Message box & Error Messages clean-up
@@ -123,6 +124,9 @@ namespace FileSort
                     RemoveFileTypeToList.Content = ChousenLanguageList.btn_RemoveFileTypeToList;
 
                     LanguageesTextBox.Text = ChousenLanguageList.TextBox_Language;
+
+                    TextBox_StylesTextBox.Text = ChousenLanguageList.TextBox_StylesTextBox;
+                    ComboBox_Styles.ItemsSource = ChousenLanguageList.ComboBox_Styles;
 
                     SourchPathLabel.Content = ChousenLanguageList.TextBox_SourchPathLabel;
                     SourchPathButton.Content = ChousenLanguageList.btn_SourchPathButton;

@@ -8,7 +8,7 @@ namespace Repository
     public class LanguageSettings
     {
         #region GLOBAL
-        LanguageModel LM = new LanguageModel();
+        //LanguageModel LM = new LanguageModel();
 
         public readonly string[] FileTypesArr = new String[] { ".jpg", ".jpeg", ".png", ".tif", ".tiff", ".gif", ".3fr", ".raw", ".dcr", ".cr3", ".cr2", ".erf", ".mef", ".mos", ".nef", ".orf", ".pef", ".rw2", ".arw", ".crw", ".srf", ".sr2", ".doc", ".docx", ".pdf", ".rtf", ".tex", ".txt", ".wks", ".wps", ".wpd", ".dll", ".exe" }; // 'File Type' list to the UI. og Back-end.
         public readonly string[] LanguagesArr = new String[] { "Dansk", "English" }; // 'Language' list to the UI. og Back-end.
@@ -32,6 +32,9 @@ namespace Repository
                 btn_RemoveFileTypeToList = "Fjern fra listen",
 
                 TextBox_Language = "Sprog",
+
+                TextBox_StylesTextBox = "Temaer", 
+                ComboBox_Styles = new String[] { "Lyst Tema", "Mørkt Tema" },
 
                 TextBox_SourchPathLabel = "Hvor fra ?",
                 btn_SourchPathButton = "Gennemse",
@@ -62,6 +65,9 @@ namespace Repository
                 btn_RemoveFileTypeToList = "Remove from list",
 
                 TextBox_Language = "Language",
+
+                TextBox_StylesTextBox = "Themes",
+                ComboBox_Styles = new String[] { "Light Mode", "Dark Mode"},
 
                 TextBox_SourchPathLabel = "Sourch Path",
                 btn_SourchPathButton = "Browse",
