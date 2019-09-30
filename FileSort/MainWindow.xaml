@@ -154,7 +154,7 @@
                         </Grid.RowDefinitions>
 
                         <TextBox Name="TextBox_AddCostumFileTypeInput" Grid.Column="0" Grid.Row="0" Margin="0 0 5 0" Text=""></TextBox>
-                        <Button Name="btn_AddCostumFileType" Grid.Column="1" Grid.Row="0" Content="Add" ></Button>
+                        <Button Name="btn_AddCostumFileType" Grid.Column="1" Grid.Row="0" Content="Add" Click="Btn_AddCostumFileType_Click" ></Button>
                     </Grid>
                     <!--#endregion--> 
                     
@@ -179,7 +179,7 @@
                 </Grid.RowDefinitions>
 
                 <!--Spaceer line-->
-                <TextBox Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" IsReadOnly="True" BorderThickness="0" Text="___________________________________________________________________________" ></TextBox>
+                <TextBox Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" IsReadOnly="True" BorderThickness="0" Focusable="False" Text="___________________________________________________________________________" ></TextBox>
 
                 <Label Grid.Column="0" Grid.Row="1" Name="SourchPathLabel" Content="Source Path" Margin="0 0 0 0"></Label>
                 <Label Grid.Column="0" Grid.Row="3" Name="DestinationPathLabel" Content="Destination Path"></Label>

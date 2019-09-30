@@ -8,6 +8,7 @@ using Repository;
 using Models;
 using System.IO;
 using System.Threading;
+using System.Linq;
 
 namespace FileSort
 {
@@ -101,7 +102,28 @@ namespace FileSort
             ListBox_FileTypes.Items.Remove(ListBox_FileTypes.SelectedItem);
         }
 
+        private void Btn_AddCostumFileType_Click(object sender, RoutedEventArgs e)
+        {
+            if (TextBox_AddCostumFileTypeInput.Text != "" || TextBox_AddCostumFileTypeInput.Text != null)       // Checks if the TextBox is emty or null
+            {
+                List<string> containgFyletypes = new List<string>();                                            // A list of strings made to compair existing filetypes in the 'ListBox_FileTypes.Items' with the inpus from the 'TextBox_AddCostumFileTypeInput.Text'
 
+                foreach (var item in ListBox_FileTypes.Items)                                                   // Adds all existing filetypes from 'ListBox_FileTypes.Items' and adds them to a new list of strings
+                {
+                    containgFyletypes.Add(item.ToString());
+                }
+
+                if (containgFyletypes != null)
+                {
+                    if (!containgFyletypes.Exists(x => string.Equals(x, TextBox_AddCostumFileTypeInput.Text)))   // Checks if the input from 'TextBox_AddCostumFileTypeInput.Text' exists in the 'containgFyletypes' list
+                    {
+                        ListBox_FileTypes.Items.Add(TextBox_AddCostumFileTypeInput.Text);
+                    }
+                }
+
+            }
+            TextBox_AddCostumFileTypeInput.Text = "";                                                           // Clears the indput
+        }
         #endregion
 
         #region Language
@@ -539,8 +561,8 @@ namespace FileSort
                 // Højeste lag af Exception
             }
         }
-        #endregion
 
+        #endregion
 
     }
 }
