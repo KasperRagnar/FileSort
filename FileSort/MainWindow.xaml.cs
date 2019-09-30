@@ -21,7 +21,8 @@ namespace FileSort
         bool runConditions;                 // This bool is used for error handeling in START
         LanguageModel ChousenLanguageList;  // A model/list of the current selectet language varibels
         string appInfoMessageBox;           // this string is the info message in 'InfoBox_Click' method
-        int languageIndexedSelection;       // in index-number for the current language. (Used in error handeling)
+        int languageIndexedSelection;       // A int index-number for the current language.
+        int StyleIndexedSelection;          // A int index-number for the current Theam/styleing.
         string[] MsgBoxTextIndput;          // A plaseholder for the Message box "From: To:" text
         string MsgBoxHeaderIndput;          // A placeholder for the Message box "Header" text
 
@@ -42,7 +43,8 @@ namespace FileSort
             WindowStartupLocation = WindowStartupLocation.CenterScreen;     // Starts the application up in the middle of the sceen
 
             ComboBox_FileTypes.ItemsSource = LS.FileTypesArr;               // Add's a 'File Type'list to the UI.
-            languageIndexedSelection = ComboBox_Languages.SelectedIndex;    // Is used for sending info about the selectet language down to 'MessageBoxErrorMessages' in the Repository.
+            languageIndexedSelection = ComboBox_Languages.SelectedIndex;    // Getting and setting data from the LanguageSettings.cs 
+            StyleIndexedSelection = ComboBox_Styles.SelectedIndex;          // Getting and setting data from the StylingSettings.cs 
 
             ComboBox_Languages.ItemsSource = LS.LanguagesArr;               // Add's a 'language' list to the UI.
             ComboBox_Languages.SelectedIndex = 1;                           // Sets the default language in the UI to: English 
@@ -109,6 +111,57 @@ namespace FileSort
 
                 ChousenLanguageList = LS.LanguageList(languageIndexedSelection);
                 
+
+                if (ChousenLanguageList != null)
+                {
+                    appInfoMessageBox = ChousenLanguageList.TextBox_ContentTextBox;                             //for the application info messagebox
+
+                    ErrorMsgBox.Text = ChousenLanguageList.TextBox_ErrorMsgBox[0];
+
+                    SortingMethodsTextBox.Text = ChousenLanguageList.TextBox_SortingMethod;
+                    ComboBox_SortingMethods.ItemsSource = ChousenLanguageList.ComboBox_SortingMethods;
+
+                    FileTypesTextBox.Text = ChousenLanguageList.TextBox_FileTypes;
+                    AddFileTypeToList.Content = ChousenLanguageList.btn_AddFileTypeToList;
+                    RemoveFileTypeToList.Content = ChousenLanguageList.btn_RemoveFileTypeToList;
+
+                    LanguageesTextBox.Text = ChousenLanguageList.TextBox_Language;
+
+                    TextBox_StylesTextBox.Text = ChousenLanguageList.TextBox_StylesTextBox;
+                    ComboBox_Styles.ItemsSource = ChousenLanguageList.ComboBox_Styles;
+
+                    SourchPathLabel.Content = ChousenLanguageList.TextBox_SourchPathLabel;
+                    SourchPathButton.Content = ChousenLanguageList.btn_SourchPathButton;
+
+                    DestinationPathLabel.Content = ChousenLanguageList.TextBox_DestinationPathLabel;
+                    DestinationPathButton.Content = ChousenLanguageList.btn_DestinationPathButton;
+
+                    SearchFolderOption.Content = ChousenLanguageList.radio_SearchFolderOption;
+                    SearchAllSubFoldersOption.Content = ChousenLanguageList.radio_SearchAllSubFoldersOption;
+
+                    StartButton.Content = ChousenLanguageList.btn_StartButton;
+
+                    MsgBoxTextIndput = ChousenLanguageList.MsgBoxText;                                          // A string[] for dynamid text indput on the message box text fild
+                    MsgBoxHeaderIndput = ChousenLanguageList.MsgBoxHeader;                                      // A string for dynamid text indput on the message box header
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        #endregion
+
+        #region Styleing
+        private void ComboBox_Styles_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                StyleIndexedSelection = ComboBox_Styles.SelectedIndex;
+
+                ChousenLanguageList = LS.LanguageList(languageIndexedSelection);
+
 
                 if (ChousenLanguageList != null)
                 {
