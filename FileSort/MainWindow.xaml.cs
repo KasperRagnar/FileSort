@@ -115,7 +115,7 @@ namespace FileSort
 
                 if (containgFyletypes != null)
                 {
-                    if (!containgFyletypes.Exists(x => string.Equals(x, TextBox_AddCostumFileTypeInput.Text)))   // Checks if the input from 'TextBox_AddCostumFileTypeInput.Text' exists in the 'containgFyletypes' list
+                    if (!containgFyletypes.Exists(x => string.Equals(x, TextBox_AddCostumFileTypeInput.Text)))  // Checks if the input from 'TextBox_AddCostumFileTypeInput.Text' exists in the 'containgFyletypes' list
                     {
                         ListBox_FileTypes.Items.Add(TextBox_AddCostumFileTypeInput.Text);
                     }
