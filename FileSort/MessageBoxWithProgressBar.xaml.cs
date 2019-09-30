@@ -76,9 +76,6 @@ namespace FileSort
         /// <param name="importFiles">A new instance of the SortingMethods class</param>
         public void DataImport(SortingMethods importFiles)
         {
-            // TODO: 
-            //  • Få progressbaren til at lukke automatisk når progress rammer 100%
-            //
 
             try
             {
@@ -123,6 +120,11 @@ namespace FileSort
         {
             // Udskriver Progressbar value (hvor langt progressbaren den er)
             progressBar.Value = progress.PercentageCompleted;
+
+            if (progressBar.Value == 100)                   // Closes the window when the loading bar is hiting 100%
+            {
+                this.Close();                               // Closes this window
+            }
         }
 
         #endregion
