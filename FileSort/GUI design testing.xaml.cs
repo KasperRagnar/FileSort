@@ -23,5 +23,63 @@ namespace FileSort
         {
             InitializeComponent();
         }
+
+        private void StartButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DestinationPathButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void SourchPathButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Btn_AddCostumFileType_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RemoveFileTypeToList_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AddFileTypeToList_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void SearchFolderOption_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void SearchAllSubFoldersOption_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void InfoBox_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+       
+        private void ComboBox_Languages_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+
+        private void ComboBox_Styles_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
     }
 }

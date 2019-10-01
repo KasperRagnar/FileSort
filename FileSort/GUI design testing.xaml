@@ -11,143 +11,150 @@
             <ImageBrush ImageSource="Billeder/FileSort UI Design - BG03.png" TileMode="Tile"/>
         </Grid.Background>
 
-        <Border Padding="10 0 10 10">
+        <Border Padding="0 0 10 0">
             <StackPanel>
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1.1*"/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="25*"/>
+                        <RowDefinition Height="90*"/>
+                        <RowDefinition Height="306*"/>
                     </Grid.RowDefinitions>
 
-                    <!--#region Error message box and INFO button-->
-                    <Grid Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="5*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-
-                        <!--INFO button-->
-                        <Button Name="InfoBox" Content="Info" Grid.Column="0" Grid.Row="0" Background="{x:Null}" BorderBrush="{x:Null}" Cursor="Hand" Click="InfoBox_Click" HorizontalAlignment="Left"  />
-
-                        <!--Error message box-->
-                        <TextBox Text="" Name="ErrorMsgBox" Grid.Column="1" Grid.Row="0" Margin="0 5 0 5" IsReadOnly="True" BorderThickness="0" FontStyle="Italic" FontSize="11" Foreground="Red" Background="Transparent"/>
-                    
-                    </Grid>
-                    <!--#endregion-->
-
                     <!--#region Column 0-->
-                    <Grid Grid.Column="0" Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
+                    <Border Grid.Column="0" Grid.Row="1" Padding="10 5 10 30" Grid.RowSpan="2" Background="#19000000">
 
-                        <!--#region Sorting Methods-->
-                        <TextBox Name="SortingMethodsTextBox" Grid.Column="0" Grid.Row="1" Text="Sorting Method" IsReadOnly="True" BorderThickness="0" Margin="0 0 0 5" Background="Transparent" Foreground="#C7D3D4FF" FontWeight="Bold"/>
-                        <ComboBox Name="ComboBox_SortingMethods" Grid.Column="0" Grid.Row="2"></ComboBox>
-                        <!--#endregion-->
-
-                        <!--#region Theams-->
-                        <TextBox Name="TextBox_StylesTextBox" Grid.Column="0" Grid.Row="3" Text="Styles" IsReadOnly="True" BorderThickness="0" Margin="0 10 0 5" Background="Transparent" FontWeight="Bold" Foreground="#C7D3D4FF"/>
-                        <ComboBox Name="ComboBox_Styles" Grid.Column="0" Grid.Row="4" SelectionChanged="ComboBox_Styles_SelectionChanged"></ComboBox>
-                        <!--#endregion-->
-
-                        <!--#region Language-->
-                        <TextBox Name="LanguageesTextBox" Grid.Column="0" Grid.Row="5" Text="Language" IsReadOnly="True" BorderThickness="0" Margin="0 10 0 5" Background="Transparent" FontWeight="Bold" SelectionBrush="#19FFFFFF" Foreground="#C7D3D4FF"/>
-                        <ComboBox Name="ComboBox_Languages" Grid.Column="0" Grid.Row="6" Height="22" SelectionChanged="ComboBox_Languages_SelectionChanged"></ComboBox>
-                        <!--#endregion-->
-
-                        <!--#region File Types-->
-                        <TextBox Name="FileTypesTextBox" Grid.Column="0" Grid.Row="7" Text="File Types" IsReadOnly="True" BorderThickness="0" Margin="0 20 0 5" Background="Transparent" Foreground="#C7D3D4FF" FontWeight="Bold"/>
-                        <ComboBox Name="ComboBox_FileTypes" Grid.Column="0" Grid.Row="8"></ComboBox>
-                        <!--#endregion-->
-
-                        <!--#region Add / Remove filetypes from the list-->
-                        <Grid Grid.Column="0" Grid.Row="9" Margin="0 10 0 0">
+                        <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-
-                            <!--Add a File Type to the list-->
-                            <Button Name="AddFileTypeToList" Content="Add" Grid.Column="0" Grid.Row="0" Margin="0 0 5 0" Click="AddFileTypeToList_Click"></Button>
-
-                            <!--Remove a File Type to the list-->
-                            <Button Name="RemoveFileTypeToList" Content="Remove" Grid.Column="1" Grid.Row="0" Margin="5 0 0 0" Click="RemoveFileTypeToList_Click"></Button>
-                        </Grid>
-                        <!--#endregion-->
-
-                        <!--#region Add a costum File Types-->
-                        <TextBox Name="TextBox_AddCostumFileType" Grid.Column="0" Grid.Row="10" Text="Add a costum File Type" Margin="0 15 0 5" IsReadOnly="True" BorderThickness="0" Background="Transparent" Foreground="#C7D3D4FF" SelectionBrush="#19FFFFFF" FontWeight="Bold" TextDecorations="{x:Null}"/>
-                        <Grid Grid.Column="0" Grid.Row="11">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="2*"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
 
-                            <TextBox Name="TextBox_AddCostumFileTypeInput" Grid.Column="1" Grid.Row="0" Margin="5 0 0 0" Text="" SelectionBrush="#19FFFFFF"></TextBox>
-                            <Button Name="btn_AddCostumFileType" Grid.Column="0" Grid.Row="0" Content="Add" Click="Btn_AddCostumFileType_Click" ></Button>
+                            <!--#region Sorting Methods-->
+                            <TextBox Name="SortingMethodsTextBox" Grid.Column="0" Grid.Row="1" Text="Sorting Method" IsReadOnly="True" BorderThickness="0" Margin="0 20 0 5" Background="Transparent" Foreground="#C7D3D4FF" FontWeight="Bold"/>
+                            <ComboBox Name="ComboBox_SortingMethods" Grid.Column="0" Grid.Row="2"></ComboBox>
+                            <!--#endregion-->
+
+                            <!--#region Theams-->
+                            <TextBox Name="TextBox_StylesTextBox" Grid.Column="0" Grid.Row="3" Text="Styles" IsReadOnly="True" BorderThickness="0" Margin="0 10 0 5" Background="Transparent" FontWeight="Bold" Foreground="#C7D3D4FF"/>
+                            <ComboBox Name="ComboBox_Styles" Grid.Column="0" Grid.Row="4" SelectionChanged="ComboBox_Styles_SelectionChanged"></ComboBox>
+                            <!--#endregion-->
+
+                            <!--#region Language-->
+                            <TextBox Name="LanguageesTextBox" Grid.Column="0" Grid.Row="5" Text="Language" IsReadOnly="True" BorderThickness="0" Margin="0 10 0 5" Background="Transparent" FontWeight="Bold" SelectionBrush="#19FFFFFF" Foreground="#C7D3D4FF"/>
+                            <ComboBox Name="ComboBox_Languages" Grid.Column="0" Grid.Row="6" Height="22" SelectionChanged="ComboBox_Languages_SelectionChanged"></ComboBox>
+                            <!--#endregion-->
+
+                            <!--#region File Types-->
+                            <TextBox Name="FileTypesTextBox" Grid.Column="0" Grid.Row="7" Text="File Types" IsReadOnly="True" BorderThickness="0" Margin="0 20 0 5" Background="Transparent" Foreground="#C7D3D4FF" FontWeight="Bold"/>
+                            <ComboBox Name="ComboBox_FileTypes" Grid.Column="0" Grid.Row="8"></ComboBox>
+                            <!--#endregion-->
+
+                            <!--#region Add / Remove filetypes from the list-->
+                            <Grid Grid.Column="0" Grid.Row="9" Margin="0 10 0 0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <!--Add a File Type to the list-->
+                                <Button Name="AddFileTypeToList" Content="Add" Grid.Column="0" Grid.Row="0" Margin="0 0 5 0" Click="AddFileTypeToList_Click"></Button>
+
+                                <!--Remove a File Type to the list-->
+                                <Button Name="RemoveFileTypeToList" Content="Remove" Grid.Column="1" Grid.Row="0" Margin="5 0 0 0" Click="RemoveFileTypeToList_Click"></Button>
+                            </Grid>
+                            <!--#endregion-->
+
+                            <!--#region Add a costum File Types-->
+                            <TextBox Name="TextBox_AddCostumFileType" Grid.Column="0" Grid.Row="10" Text="Add a costum File Type" Margin="0 15 0 5" IsReadOnly="True" BorderThickness="0" Background="Transparent" Foreground="#C7D3D4FF" SelectionBrush="#19FFFFFF" FontWeight="Bold" TextDecorations="{x:Null}"/>
+                            <Grid Grid.Column="0" Grid.Row="11">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBox Name="TextBox_AddCostumFileTypeInput" Grid.Column="1" Grid.Row="0" Margin="5 0 0 0" Text="" SelectionBrush="#19FFFFFF"></TextBox>
+                                <Button Name="btn_AddCostumFileType" Grid.Column="0" Grid.Row="0" Content="Add" Click="Btn_AddCostumFileType_Click" ></Button>
+                            </Grid>
+                            <!--#endregion-->
+
+                            <!--Start button-->
+                            <Button Content="START" Name="StartButton" Grid.Column="0" Grid.Row="12" Margin="0 30 0 0" Padding="0 10 0 10" FontSize="14" Click="StartButton_Click"/>
+
                         </Grid>
-                        <!--#endregion-->
 
-                        <!--Start button-->
-                        <Button Content="START" Name="StartButton" Grid.Column="0" Grid.Row="12" Margin="0 30 0 0" Padding="0 10 0 10" FontSize="14" Click="StartButton_Click"/>
-
-                    </Grid>
+                    </Border>
                     <!--#endregion-->
 
                     <!--#region Column 1-->
-                    <Grid Grid.Column="1" Grid.Row="1" Margin="10 0 0 0">
+                    <Grid Grid.Column="1" Grid.Row="1" Margin="10 0 0 0" Grid.RowSpan="2">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="5*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="14*"/>
+                            <RowDefinition Height="11*"/>
+                            <RowDefinition Height="188*"/>
+                            <RowDefinition Height="40*"/>
+                            <RowDefinition Height="56*"/>
+                            <RowDefinition Height="115*"/>
+                            <RowDefinition Height="0*"/>
                         </Grid.RowDefinitions>
 
+                        <!--#region Error message box and INFO button-->
+                        <Grid Grid.Row="0" Grid.RowSpan="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <!--Error message box-->
+                            <TextBox Text="" Name="ErrorMsgBox" Grid.Column="0" Grid.Row="0" Margin="0 5 0 5" IsReadOnly="True" BorderThickness="0" FontStyle="Italic" FontSize="11" Foreground="Red" Background="Transparent"/>
+
+                            <!--INFO button-->
+                            <Button Name="InfoBox" Content="Info" Grid.Column="1" Grid.Row="0" Background="#00000000" BorderBrush="{x:Null}" Cursor="Hand" Click="InfoBox_Click" HorizontalAlignment="Right" Foreground="#CC000000"   />
+
+                        </Grid>
+                        <!--#endregion-->
+
                         <!--#region File Listbox-->
-                        <ListBox Name="ListBox_FileTypes" Grid.Column="0" Grid.Row="0" BorderThickness="1" Margin="5 20 5 0" MaxHeight="154" Background="#19FFFFFF"  />
+                        <ListBox Name="ListBox_FileTypes" Grid.Column="0" Grid.Row="2" BorderThickness="1" Margin="5 0 5 0" MaxHeight="150" Background="#19FFFFFF" VerticalContentAlignment="Top"  />
                         <!--#endregion-->
 
                         <!--#region Radio Buttons-->
-                        <RadioButton Grid.Column="1" Grid.Row="1" Name="SearchFolderOption" Margin="0 25 0 0" Checked="SearchFolderOption_Checked">
+                        <RadioButton Grid.Column="0" Grid.Row="3" Name="SearchFolderOption" Margin="0 5 0 0" Checked="SearchFolderOption_Checked">
                             <ContentControl>
                                 <TextBlock Text="Search in the selected folder only!" TextWrapping="Wrap" FontWeight="Bold" Foreground="#C7D3D4FF"></TextBlock>
                             </ContentControl>
                         </RadioButton>
 
-                        <RadioButton Grid.Column="1" Grid.Row="2" Name="SearchAllSubFoldersOption" Margin="0 15 0 10" Checked="SearchAllSubFoldersOption_Checked">
+                        <RadioButton Grid.Row="4" Name="SearchAllSubFoldersOption" Margin="0 5 0 10" Checked="SearchAllSubFoldersOption_Checked">
                             <ContentControl>
                                 <TextBlock Text="Search in the selected folder and all of its sub-folders." TextWrapping="Wrap" FontWeight="Bold" Foreground="#C7D3D4FF"></TextBlock>
                             </ContentControl>
@@ -155,7 +162,7 @@
                         <!--#endregion-->
 
                         <!--#region Fil Paths-->
-                        <Grid Grid.Column="1" Grid.Row="4">
+                        <Grid Grid.Row="5" Margin="0 0 0 30">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="223"/>
                                 <ColumnDefinition/>
