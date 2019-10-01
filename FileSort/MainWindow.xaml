@@ -8,9 +8,10 @@
         Title="FileSort" 
         Name="Window_MainWindow"
         Icon="Billeder\FS_Icon2.jpg"
-        Height="567" Width="410"         
-        MaxHeight="567" MaxWidth="410" 
-        MinHeight="567" MinWidth="410">
+        Height="544" Width="410"         
+        MaxHeight="544" MaxWidth="410" 
+        MinHeight="544" MinWidth="410">
+    
     <Border Padding="10 0 10 0">
         <StackPanel>
 
@@ -93,7 +94,7 @@
                     </Grid.RowDefinitions>
 
                     <!--File Listbox-->
-                    <ListBox Name="ListBox_FileTypes" BorderThickness="1" BorderBrush="Gray" Margin="5,20,5,0" MaxHeight="145" />
+                    <ListBox Name="ListBox_FileTypes" BorderThickness="1" BorderBrush="Gray" Margin="5,20,5,0" MaxHeight="128" />
                 </Grid>
                 <!--#endregion -->
 
