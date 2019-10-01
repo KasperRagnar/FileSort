@@ -7,10 +7,10 @@
         mc:Ignorable="d"
         Title="FileSort" 
         Name="Window_MainWindow"
-        Icon="Billeder\FS_Icon2.jpg"
+        Icon="Billeder\Icons\FS_Icon2.jpg"
         Height="544" Width="410"         
         MaxHeight="544" MaxWidth="410" 
-        MinHeight="544" MinWidth="410">
+        MinHeight="544" MinWidth="410" WindowStartupLocation="CenterScreen">
     
     <Border Padding="10 0 10 0">
         <StackPanel>
@@ -23,7 +23,7 @@
                     <ColumnDefinition Width="0.5*" />
                 </Grid.ColumnDefinitions>
 
-                <Image Source="Billeder\FileSort Image2.png" MaxHeight="150" Grid.Column="1"/>
+                <Image Source="Billeder\Icons\FileSort Image2.png" MaxHeight="150" Grid.Column="1"/>
 
                 <StackPanel Grid.Column="0">
                     <Button Name="InfoBox" Content="Info" Background="{x:Null}" BorderBrush="{x:Null}" Cursor="Hand" Click="InfoBox_Click"  />
