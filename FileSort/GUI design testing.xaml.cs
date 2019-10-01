@@ -81,5 +81,19 @@ namespace FileSort
 
         }
 
+        private void TextBox_AddCostumFileTypeInput_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void ListBox_FileTypes_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void SourchPathBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
