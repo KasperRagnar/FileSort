@@ -144,11 +144,11 @@
                         <!--#endregion-->
 
                         <!--#region File Listbox-->
-                        <ListBox Name="ListBox_FileTypes" Grid.Column="0" Grid.Row="2" BorderThickness="1 1 1 1" Margin="5 0 5 0" MaxHeight="150" Focusable="False" Background="#19FFFFFF" VerticalContentAlignment="Top" SelectionChanged="ListBox_FileTypes_SelectionChanged" BorderBrush="#93D3D4FF"  />
+                        <ListBox Name="ListBox_FileTypes" Grid.Column="0" Grid.Row="2" BorderThickness="1 1 1 1" Margin="5 0 5 0" MaxHeight="145" Focusable="False" Background="#19FFFFFF" VerticalContentAlignment="Top" SelectionChanged="ListBox_FileTypes_SelectionChanged" BorderBrush="#93D3D4FF"  />
                         <!--#endregion-->
 
                         <!--#region Radio Buttons-->
-                        <RadioButton Grid.Column="0" Grid.Row="3" Name="SearchFolderOption" Margin="0 5 0 0" Checked="SearchFolderOption_Checked">
+                        <RadioButton Grid.Column="0" Grid.Row="3" Name="SearchFolderOption" Margin="0 5 0 5" Checked="SearchFolderOption_Checked">
                             <ContentControl>
                                 <TextBlock Text="Search in the selected folder only!" TextWrapping="Wrap" FontWeight="Bold" Foreground="#C7D3D4FF"></TextBlock>
                             </ContentControl>
@@ -175,12 +175,12 @@
                             </Grid.RowDefinitions>
 
                             <!--Sourch Path-->
-                            <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Name="SourchPathLabel" Content="Source Path" Margin="0 0 0 0" Foreground="#C7D3D4FF" FontWeight="Bold"></Label>
+                            <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Name="SourchPathLabel" Content="Source Path" Margin="0 0 0 5" Foreground="#C7D3D4FF" FontWeight="Bold"></Label>
                             <TextBox Grid.Column="0" Grid.Row="1" Name="SourchPathBox" IsEnabled="False" Focusable="False" IsReadOnly="True" BorderThickness="0,0,0,1" BorderBrush="#C7D3D4FF" Background="Transparent" SelectionBrush="#19FFFFFF" TextChanged="SourchPathBox_TextChanged"></TextBox>
                             <Button Grid.Column="1" Grid.Row="1" Name="SourchPathButton" Content="Browse" Padding="0 0 0 5" Click="SourchPathButton_Click" BorderThickness="1 1 0 0" BorderBrush="#93D3D4FF" Background="Transparent" Foreground="#C7D3D4FF"></Button>
 
                             <!--Destination Path-->
-                            <Label Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Name="DestinationPathLabel" Margin="0 10 0 0" Content="Destination Path" FontWeight="Bold" Foreground="#C7D3D4FF"></Label>
+                            <Label Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Name="DestinationPathLabel" Margin="0 23 0 0" Content="Destination Path" FontWeight="Bold" Foreground="#C7D3D4FF"></Label>
                             <TextBox Grid.Column="0" Grid.Row="3" Name="DestinationPathBox" IsEnabled="False" Focusable="False" IsReadOnly="True" BorderThickness="0 0 0 1" BorderBrush="#C7D3D4FF" Background="Transparent" SelectionBrush="#19FFFFFF"></TextBox>
                             <Button Grid.Column="1" Grid.Row="3" Name="DestinationPathButton" Content="Browse" Click="DestinationPathButton_Click" Padding="0 0 0 5" BorderThickness="1 1 0 0" BorderBrush="#93D3D4FF" Background="Transparent" Foreground="#C7D3D4FF"></Button>
 
