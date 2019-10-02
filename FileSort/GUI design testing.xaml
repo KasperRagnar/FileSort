@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FileSort"
         mc:Ignorable="d"
-        Title="FileSort" Height="450" Width="485.559" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="Billeder/Icons/FileSort Image2.png">
+        Title="FileSort" Height="450" Width="485.559" ResizeMode="NoResize" 
+        WindowStartupLocation="CenterScreen" 
+        Icon="Billeder/Icons/FileSort Image2.png">
+    
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="Billeder/FileSort UI Design - BG03.png" TileMode="Tile"/>
@@ -50,22 +53,38 @@
 
                             <!--#region Sorting Methods-->
                             <TextBox Name="SortingMethodsTextBox" Grid.Column="0" Grid.Row="1" Text="Sorting Method" IsReadOnly="True" BorderThickness="0" Margin="0 20 0 5" Background="Transparent" Foreground="#C7D3D4FF" FontWeight="Bold"/>
-                            <ComboBox Name="ComboBox_SortingMethods" Grid.Column="0" Grid.Row="2" Focusable="False" Background="#FF393F55" BorderBrush="#FF393F55" Foreground="#C7D3D4FF"></ComboBox>
+                            <ComboBox Name="ComboBox_SortingMethods" Grid.Column="0" Grid.Row="2" Focusable="False" Background="{x:Null}" BorderBrush="#FF393F55" Foreground="#C7D3D4FF">
+                                <ComboBox.Resources>
+                                    <!--Color of ComboBoxItem-->
+                                    <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="#333A54"/>
+                                    <!--Mouse over color of ComboBoxItem-->
+                                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FF393F55"/>
+
+                                    
+                                    
+                                </ComboBox.Resources>
+                                
+                                <ComboBoxItem>One</ComboBoxItem>
+                                <ComboBoxItem>Two</ComboBoxItem>
+                                <ComboBoxItem>Three</ComboBoxItem>
+                            </ComboBox>
+
+
                             <!--#endregion-->
 
                             <!--#region Theams-->
                             <TextBox Name="TextBox_StylesTextBox" Grid.Column="0" Grid.Row="3" Text="Styles" IsReadOnly="True" BorderThickness="0" Margin="0 10 0 5" Background="Transparent" FontWeight="Bold" Foreground="#C7D3D4FF"/>
-                            <ComboBox Name="ComboBox_Styles" Grid.Column="0" Grid.Row="4" SelectionChanged="ComboBox_Styles_SelectionChanged" Background="#FF393F55" BorderBrush="#FF393F55" Foreground="#C7D3D4FF"></ComboBox>
+                            <ComboBox Name="ComboBox_Styles" Grid.Column="0" Grid.Row="4" SelectionChanged="ComboBox_Styles_SelectionChanged" Background="{x:Null}" BorderBrush="#FF393F55" Foreground="#C7D3D4FF"></ComboBox>
                             <!--#endregion-->
 
                             <!--#region Language-->
                             <TextBox Name="LanguageesTextBox" Grid.Column="0" Grid.Row="5" Text="Language" IsReadOnly="True" BorderThickness="0" Margin="0 10 0 5" Background="Transparent" FontWeight="Bold" SelectionBrush="#19FFFFFF" Foreground="#C7D3D4FF"/>
-                            <ComboBox Name="ComboBox_Languages" Grid.Column="0" Grid.Row="6" Height="22" SelectionChanged="ComboBox_Languages_SelectionChanged" Background="#FF393F55" BorderBrush="#FF393F55" Foreground="#C7D3D4FF"></ComboBox>
+                            <ComboBox Name="ComboBox_Languages" Grid.Column="0" Grid.Row="6" Height="22" SelectionChanged="ComboBox_Languages_SelectionChanged" Background="{x:Null}" BorderBrush="#FF393F55" Foreground="#C7D3D4FF"></ComboBox>
                             <!--#endregion-->
 
                             <!--#region File Types-->
                             <TextBox Name="FileTypesTextBox" Grid.Column="0" Grid.Row="7" Text="File Types" IsReadOnly="True" BorderThickness="0" Margin="0 20 0 5" Background="Transparent" Foreground="#C7D3D4FF" FontWeight="Bold"/>
-                            <ComboBox Name="ComboBox_FileTypes" Grid.Column="0" Grid.Row="8" Background="#FF393F55" BorderBrush="#FF393F55" Foreground="#C7D3D4FF"></ComboBox>
+                            <ComboBox Name="ComboBox_FileTypes" Grid.Column="0" Grid.Row="8" Background="{x:Null}" BorderBrush="#FF393F55" Foreground="#C7D3D4FF"></ComboBox>
                             <!--#endregion-->
 
                             <!--#region Add / Remove filetypes from the list-->

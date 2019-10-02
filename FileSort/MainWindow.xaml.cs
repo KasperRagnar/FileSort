@@ -37,6 +37,7 @@ namespace FileSort
         #endregion
 
         GUI_design_testing guiTest = new GUI_design_testing();
+        TempTester TMer = new TempTester();
 
         public MainWindow()
         {
@@ -58,7 +59,8 @@ namespace FileSort
 
 
 
-            guiTest.Show();
+            //guiTest.Show();
+            TMer.Show();
         }
 
         #region Message box & Error Messages clean-up
