@@ -36,6 +36,8 @@ namespace FileSort
         SystemMessageBoxes SMB = new SystemMessageBoxes();
         #endregion
 
+        GUI_design_testing guiTest = new GUI_design_testing();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -53,7 +55,10 @@ namespace FileSort
             ComboBox_SortingMethods.SelectedIndex = 0;                      // Sets the default Sorting method in the UI to: Move 
             ComboBox_FileTypes.SelectedIndex = 0;                           // Sets the default file type in the UI to: .jpg 
             #endregion
-            
+
+
+
+            guiTest.Show();
         }
 
         #region Message box & Error Messages clean-up
