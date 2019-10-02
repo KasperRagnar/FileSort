@@ -111,6 +111,16 @@ namespace FileSort
         {
             if (TextBox_AddCostumFileTypeInput.Text != "" || TextBox_AddCostumFileTypeInput.Text != null)       // Checks if the TextBox is emty or null
             {
+                string dot = ".";
+                string textboxIndput = TextBox_AddCostumFileTypeInput.Text;
+
+                if (textboxIndput.First() != '.')                                                               // Checks if the indput starts with a '.'
+                {
+                    textboxIndput = dot + TextBox_AddCostumFileTypeInput.Text;                                  // Sets '.' as the first character in the string if it is not already
+                }
+
+                //-------------------------------------------------------------
+
                 List<string> containgFyletypes = new List<string>();                                            // A list of strings made to compair existing filetypes in the 'ListBox_FileTypes.Items' with the inpus from the 'TextBox_AddCostumFileTypeInput.Text'
 
                 foreach (var item in ListBox_FileTypes.Items)                                                   // Adds all existing filetypes from 'ListBox_FileTypes.Items' and adds them to a new list of strings
@@ -118,11 +128,12 @@ namespace FileSort
                     containgFyletypes.Add(item.ToString());
                 }
 
+
                 if (containgFyletypes != null)
                 {
-                    if (!containgFyletypes.Exists(x => string.Equals(x, TextBox_AddCostumFileTypeInput.Text)))  // Checks if the input from 'TextBox_AddCostumFileTypeInput.Text' exists in the 'containgFyletypes' list
+                    if (!containgFyletypes.Exists(x => string.Equals(x, textboxIndput)))                        // Checks if the input from 'TextBox_AddCostumFileTypeInput.Text' exists in the 'containgFyletypes' list
                     {
-                        ListBox_FileTypes.Items.Add(TextBox_AddCostumFileTypeInput.Text);
+                        ListBox_FileTypes.Items.Add(textboxIndput);
                     }
                 }
 

@@ -50,7 +50,7 @@
 
                             <!--#region Sorting Methods-->
                             <TextBox Name="SortingMethodsTextBox" Grid.Column="0" Grid.Row="1" Text="Sorting Method" IsReadOnly="True" BorderThickness="0" Margin="0 20 0 5" Background="Transparent" Foreground="#C7D3D4FF" FontWeight="Bold"/>
-                            <ComboBox Name="ComboBox_SortingMethods" Grid.Column="0" Grid.Row="2" Background="#FF393F55" BorderBrush="#FF393F55" Foreground="#C7D3D4FF"></ComboBox>
+                            <ComboBox Name="ComboBox_SortingMethods" Grid.Column="0" Grid.Row="2" Focusable="False" Background="#FF393F55" BorderBrush="#FF393F55" Foreground="#C7D3D4FF"></ComboBox>
                             <!--#endregion-->
 
                             <!--#region Theams-->
@@ -97,7 +97,7 @@
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
                                 
-                                <TextBox Name="TextBox_AddCostumFileTypeInput" Text="" Grid.Column="1" Grid.Row="0" Focusable="False"  Background="Transparent" SelectionBrush="#19FFFFFF" BorderThickness="0 0 0 2" BorderBrush="#93D3D4FF" TextChanged="TextBox_AddCostumFileTypeInput_TextChanged" Foreground="#C7D3D4FF"></TextBox>
+                                <TextBox Name="TextBox_AddCostumFileTypeInput" Text="" Grid.Column="1" Grid.Row="0" Background="Transparent" SelectionBrush="{x:Null}" BorderThickness="0 0 0 2" BorderBrush="#93D3D4FF" TextChanged="TextBox_AddCostumFileTypeInput_TextChanged" Foreground="#C7D3D4FF" HorizontalContentAlignment="Center"/>
                                 <Button Name="btn_AddCostumFileType" Grid.Column="0" Grid.Row="0" Content="Add" Padding="0 0 0 5" Click="Btn_AddCostumFileType_Click" Background="Transparent" BorderThickness="0 1 1 0" BorderBrush="#C7D3D4FF" Foreground="#C7D3D4FF"></Button>
                             </Grid>
                             <!--#endregion-->
