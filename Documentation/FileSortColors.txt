@@ -1,0 +1,6 @@
+#333A54 	= blue (dark) 
+#FF393F55 	= blue (light)
+
+#C7D3D4FF 	= gray
+
+#603F83 	= purple
