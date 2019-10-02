@@ -33,7 +33,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Name="btn_Cansel" Content="Cansel" Grid.Column="2" Margin="5,5,15,5" Click="Btn_Cansel_Click"></Button>
+            <Button Name="btn_Cansel" Content="Cancel" Grid.Column="2" Margin="5,5,15,5" Click="Btn_Cansel_Click"></Button>
         </Grid>
         <!--#endregion-->
         
