@@ -8,9 +8,10 @@
         Title="FileSort" 
         Name="Window_MainWindow"
         Icon="Billeder\Icons\FS_Icon2.jpg"
-        Height="544" Width="410"         
-        MaxHeight="544" MaxWidth="410" 
-        MinHeight="544" MinWidth="410" WindowStartupLocation="CenterScreen">
+        Height="535" Width="410"         
+        MaxHeight="535" MaxWidth="410" 
+        MinHeight="535" MinWidth="410" 
+        WindowStartupLocation="CenterScreen">
     
     <Border Padding="10 0 10 0">
         <StackPanel>
