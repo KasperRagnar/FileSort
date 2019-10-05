@@ -59,8 +59,8 @@ namespace FileSort
 
 
 
-            //guiTest.Show();
-            TMer.Show();
+            //guiTest.Show();   // Starting the New test UI 
+            //TMer.Show();      // Starts the conbobox color testing
         }
 
         #region Message box & Error Messages clean-up

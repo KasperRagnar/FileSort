@@ -28,10 +28,10 @@
 
         <ComboBox Margin="5 0 5 0" Grid.Column="0" Grid.Row="1" Background="{x:Null}" BorderBrush="#FF393F55" Foreground="#C7D3D4FF">
             <ComboBox.Resources>
-                <!--Color of ComboBoxItem--><!--
+                <!--Color of ComboBoxItem-->
                 <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="#333A54"/>
-                --><!--Mouse over color of ComboBoxItem--><!--
-                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FF393F55"/>-->
+                <!--Mouse over color of ComboBoxItem-->
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FF393F55"/>
             </ComboBox.Resources>
 
             <ComboBoxItem>One</ComboBoxItem>
@@ -39,12 +39,12 @@
             <ComboBoxItem>Three</ComboBoxItem>
         </ComboBox>
 
-        <ComboBox Name="combobox" Margin="5 0 5 0" Grid.Column="1" Grid.Row="1" >
+        <ComboBox x:Name="combobox" Margin="5 0 5 0" Grid.Column="1" Grid.Row="1" BorderBrush="#FF393F55" Foreground="#C7D3D4FF" >
             <ComboBox.Resources>
-                <!--Color of ComboBoxItem--><!--
+                <!--Color of ComboBoxItem-->
                 <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="#333A54"/>
-                --><!--Mouse over color of ComboBoxItem--><!--
-                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FF393F55"/>-->
+                <!--Mouse over color of ComboBoxItem-->
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FF393F55"/>
 
             </ComboBox.Resources>
 
@@ -55,15 +55,16 @@
 
         <ComboBox Margin="5 0 5 0" Grid.Column="2" Grid.Row="1" Background="#FFFFA200" BorderBrush="#FF393F55" Foreground="#C7D3D4FF">
             <ComboBox.Resources>
-                <!--Color of ComboBoxItem--><!--
+                <!--Color of ComboBoxItem-->
                 <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="#333A54"/>
-                --><!--Mouse over color of ComboBoxItem--><!--
-                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FF393F55"/>-->
+                <!--Mouse over color of ComboBoxItem-->
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FF393F55"/>
             </ComboBox.Resources>
 
             <ComboBoxItem>One</ComboBoxItem>
             <ComboBoxItem>Two</ComboBoxItem>
             <ComboBoxItem>Three</ComboBoxItem>
         </ComboBox>
+    
     </Grid>
 </Window>
