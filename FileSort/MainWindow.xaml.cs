@@ -48,11 +48,9 @@ namespace FileSort
 
             ComboBox_FileTypes.ItemsSource = LS.FileTypesArr;               // Add's a 'File Type'list to the UI.
             languageIndexedSelection = ComboBox_Languages.SelectedIndex;    // Getting and setting data from the LanguageSettings.cs 
-            StyleIndexedSelection = ComboBox_Styles.SelectedIndex;          // Getting and setting data from the StylingSettings.cs 
 
             ComboBox_Languages.ItemsSource = LS.LanguagesArr;               // Add's a 'language' list to the UI.
             ComboBox_Languages.SelectedIndex = 1;                           // Sets the default language in the UI to: English 
-            ComboBox_Styles.SelectedIndex = 0;                              // Sets the default Theam in the UI to: Light Mode 
             ComboBox_SortingMethods.SelectedIndex = 0;                      // Sets the default Sorting method in the UI to: Move 
             ComboBox_FileTypes.SelectedIndex = 0;                           // Sets the default file type in the UI to: .jpg 
             #endregion
@@ -111,36 +109,47 @@ namespace FileSort
 
         private void Btn_AddCostumFileType_Click(object sender, RoutedEventArgs e)
         {
-            if (TextBox_AddCostumFileTypeInput.Text != "" || TextBox_AddCostumFileTypeInput.Text != null)       // Checks if the TextBox is emty or null
+            try
             {
-                string dot = ".";
-                string textboxIndput = TextBox_AddCostumFileTypeInput.Text;
-
-                if (textboxIndput.First() != '.')                                                               // Checks if the indput starts with a '.'
+                if (TextBox_AddCostumFileTypeInput.Text != "" || TextBox_AddCostumFileTypeInput.Text != null)       // Checks if the TextBox is emty or null
                 {
-                    textboxIndput = dot + TextBox_AddCostumFileTypeInput.Text;                                  // Sets '.' as the first character in the string if it is not already
-                }
+                    string dot = ".";
+                    string textboxIndput = TextBox_AddCostumFileTypeInput.Text;
 
-                //-------------------------------------------------------------
-
-                List<string> containgFyletypes = new List<string>();                                            // A list of strings made to compair existing filetypes in the 'ListBox_FileTypes.Items' with the inpus from the 'TextBox_AddCostumFileTypeInput.Text'
-
-                foreach (var item in ListBox_FileTypes.Items)                                                   // Adds all existing filetypes from 'ListBox_FileTypes.Items' and adds them to a new list of strings
-                {
-                    containgFyletypes.Add(item.ToString());
-                }
-
-
-                if (containgFyletypes != null)
-                {
-                    if (!containgFyletypes.Exists(x => string.Equals(x, textboxIndput)))                        // Checks if the input from 'TextBox_AddCostumFileTypeInput.Text' exists in the 'containgFyletypes' list
+                    if (textboxIndput.First() != '.')                                                               // Checks if the indput starts with a '.'
                     {
-                        ListBox_FileTypes.Items.Add(textboxIndput);
+                        textboxIndput = dot + TextBox_AddCostumFileTypeInput.Text;                                  // Sets '.' as the first character in the string if it is not already
                     }
+
+                    //-------------------------------------------------------------
+
+                    List<string> containgFyletypes = new List<string>();                                            // A list of strings made to compair existing filetypes in the 'ListBox_FileTypes.Items' with the inpus from the 'TextBox_AddCostumFileTypeInput.Text'
+
+                    foreach (var item in ListBox_FileTypes.Items)                                                   // Adds all existing filetypes from 'ListBox_FileTypes.Items' and adds them to a new list of strings
+                    {
+                        containgFyletypes.Add(item.ToString());
+                    }
+
+
+                    if (containgFyletypes != null)
+                    {
+                        if (!containgFyletypes.Exists(x => string.Equals(x, textboxIndput)))                        // Checks if the input from 'TextBox_AddCostumFileTypeInput.Text' exists in the 'containgFyletypes' list
+                        {
+                            ListBox_FileTypes.Items.Add(textboxIndput);
+                        }
+                    }
+
                 }
+                
+            }
+            catch (Exception)
+            {
 
             }
-            TextBox_AddCostumFileTypeInput.Text = "";                                                           // Clears the indput
+            finally
+            {
+                TextBox_AddCostumFileTypeInput.Text = "";                                                           // Clears the indput
+            }
         }
         #endregion
 
@@ -169,8 +178,8 @@ namespace FileSort
 
                     LanguageesTextBox.Text = ChousenLanguageList.TextBox_Language;
 
-                    TextBox_StylesTextBox.Text = ChousenLanguageList.TextBox_StylesTextBox;
-                    ComboBox_Styles.ItemsSource = ChousenLanguageList.ComboBox_Styles;
+                    //TextBox_StylesTextBox.Text = ChousenLanguageList.TextBox_StylesTextBox;
+                    //ComboBox_Styles.ItemsSource = ChousenLanguageList.ComboBox_Styles;
 
                     TextBox_AddCostumFileType.Text = ChousenLanguageList.TextBox_AddCostumFileType;
                     btn_AddCostumFileType.Content = ChousenLanguageList.btn_AddCostumFileType;
@@ -193,58 +202,6 @@ namespace FileSort
             catch (Exception)
             {
 
-                throw;
-            }
-        }
-        #endregion
-
-        #region Styleing
-        private void ComboBox_Styles_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            try
-            {
-                StyleIndexedSelection = ComboBox_Styles.SelectedIndex;
-
-                ChousenLanguageList = LS.LanguageList(languageIndexedSelection);
-
-
-                if (ChousenLanguageList != null)
-                {
-                    appInfoMessageBox = ChousenLanguageList.TextBox_ContentTextBox;                             //for the application info messagebox
-
-                    ErrorMsgBox.Text = ChousenLanguageList.TextBox_ErrorMsgBox[0];
-
-                    SortingMethodsTextBox.Text = ChousenLanguageList.TextBox_SortingMethod;
-                    ComboBox_SortingMethods.ItemsSource = ChousenLanguageList.ComboBox_SortingMethods;
-
-                    FileTypesTextBox.Text = ChousenLanguageList.TextBox_FileTypes;
-                    AddFileTypeToList.Content = ChousenLanguageList.btn_AddFileTypeToList;
-                    RemoveFileTypeToList.Content = ChousenLanguageList.btn_RemoveFileTypeToList;
-
-                    LanguageesTextBox.Text = ChousenLanguageList.TextBox_Language;
-
-                    TextBox_StylesTextBox.Text = ChousenLanguageList.TextBox_StylesTextBox;
-                    ComboBox_Styles.ItemsSource = ChousenLanguageList.ComboBox_Styles;
-
-                    SourchPathLabel.Content = ChousenLanguageList.TextBox_SourchPathLabel;
-                    SourchPathButton.Content = ChousenLanguageList.btn_SourchPathButton;
-
-                    DestinationPathLabel.Content = ChousenLanguageList.TextBox_DestinationPathLabel;
-                    DestinationPathButton.Content = ChousenLanguageList.btn_DestinationPathButton;
-
-                    SearchFolderOption.Content = ChousenLanguageList.radio_SearchFolderOption;
-                    SearchAllSubFoldersOption.Content = ChousenLanguageList.radio_SearchAllSubFoldersOption;
-
-                    StartButton.Content = ChousenLanguageList.btn_StartButton;
-
-                    MsgBoxTextIndput = ChousenLanguageList.MsgBoxText;                                          // A string[] for dynamid text indput on the message box text fild
-                    MsgBoxHeaderIndput = ChousenLanguageList.MsgBoxHeader;                                      // A string for dynamid text indput on the message box header
-                }
-            }
-            catch (Exception)
-            {
-
-                throw;
             }
         }
         #endregion
@@ -576,7 +533,7 @@ namespace FileSort
             }
             catch (Exception)
             {
-                // Højeste lag af Exception
+                
             }
         }
 
