@@ -202,7 +202,7 @@
                 </Grid.RowDefinitions>
 
                 <RadioButton Grid.Row="0" Name="SearchFolderOption" Margin="0 15 0 0" Content="Search in the selected folder only!" Checked="SearchFolderOption_Checked"/>
-                <RadioButton Grid.Row="1" Name="SearchAllSubFoldersOption" Margin="0 10 0 20" Content="Search in the selected folder and all of its sub-folders." Checked="SearchAllSubFoldersOption_Checked"/>
+                <RadioButton Grid.Row="1" Name="SearchAllSubFoldersOption" Margin="0 10 0 20" Content="Search in the selected folder and all of it's sub-folders." Checked="SearchAllSubFoldersOption_Checked"/>
             </Grid>
             <!--#endregion-->
 

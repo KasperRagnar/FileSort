@@ -20,6 +20,7 @@ namespace Repository
         #endregion
 
 
+        #region Move
         /// <summary>
         /// Moves found files from one folder to another
         /// </summary>
@@ -62,7 +63,9 @@ namespace Repository
                 throw;
             }
         }
+        #endregion
 
+        #region Copy
         /// <summary>
         /// Copies found files from one folder to another
         /// </summary>
@@ -131,7 +134,9 @@ namespace Repository
                 throw;
             }
         }
+        #endregion 
 
+        #region LastModefiedDate
         /// <summary>
         /// Sorts files baced on when they where last modefied
         /// </summary>
@@ -178,7 +183,9 @@ namespace Repository
             }
             
         }
+        #endregion
 
+        #region CreatedDate
         /// <summary>
         /// Sorts files baced on when they where created
         /// </summary>
@@ -226,7 +233,9 @@ namespace Repository
             }
             
         }
+        #endregion
 
+        #region Alfabetic
         /// <summary>
         /// Sorts files by letters, numbers and symbols
         /// </summary>
@@ -341,6 +350,6 @@ namespace Repository
                 throw;
             }
         }
-
+        #endregion
     }
 }

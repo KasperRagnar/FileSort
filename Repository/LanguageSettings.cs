@@ -10,8 +10,11 @@ namespace Repository
         #region GLOBAL
         //LanguageModel LM = new LanguageModel();
 
-        public readonly string[] FileTypesArr = new String[] { ".jpg", ".jpeg", ".png", ".tif", ".tiff", ".gif", ".3fr", ".raw", ".dcr", ".cr3", ".cr2", ".erf", ".mef", ".mos", ".nef", ".orf", ".pef", ".rw2", ".arw", ".crw", ".srf", ".sr2", ".doc", ".docx", ".pdf", ".rtf", ".tex", ".txt", ".wks", ".wps", ".wpd", ".dll", ".exe" }; // 'File Type' list to the UI. og Back-end.
-        public readonly string[] LanguagesArr = new String[] { "Dansk", "English" }; // 'Language' list to the UI. og Back-end.
+        // 'File Type' list to the UI. og Back-end.
+        public readonly string[] FileTypesArr = new String[] { ".gif", ".ico", ".jpeg", ".jpg", ".png", ".ps", ".psd", ".svg", ".tif", ".tiff", ".raw", ".xls", ".xlsm", ".xlsx", ".avi", ".flv", ".h264", ".m4v", ".mkv", ".mov", ".mp4", ".mpg", ".mpeg", ".wmv", ".mid", ".midi", ".mp3", ".ogg", ".wav", ".7z", ".zip", ".rar", ".tar", ".gz", ".doc", ".docx", ".odt", ".pdf", ".txt" };
+
+        // 'Language' list to the UI. og Back-end.
+        public readonly string[] LanguagesArr = new String[] { "Dansk", "English" }; 
         #endregion
 
         public LanguageModel LanguageList(int indexNumber)
